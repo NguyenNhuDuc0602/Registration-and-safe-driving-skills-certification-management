@@ -11,7 +11,7 @@ namespace Project_Prn.dal
     public class CertificateDAO
     {
         private Prngroup4Context dbc;
-        public CertificateDAO() { dbc = new Prngroup4Context(); }
+        public CertificateDAO() { dbc = new Prngroup4Context(); 
     }
     // 1. Lấy tất cả chứng chỉ
         public async Task<List<Certificate>> GetAllCertificateAsync()
