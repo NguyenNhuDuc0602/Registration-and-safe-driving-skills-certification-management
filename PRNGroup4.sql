@@ -1,109 +1,107 @@
-﻿Create database PRNGroup4
-Use PRNGroup4
+﻿CREATE DATABASE PRNGroup4;
+USE PRNGroup4;
 
---Bảng Users - Quản lí tài khoản người dùng
-Create Table Users (
+-- Bảng Users - Quản lí tài khoản người dùng
+CREATE TABLE Users (
 	UserID INT PRIMARY KEY IDENTITY,
-	FullName VARCHAR(150) NOT NULL,
-	Email VARCHAR(150) NOT NULL UNIQUE,
-	Password VARCHAR(255) NOT NULL,
-	Role VARCHAR(20) CHECK (Role IN ('Student', 'Teacher', 'TrafficPolice')) NOT NULL,
-	Class VARCHAR(50), -- chỉ dùng cho student
-	School VARCHAR(100), -- chỉ dùng cho student
-	Phone VARCHAR(15)
+	FullName NVARCHAR(150) NOT NULL,
+	Email NVARCHAR(150) NOT NULL UNIQUE,
+	Password NVARCHAR(255) NOT NULL,
+	Role NVARCHAR(20) CHECK (Role IN (N'Student', N'Teacher', N'TrafficPolice', N'Admin')) NOT NULL,
+	Class NVARCHAR(50),  -- chỉ dùng cho student
+	School NVARCHAR(100), -- chỉ dùng cho student
+	Phone NVARCHAR(15)
 );
 
---Bảng Course - Quản lí khóa học
-Create Table Courses (
-	CourseID INT Primary Key Identity,
-	CourseName Varchar(100) Not Null,
-	TeacherID Int Not Null,
-	StartDate Date Not Null,
-	EndDate Date Not Null,
-	Foreign Key (TeacherID) References Users(UserID)
+-- Bảng Courses - Quản lí khóa học
+CREATE TABLE Courses (
+	CourseID INT PRIMARY KEY IDENTITY,
+	CourseName NVARCHAR(100) NOT NULL,
+	TeacherID INT NOT NULL,
+	StartDate DATE NOT NULL,
+	EndDate DATE NOT NULL,
+	FOREIGN KEY (TeacherID) REFERENCES Users(UserID)
 );
 
---Bảng Registrations - Quản lí đăng kí khóa học/ kì thi
-Create Table Registrations (
-	RegistrationID Int Primary Key Identity,
-	UserID Int Not Null,
-	CourseID Int Not Null,
-	Status Varchar(20) Check (Status In ('Pending', 'Approved', 'Rejected')) Default 'Pending',
-	Comments Text,
-	Foreign Key (UserID) References Users(UserID),
-	Foreign Key (CourseID) References Courses(CourseID)
+-- Bảng Registrations - Quản lí đăng kí khóa học/kì thi
+CREATE TABLE Registrations (
+	RegistrationID INT PRIMARY KEY IDENTITY,
+	UserID INT NOT NULL,
+	CourseID INT NOT NULL,
+	Status NVARCHAR(20) CHECK (Status IN (N'Pending', N'Approved', N'Rejected')) DEFAULT N'Pending',
+	Comments NVARCHAR(MAX),
+	FOREIGN KEY (UserID) REFERENCES Users(UserID),
+	FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
 );
 
 -- Bảng Exams - Quản lí kì thi
-Create Table Exams (
-	ExamID Int Primary Key Identity,
-	CourseID Int Not Null,
-	Date Date Not Null,
-	Room Varchar(50) Not Null,
-	Foreign Key (CourseID) References Courses(CourseID)
+CREATE TABLE Exams (
+	ExamID INT PRIMARY KEY IDENTITY,
+	CourseID INT NOT NULL,
+	Date DATE NOT NULL,
+	Room NVARCHAR(50) NOT NULL,
+	FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
 );
 
 -- Bảng Results - Kết quả thi
-Create Table Results (
-	ResultID Int Primary Key Identity,
-	ExamID Int Not Null,
-	UserID Int Not Null,
-	Score Decimal(5, 2) Not Null,
-	PassStatus Bit Not Null,
-	Foreign Key (ExamID) References Exams(ExamID),
-	Foreign Key (UserID) References Users(UserID)
+CREATE TABLE Results (
+	ResultID INT PRIMARY KEY IDENTITY,
+	ExamID INT NOT NULL,
+	UserID INT NOT NULL,
+	Score DECIMAL(5, 2) NOT NULL,
+	PassStatus BIT NOT NULL,
+	FOREIGN KEY (ExamID) REFERENCES Exams(ExamID),
+	FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
 -- Bảng Certificates - Cấp chứng chỉ
-Create Table Certificates (
-	CertificateID Int Primary Key Identity,
-	UserID Int Not Null,
-	IssuedDate Date Not Null,
-	ExpirationDate Date Not Null,
-	CertificateCode Varchar(50) Unique,
-	Foreign Key (UserId) References Users(UserID)
+CREATE TABLE Certificates (
+	CertificateID INT PRIMARY KEY IDENTITY,
+	UserID INT NOT NULL,
+	IssuedDate DATE NOT NULL,
+	ExpirationDate DATE NOT NULL,
+	CertificateCode NVARCHAR(50) UNIQUE,
+	FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
--- Bảng Attendace - Ghi nhận điểm danh khóa học
-Create Table Attendance (
-	AttendanceID Int Primary Key Identity,
-	CourseID Int Not Null,
-	UserID Int Not Null,
-	SessionDate Date Not Null,
-	Status Varchar(20) Check (Status In ('Present', 'Absent')) Not Null,
-	Note Text,
-	Foreign Key (CourseID) References Courses(CourseID),
-	Foreign Key (UserID) References Users(UserID)
+-- Bảng Attendance - Ghi nhận điểm danh khóa học
+CREATE TABLE Attendance (
+	AttendanceID INT PRIMARY KEY IDENTITY,
+	CourseID INT NOT NULL,
+	UserID INT NOT NULL,
+	SessionDate DATE NOT NULL,
+	Status NVARCHAR(20) CHECK (Status IN (N'Present', N'Absent')) NOT NULL,
+	Note NVARCHAR(MAX),
+	FOREIGN KEY (CourseID) REFERENCES Courses(CourseID),
+	FOREIGN KEY (UserID) REFERENCES Users(UserID)
 );
 
+-- Dữ liệu mẫu
 INSERT INTO Users (FullName, Email, Password, Role, Class, School, Phone) VALUES
-('Nguyễn Văn A', 'a@student.com', 'hashed123', 'Student', '12A1', 'ĐH FPT HN', '0912345678'),
-('Trần Thị B', 'b@teacher.com', 'hashed456', 'Teacher', NULL, NULL, '0987654321'),
-('Lê Công An', 'csgt@police.com', 'hashed789', 'TrafficPolice', NULL, NULL, '0909123456');
+(N'Nguyễn Văn A', N'a@student.com', N'hashed123', N'Student', N'12A1', N'ĐH FPT HN', N'0912345678'),
+(N'Trần Thị B', N'b@teacher.com', N'hashed456', N'Teacher', NULL, NULL, N'0987654321'),
+(N'Lê Công An', N'csgt@police.com', N'hashed789', N'TrafficPolice', NULL, NULL, N'0909123456');
 
 INSERT INTO Courses (CourseName, TeacherID, StartDate, EndDate) VALUES
-('Kỹ năng lái xe cơ bản', 2, '2025-07-01', '2025-07-31'),
-('Lý thuyết giao thông', 2, '2025-08-01', '2025-08-15');
+(N'Kỹ năng lái xe cơ bản', 2, '2025-07-01', '2025-07-31'),
+(N'Lý thuyết giao thông', 2, '2025-08-01', '2025-08-15');
 
 INSERT INTO Registrations (UserID, CourseID, Status, Comments) VALUES
-(1, 1, 'Approved', 'Tham gia đầy đủ'),
-(1, 2, 'Pending', 'Đang chờ xác nhận');
+(1, 1, N'Approved', N'Tham gia đầy đủ'),
+(1, 2, N'Pending', N'Đang chờ xác nhận');
 
 INSERT INTO Exams (CourseID, Date, Room) VALUES
-(1, '2025-07-30', 'P101'),
-(2, '2025-08-15', 'P202');
+(1, '2025-07-30', N'P101'),
+(2, '2025-08-15', N'P202');
 
 INSERT INTO Results (ExamID, UserID, Score, PassStatus) VALUES
 (1, 1, 8.50, 1),
 (2, 1, 7.00, 1);
 
-
 INSERT INTO Certificates (UserID, IssuedDate, ExpirationDate, CertificateCode) VALUES
-(1, '2025-08-01', '2028-08-01', 'CERT-2025-A001');
-
+(1, '2025-08-01', '2028-08-01', N'CERT-2025-A001');
 
 INSERT INTO Attendance (CourseID, UserID, SessionDate, Status, Note) VALUES
-(1, 1, '2025-07-01', 'Present', 'Đi học đúng giờ'),
-(1, 1, '2025-07-02', 'Absent', 'Có việc gia đình'),
-(1, 1, '2025-07-03', 'Present', 'Tham gia tích cực');
-
+(1, 1, '2025-07-01', N'Present', N'Đi học đúng giờ'),
+(1, 1, '2025-07-02', N'Absent', N'Có việc gia đình'),
+(1, 1, '2025-07-03', N'Present', N'Tham gia tích cực');

@@ -12,66 +12,66 @@ namespace Project_Prn.dal
     {
         private Prngroup4Context dbc;
         public RegistrationDAO() { dbc = new Prngroup4Context(); }
-    
-      // 1. Lấy tất cả đăng ký
-        public async Task<List<Registration>> GetAllRegistrationAsync()
+
+        // 1. Lấy tất cả đăng ký
+        public List<Registration> GetAllRegistration()
         {
-            return await dbc.Registrations
+            return dbc.Registrations
                 .Include(r => r.User)  // Eager load thông tin người dùng
                 .Include(r => r.Course) // Eager load thông tin khóa học
-                .ToListAsync();
+                .ToList();
         }
 
         // 2. Lấy đăng ký theo ID
-        public async Task<Registration?> GetByIdRegistrationAsync(int registrationId)
+        public Registration? GetByIdRegistration(int registrationId)
         {
-            return await dbc.Registrations
+            return dbc.Registrations
                 .Include(r => r.User)
                 .Include(r => r.Course)
-                .FirstOrDefaultAsync(r => r.RegistrationId == registrationId);
+                .FirstOrDefault(r => r.RegistrationId == registrationId);
         }
 
         // 3. Thêm mới đăng ký
-        public async Task AddRegistrationAsync(Registration registration)
+        public void AddRegistration(Registration registration)
         {
             dbc.Registrations.Add(registration);
-            await dbc.SaveChangesAsync();
+            dbc.SaveChanges();
         }
 
         // 4. Cập nhật đăng ký
-        public async Task UpdateRegistrationAsync(Registration registration)
+        public void UpdateRegistration(Registration registration)
         {
             dbc.Registrations.Update(registration);
-            await dbc.SaveChangesAsync();
+            dbc.SaveChanges();
         }
 
         // 5. Xóa đăng ký
-        public async Task DeleteRegistrationAsync(int registrationId)
+        public void DeleteRegistration(int registrationId)
         {
-            var registration = await dbc.Registrations.FindAsync(registrationId);
+            var registration = dbc.Registrations.Find(registrationId);
             if (registration != null)
             {
                 dbc.Registrations.Remove(registration);
-                await dbc.SaveChangesAsync();
+                dbc.SaveChanges();
             }
         }
 
         // 6. Lấy đăng ký theo UserId
-        public async Task<List<Registration>> GetByUserIdRegistrationAsync(int userId)
+        public List<Registration> GetByUserIdRegistration(int userId)
         {
-            return await dbc.Registrations
+            return dbc.Registrations
                 .Where(r => r.UserId == userId)
                 .Include(r => r.Course)  // Eager load thông tin khóa học
-                .ToListAsync();
+                .ToList();
         }
 
         // 7. Lấy đăng ký theo CourseId
-        public async Task<List<Registration>> GetByCourseIdRegistrationAsync(int courseId)
+        public List<Registration> GetByCourseIdRegistration(int courseId)
         {
-            return await dbc.Registrations
+            return dbc.Registrations
                 .Where(r => r.CourseId == courseId)
                 .Include(r => r.User)  // Eager load thông tin người dùng
-                .ToListAsync();
+                .ToList();
         }
 
     }

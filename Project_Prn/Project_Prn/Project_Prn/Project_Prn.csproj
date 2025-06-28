@@ -18,9 +18,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="appsettings.cs">
+    <None Update="appsettings.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Compile>
+    </None>
   </ItemGroup>
 
 </Project>
