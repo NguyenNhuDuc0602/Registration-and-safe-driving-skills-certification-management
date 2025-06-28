@@ -273,3 +273,5 @@ F:\Registration-and-safe-driving-skills-certification-management\Project_Prn\Pro
 F:\Registration-and-safe-driving-skills-certification-management\Project_Prn\Project_Prn\Project_Prn\obj\Debug\net8.0-windows\Project_Prn.pdb
 F:\Registration-and-safe-driving-skills-certification-management\Project_Prn\Project_Prn\Project_Prn\obj\Debug\net8.0-windows\Project_Prn.genruntimeconfig.cache
 F:\Registration-and-safe-driving-skills-certification-management\Project_Prn\Project_Prn\Project_Prn\obj\Debug\net8.0-windows\ref\Project_Prn.dll
+F:\Registration-and-safe-driving-skills-certification-management\Project_Prn\Project_Prn\Project_Prn\obj\Debug\net8.0-windows\UserManagement.g.cs
+F:\Registration-and-safe-driving-skills-certification-management\Project_Prn\Project_Prn\Project_Prn\obj\Debug\net8.0-windows\UserManagement.baml
