@@ -7,6 +7,34 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <Label Content="hi"></Label>
+        <!-- Define grid rows -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="#4CAF50" Padding="10" CornerRadius="10" Margin="0,0,0,10">
+            <TextBlock Text="Login" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        </Border>
+
+        <!-- Login form -->
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Width="300" >
+            <!-- Username TextBox -->
+            <TextBox Name="txtEmail" Height="30" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Stretch" 
+                     Foreground="Gray" Padding="10" Focusable="True"/>
+
+            <!-- Password PasswordBox -->
+            <PasswordBox Name="txtPassword" Height="30" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="10"/>
+
+            <!-- Login Button -->
+            <Button Name="btnLogin" Height="40" Content="Login" Background="#4CAF50" Foreground="White" BorderBrush="#4CAF50" BorderThickness="1" FontSize="16" HorizontalAlignment="Stretch" Margin="10" Click="btnLogin_Click" />
+
+            <!-- Register Button -->
+            <Button Name="btnRegister" Height="40" Content="Register" Background="#FF9800" Foreground="White" BorderBrush="#FF9800" BorderThickness="1" FontSize="16" HorizontalAlignment="Stretch" Margin="10"/>
+
+            <!-- Forgot Password Button -->
+            <Button Name="btnForgotPassword" Height="30" Content="Forgot your password?" Background="Transparent" Foreground="Blue" BorderBrush="Transparent" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
+        </StackPanel>
     </Grid>
 </Window>
