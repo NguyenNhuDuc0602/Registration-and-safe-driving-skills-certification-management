@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_Prn.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,16 +13,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace Project_Prn
+namespace Project_Prn.UserWindow
 {
     /// <summary>
-    /// Interaction logic for UserManagement.xaml
+    /// Interaction logic for UserDetail.xaml
     /// </summary>
-    public partial class UserManagement : Window
+    public partial class UserDetail : Window
     {
-        public UserManagement()
+        public UserDetail(User user)
         {
             InitializeComponent();
         }
+        // xu li Update o day
     }
 }
