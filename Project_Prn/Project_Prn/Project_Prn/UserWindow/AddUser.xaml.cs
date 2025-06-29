@@ -21,9 +21,11 @@ namespace Project_Prn.UserWindow
     /// </summary>
     public partial class AddUser : Window
     {
-        public AddUser()
+        private UserManagement userManagementWindow; // tham chieu den cua so UserManagement
+        public AddUser(UserManagement userManagement)
         {
             InitializeComponent();
+          this.userManagementWindow = userManagement; // Luu tham chieu cua so UserManagement
             LoadRoles(); 
         }
 
@@ -59,7 +61,7 @@ namespace Project_Prn.UserWindow
             };
 
             userDAO.AddUser(newUser);
-           
+            userManagementWindow.LoadUsers(); // Cập nhật danh sách người dùng trong UserManagement
             this.Close();
 
         }

@@ -1,6 +1,7 @@
 ﻿
 using Project_Prn.dal;
 using Project_Prn.Models;
+using Project_Prn.UserWindow;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -40,7 +41,7 @@ namespace Project_Prn.UserWindow
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
-            AddUser addUserWindow = new AddUser();
+            AddUser addUserWindow = new AddUser(this);
             addUserWindow.ShowDialog();
 
         }
@@ -48,18 +49,20 @@ namespace Project_Prn.UserWindow
         private void btnDetail_Click(object sender, RoutedEventArgs e)
         {
             var selectUser = this.dgUsers.SelectedItem as User;
-            if (selectUser != null)
-            {
-                UserDetail userDetailWindow = new UserDetail(selectUser);
-                userDetailWindow.ShowDialog();
-            }
-            else
+            if (selectUser == null)
             {
                 MessageBox.Show("Vui lòng chọn một người dùng.");
+                return;
             }
+            var detailWindow = new UserDetail(selectUser);
+            bool? updated = detailWindow.ShowDialog(); // tra ve true neu nut update duoc nhan
+            if (updated == true)
+            {
+                LoadUsers(); // Cap nhat lai danh sach nguoi dung neu co thay doi
+            }
+
         }
     }
 
 }
 
-    
