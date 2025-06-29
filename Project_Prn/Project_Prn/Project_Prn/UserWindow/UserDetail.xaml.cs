@@ -1,4 +1,5 @@
 ﻿using Project_Prn.Models;
+using Project_Prn.dal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,10 +21,45 @@ namespace Project_Prn.UserWindow
     /// </summary>
     public partial class UserDetail : Window
     {
+        private readonly User user; // Lưu thông tin người dùng được chọn
         public UserDetail(User user)
         {
             InitializeComponent();
+            this.user = user; // Lưu thông tin người dùng được chọn
+            LoadUserDetails(); // Gọi phương thức để tải thông tin người dùng
+
         }
-        // xu li Update o day
+        private void LoadUserDetails()
+        {
+            // Hiển thị thông tin người dùng trong các trường tương ứng
+
+            txtFullName.Text = user.FullName;
+            txtEmail.Text = user.Email;
+            txtPhone.Text = user.Phone;
+            txtClass.Text = user.Class;
+            txtSchool.Text = user.School;
+            cmbRole.SelectedValue = user.Role;
+            
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {        
+            this.Close(); // Đóng cửa sổ chi tiết người dùng hiện tại
+        }
+
+        private void btnUpdate_Click(object sender, RoutedEventArgs e)
+        {
+            user.FullName = txtFullName.Text;
+            user.Email = txtEmail.Text;
+            user.Phone = txtPhone.Text;
+            user.Class = txtClass.Text;
+            user.School = txtSchool.Text;
+            user.Role = cmbRole.SelectedValue.ToString();
+
+            var userDAO = new UserDAO();
+            userDAO.UpdateUser(user); // Cập nhật thông tin người dùng trong cơ sở dữ liệu
+            this.DialogResult = true; // Đặt kết quả của cửa sổ là true để thông báo cập nhật thành công
+            Close(); // Đóng cửa sổ chi tiết người dùng hiện tại
+        }
     }
 }

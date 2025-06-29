@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|f:\\registration-and-safe-driving-skills-certification-management\\project_prn\\project_prn\\project_prn\\userwindow\\userdetail.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|solutionrelative:project_prn\\userwindow\\userdetail.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|f:\\registration-and-safe-driving-skills-certification-management\\project_prn\\project_prn\\project_prn\\userwindow\\usermanagement.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|solutionrelative:project_prn\\userwindow\\usermanagement.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|f:\\registration-and-safe-driving-skills-certification-management\\project_prn\\project_prn\\project_prn\\userwindow\\userdetail.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|solutionrelative:project_prn\\userwindow\\userdetail.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|f:\\registration-and-safe-driving-skills-certification-management\\project_prn\\project_prn\\project_prn\\userwindow\\adduser.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -19,16 +19,24 @@
       "RelativeMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|solutionrelative:project_prn\\userwindow\\userdetail.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|f:\\registration-and-safe-driving-skills-certification-management\\project_prn\\project_prn\\project_prn\\userwindow\\usermanagement.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|solutionrelative:project_prn\\userwindow\\usermanagement.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|f:\\registration-and-safe-driving-skills-certification-management\\project_prn\\project_prn\\project_prn\\userwindow\\adduser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|solutionrelative:project_prn\\userwindow\\adduser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|f:\\registration-and-safe-driving-skills-certification-management\\project_prn\\project_prn\\project_prn\\userwindow\\usermanagement.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|solutionrelative:project_prn\\userwindow\\usermanagement.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|f:\\registration-and-safe-driving-skills-certification-management\\project_prn\\project_prn\\project_prn\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|solutionrelative:project_prn\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|f:\\registration-and-safe-driving-skills-certification-management\\project_prn\\project_prn\\project_prn\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|solutionrelative:project_prn\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|f:\\registration-and-safe-driving-skills-certification-management\\project_prn\\project_prn\\project_prn\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|solutionrelative:project_prn\\assemblyinfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|f:\\registration-and-safe-driving-skills-certification-management\\project_prn\\project_prn\\project_prn\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -36,10 +44,6 @@
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ADMIN\\AppData\\Local\\Temp\\.vsdbgsrc\\6b2dfb9d5e4949b718ee78fa9415cabf37518e9447a2764ba224d240518b710f\\ResourcePart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|f:\\registration-and-safe-driving-skills-certification-management\\project_prn\\project_prn\\project_prn\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|solutionrelative:project_prn\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|f:\\registration-and-safe-driving-skills-certification-management\\project_prn\\project_prn\\project_prn\\dal\\userdao.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -52,8 +56,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 299,
-          "SelectedChildIndex": 3,
+          "DockedWidth": 305,
+          "SelectedChildIndex": 10,
           "Children": [
             {
               "$type": "Bookmark",
@@ -69,33 +73,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "UserDetail.xaml.cs",
               "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\UserDetail.xaml.cs",
               "RelativeDocumentMoniker": "Project_Prn\\UserWindow\\UserDetail.xaml.cs",
-              "ToolTip": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\UserDetail.xaml.cs",
-              "RelativeToolTip": "Project_Prn\\UserWindow\\UserDetail.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "ToolTip": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\UserDetail.xaml.cs*",
+              "RelativeToolTip": "Project_Prn\\UserWindow\\UserDetail.xaml.cs*",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwCkAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-28T17:27:06.192Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserManagement.xaml.cs",
-              "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\UserManagement.xaml.cs",
-              "RelativeDocumentMoniker": "Project_Prn\\UserWindow\\UserManagement.xaml.cs",
-              "ToolTip": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\UserManagement.xaml.cs",
-              "RelativeToolTip": "Project_Prn\\UserWindow\\UserManagement.xaml.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAA3wDcAAAAQAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "AddUser.xaml.cs",
+              "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\AddUser.xaml.cs",
+              "RelativeDocumentMoniker": "Project_Prn\\UserWindow\\AddUser.xaml.cs",
+              "ToolTip": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\AddUser.xaml.cs",
+              "RelativeToolTip": "Project_Prn\\UserWindow\\AddUser.xaml.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAswDUAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T16:57:04.642Z",
+              "WhenOpened": "2025-06-28T16:46:11.128Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "UserManagement.xaml",
               "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\UserManagement.xaml",
               "RelativeDocumentMoniker": "Project_Prn\\UserWindow\\UserManagement.xaml",
@@ -103,6 +107,31 @@
               "RelativeToolTip": "Project_Prn\\UserWindow\\UserManagement.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-06-28T16:50:32.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AddUser.xaml",
+              "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\AddUser.xaml",
+              "RelativeDocumentMoniker": "Project_Prn\\UserWindow\\AddUser.xaml",
+              "ToolTip": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\AddUser.xaml",
+              "RelativeToolTip": "Project_Prn\\UserWindow\\AddUser.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-28T16:46:14.84Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "Project_Prn\\MainWindow.xaml.cs",
+              "ToolTip": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\MainWindow.xaml.cs",
+              "RelativeToolTip": "Project_Prn\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAuwB0AAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-28T17:28:36.951Z",
               "EditorCaption": ""
             },
             {
@@ -119,43 +148,45 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AddUser.xaml.cs",
-              "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\AddUser.xaml.cs",
-              "RelativeDocumentMoniker": "Project_Prn\\UserWindow\\AddUser.xaml.cs",
-              "ToolTip": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\AddUser.xaml.cs",
-              "RelativeToolTip": "Project_Prn\\UserWindow\\AddUser.xaml.cs",
-              "ViewState": "AgIAADMAAAAAAAAAAAAswFUAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "Project_Prn\\AssemblyInfo.cs",
+              "ToolTip": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\AssemblyInfo.cs",
+              "RelativeToolTip": "Project_Prn\\AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T16:46:11.128Z",
+              "WhenOpened": "2025-06-29T15:38:47.253Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "AddUser.xaml",
-              "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\AddUser.xaml",
-              "RelativeDocumentMoniker": "Project_Prn\\UserWindow\\AddUser.xaml",
-              "ToolTip": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\AddUser.xaml",
-              "RelativeToolTip": "Project_Prn\\UserWindow\\AddUser.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-28T16:46:14.84Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\MainWindow.xaml.cs",
-              "RelativeDocumentMoniker": "Project_Prn\\MainWindow.xaml.cs",
-              "ToolTip": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\MainWindow.xaml.cs",
-              "RelativeToolTip": "Project_Prn\\MainWindow.xaml.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAdAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "UserManagement.xaml.cs",
+              "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\UserManagement.xaml.cs",
+              "RelativeDocumentMoniker": "Project_Prn\\UserWindow\\UserManagement.xaml.cs",
+              "ToolTip": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\UserWindow\\UserManagement.xaml.cs*",
+              "RelativeToolTip": "Project_Prn\\UserWindow\\UserManagement.xaml.cs*",
+              "ViewState": "AgIAABsAAAAAAAAAAAA+wD8AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-28T17:28:36.951Z"
+              "WhenOpened": "2025-06-28T16:57:04.642Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "Project_Prn\\MainWindow.xaml",
+              "ToolTip": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\MainWindow.xaml",
+              "RelativeToolTip": "Project_Prn\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-28T17:17:47.191Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
               "Title": "App.xaml",
               "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\App.xaml",
               "RelativeDocumentMoniker": "Project_Prn\\App.xaml",
@@ -167,18 +198,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "Project_Prn\\MainWindow.xaml",
-              "ToolTip": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\MainWindow.xaml",
-              "RelativeToolTip": "Project_Prn\\MainWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-06-28T17:17:47.191Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
               "Title": "ResourcePart.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\AppData\\Local\\Temp\\.vsdbgsrc\\6b2dfb9d5e4949b718ee78fa9415cabf37518e9447a2764ba224d240518b710f\\ResourcePart.cs",
               "ToolTip": "C:\\Users\\ADMIN\\AppData\\Local\\Temp\\.vsdbgsrc\\6b2dfb9d5e4949b718ee78fa9415cabf37518e9447a2764ba224d240518b710f\\ResourcePart.cs [Read Only]",
@@ -189,7 +209,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "UserDAO.cs",
               "DocumentMoniker": "F:\\Registration-and-safe-driving-skills-certification-management\\Project_Prn\\Project_Prn\\Project_Prn\\dal\\UserDAO.cs",
               "RelativeDocumentMoniker": "Project_Prn\\dal\\UserDAO.cs",
@@ -198,16 +218,6 @@
               "ViewState": "AgIAACwAAAAAAAAAAAA7wEwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-28T09:20:46.38Z"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 101,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
             }
           ]
         }
