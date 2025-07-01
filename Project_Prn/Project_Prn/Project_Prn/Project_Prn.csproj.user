@@ -2,6 +2,18 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="RoleWindow\AdminDashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RoleWindow\StudentDashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RoleWindow\TeacherDashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RoleWindow\TrafficPoliceDashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="UserWindow\AddUser.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

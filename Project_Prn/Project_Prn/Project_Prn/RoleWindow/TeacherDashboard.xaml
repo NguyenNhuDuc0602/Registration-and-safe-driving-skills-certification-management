@@ -1,0 +1,96 @@
+﻿<Window x:Class="Project_Prn.RoleWindow.TeacherDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Prn.RoleWindow"
+        mc:Ignorable="d"
+        Title="TeacherDashboard" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#34495e">
+            <StackPanel>
+                <TextBlock Text="TEACHER" FontSize="26" FontWeight="Bold" Foreground="White" Margin="16,24,0,32"/>
+
+                <!-- Navigation buttons -->
+                <Button Content="Quản lý học viên"
+                        Tag="Students"
+                      
+                        Margin="8" Height="40" />
+
+                <Button Content="Quản lý khóa học"
+                        Tag="Courses"
+                       
+                        Margin="8" Height="40" />
+
+                <Button Content="Quản lý thi"
+                        Tag="Exams"
+                       
+                        Margin="8" Height="40" />
+
+                <Button Content="Đăng xuất"
+                        Tag="Logout"
+                        
+                        Margin="8" Height="40" />
+            </StackPanel>
+        </Border>
+
+        <!-- Top bar -->
+        <DockPanel Grid.Column="1" LastChildFill="True">
+            <Border Background="#F5F5F5" Height="50" DockPanel.Dock="Top">
+                <DockPanel>
+                    <TextBlock Text="Teacher Dashboard"
+                               FontSize="20" FontWeight="Bold"
+                               VerticalAlignment="Center" Margin="16,0" />
+                    <TextBlock Text="{Binding FullName}"
+                               Foreground="#555" VerticalAlignment="Center"
+                               DockPanel.Dock="Right" Margin="0,0,16,0" />
+                </DockPanel>
+            </Border>
+
+            <!-- Home summary grid -->
+            <Grid x:Name="HomeGrid" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Card: Students -->
+                <Border Grid.Row="0" Grid.Column="0" Background="#1abc9c" CornerRadius="10" Margin="8" Padding="16">
+                    <StackPanel>
+                        <TextBlock Text="Học viên" FontSize="18" FontWeight="Bold" Foreground="White"/>
+                        <TextBlock Text="0" x:Name="StudentsCountText" FontSize="32" FontWeight="Bold" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Card: Courses -->
+                <Border Grid.Row="0" Grid.Column="1" Background="#2980b9" CornerRadius="10" Margin="8" Padding="16">
+                    <StackPanel>
+                        <TextBlock Text="Khóa học" FontSize="18" FontWeight="Bold" Foreground="White"/>
+                        <TextBlock Text="0" x:Name="CoursesCountText" FontSize="32" FontWeight="Bold" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Card: Exams -->
+                <Border Grid.Row="1" Grid.Column="0" Background="#e67e22" CornerRadius="10" Margin="8" Padding="16" Grid.ColumnSpan="2">
+                    <StackPanel>
+                        <TextBlock Text="Kỳ thi" FontSize="18" FontWeight="Bold" Foreground="White"/>
+                        <TextBlock Text="0" x:Name="ExamsCountText" FontSize="32" FontWeight="Bold" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Frame cho các trang con (ẩn đi ban đầu) -->
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Visibility="Collapsed" />
+        </DockPanel>
+    </Grid>
+</Window>

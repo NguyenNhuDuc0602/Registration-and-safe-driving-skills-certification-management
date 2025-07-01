@@ -63,12 +63,16 @@ namespace Project_Prn.dal
         {
             return dbc.Users.FirstOrDefault(u => u.Email == email); 
         }
-
-        // 8. Người dùng hiện tại theo email
-        public User GetCurrentUserByEmail(string email)
+        // 8. Lấy người dùng theo FullName
+        public List<User> GetByFullName(string name)
         {
-            return dbc.Users.FirstOrDefault(u => u.Email == email); 
+            string keyword = name.Trim().ToLower();
+
+            return dbc.Users
+                      .Where(u => u.FullName.ToLower().Contains(keyword))
+                      .ToList();
         }
+
 
         // 9. Xác thực người dùng khi đăng nhập
         public User ValidateLogin(string email, string password)
