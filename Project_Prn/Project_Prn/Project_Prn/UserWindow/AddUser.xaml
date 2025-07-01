@@ -31,7 +31,7 @@
 
             <StackPanel Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10">
                 <TextBlock Text="User ID:" Margin="10"/>
-                <TextBox x:Name="txtUserId" Width="300" Margin="10"/>
+                <TextBox x:Name="txtUserId" Width="300" Margin="10" IsReadOnly="True"/>
 
                 <TextBlock Text="Full Name:" Margin="10"/>
                 <TextBox x:Name="txtFullName" Width="300" Margin="10"/>

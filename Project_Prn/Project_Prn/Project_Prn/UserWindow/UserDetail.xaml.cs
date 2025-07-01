@@ -21,17 +21,17 @@ namespace Project_Prn.UserWindow
     /// </summary>
     public partial class UserDetail : Window
     {
-        private readonly User user; // Lưu thông tin người dùng được chọn
+        private readonly User user; 
         public UserDetail(User user)
         {
             InitializeComponent();
-            this.user = user; // Lưu thông tin người dùng được chọn
-            LoadUserDetails(); // Gọi phương thức để tải thông tin người dùng
+            this.user = user; 
+            LoadUserDetails(); 
 
         }
         private void LoadUserDetails()
         {
-            // Hiển thị thông tin người dùng trong các trường tương ứng
+            
 
             txtFullName.Text = user.FullName;
             txtEmail.Text = user.Email;
@@ -44,7 +44,7 @@ namespace Project_Prn.UserWindow
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {        
-            this.Close(); // Đóng cửa sổ chi tiết người dùng hiện tại
+            this.Close(); 
         }
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)

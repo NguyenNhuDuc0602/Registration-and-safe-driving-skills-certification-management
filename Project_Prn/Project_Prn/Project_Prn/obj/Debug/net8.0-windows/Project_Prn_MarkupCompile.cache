@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
 F:\Registration-and-safe-driving-skills-certification-management\Project_Prn\Project_Prn\Project_Prn\App.xaml
-4-117472340
+8794847969
 
-22443620713
+28-33036027
 244-844729219
-MainWindow.xaml;UserWindow\AddUser.xaml;UserWindow\UserDetail.xaml;UserWindow\UserManagement.xaml;
+MainWindow.xaml;RoleWindow\AdminDashboard.xaml;RoleWindow\StudentDashboard.xaml;RoleWindow\TeacherDashboard.xaml;RoleWindow\TrafficPoliceDashboard.xaml;UserWindow\AddUser.xaml;UserWindow\UserDetail.xaml;UserWindow\UserManagement.xaml;
 
 False
 

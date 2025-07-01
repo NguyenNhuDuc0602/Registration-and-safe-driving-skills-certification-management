@@ -1,0 +1,96 @@
+﻿<Window x:Class="Project_Prn.RoleWindow.TrafficPoliceDashboard"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Prn.RoleWindow"
+        mc:Ignorable="d"
+        Title="TrafficPoliceDashboard" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Sidebar -->
+        <Border Grid.Column="0" Background="#2c3e50">
+            <StackPanel>
+                <TextBlock Text="TRAFFIC POLICE" FontSize="20" FontWeight="Bold" Foreground="White" Margin="16,24,0,32"/>
+
+                <Button Content="Xác nhận &amp; giám sát thi"
+                        Tag="MonitorExams"
+                      
+                        Margin="8" Height="40" />
+
+                <Button Content="Quản lý cấp chứng chỉ"
+                        Tag="ManageCertificates"
+                       
+                        Margin="8" Height="40" />
+
+                <Button Content="Pháp luật &amp; tuân thủ"
+                        Tag="Compliance"
+                     
+                        Margin="8" Height="40" />
+
+                <Button Content="Đăng xuất"
+                        Tag="Logout"
+                    
+                        Margin="8" Height="40" />
+            </StackPanel>
+        </Border>
+
+        <!-- Main area with top bar + Home summary grid + frame -->
+        <DockPanel Grid.Column="1" LastChildFill="True">
+            <!-- Top bar-->
+            <Border Background="#F5F5F5" Height="50" DockPanel.Dock="Top">
+                <DockPanel>
+                    <TextBlock Text="Traffic Police Dashboard"
+                               FontSize="20" FontWeight="Bold"
+                               VerticalAlignment="Center" Margin="16,0" />
+                    <TextBlock Text="{Binding FullName}"
+                               Foreground="#555" VerticalAlignment="Center"
+                               DockPanel.Dock="Right" Margin="0,0,16,0" />
+                </DockPanel>
+            </Border>
+
+            <!-- Home summary grid -->
+            <Grid x:Name="HomeGrid" Margin="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Card: Exams to Confirm -->
+                <Border Grid.Row="0" Grid.Column="0" Background="#16a085" CornerRadius="10" Margin="8" Padding="16">
+                    <StackPanel>
+                        <TextBlock Text="Kỳ thi cần xác nhận" FontSize="18" FontWeight="Bold" Foreground="White"/>
+                        <TextBlock Text="0" x:Name="PendingExamsText" FontSize="32" FontWeight="Bold" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Card: Certificates Issued -->
+                <Border Grid.Row="0" Grid.Column="1" Background="#e67e22" CornerRadius="10" Margin="8" Padding="16">
+                    <StackPanel>
+                        <TextBlock Text="Chứng chỉ đã cấp" FontSize="18" FontWeight="Bold" Foreground="White"/>
+                        <TextBlock Text="0" x:Name="IssuedCertificatesText" FontSize="32" FontWeight="Bold" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+
+                <!-- Card: Compliance Notices -->
+                <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Background="#c0392b" CornerRadius="10" Margin="8" Padding="16">
+                    <StackPanel>
+                        <TextBlock Text="Thông báo tuân thủ" FontSize="18" FontWeight="Bold" Foreground="White"/>
+                        <TextBlock Text="0" x:Name="ComplianceNoticesText" FontSize="32" FontWeight="Bold" Foreground="White"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <!-- Frame for inner pages (hidden by default) -->
+            <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Visibility="Collapsed" />
+        </DockPanel>
+    </Grid>
+</Window>

@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.IdentityModel.Tokens;
 using Project_Prn.dal;
 using Project_Prn.Models;
 using Project_Prn.UserWindow;
@@ -31,14 +32,14 @@ namespace Project_Prn.UserWindow
             LoadUsers();
             
         }
-        // load information about users
+        
         public  void LoadUsers()
         {
             UserDAO userDAO = new UserDAO();
             var users =  userDAO.GetAllUser();
             this.dgUsers.ItemsSource = users;
         }
-
+        
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
             AddUser addUserWindow = new AddUser(this);
@@ -61,6 +62,41 @@ namespace Project_Prn.UserWindow
                 LoadUsers(); // Cap nhat lai danh sach nguoi dung neu co thay doi
             }
 
+        }
+        public void LoadUsersByFullName(string name)
+        {
+            UserDAO userDAO = new UserDAO();
+            var users = userDAO.GetByFullName(name);
+            this.dgUsers.ItemsSource = users;
+        }
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string searchText = txtSearch.Text.Trim();
+            if(!searchText.IsNullOrEmpty())
+            {
+                LoadUsersByFullName(searchText);
+                if(dgUsers.AllowDrop == null || dgUsers.Items.Count == 0)
+                {
+                    MessageBox.Show("Không tìm thấy người dùng nào với tên này.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            else             {
+                LoadUsers(); // Neu khong co tu khoa tim kiem, tai lai danh sach nguoi dung
+            }
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedUser = this.dgUsers.SelectedItem as User;
+            if (selectedUser == null)
+            {
+                MessageBox.Show("Vui lòng chọn một người dùng để xóa.");
+                return;
+            }
+            UserDAO userDAO = new UserDAO();
+            userDAO.DeleteUser(selectedUser.UserId);
+            LoadUsers(); // Cập nhật lại danh sách người dùng sau khi xóa
+            MessageBox.Show("Người dùng đã được xóa thành công.");
         }
     }
 

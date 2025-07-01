@@ -21,6 +21,13 @@
                        TextAlignment="Center"/>
         </Border>
 
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <TextBlock Text="Search Name:"  VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="txtSearch" Width="200" Height="28" Margin="0,0,10,0"/>
+            <Button x:Name="btnSearch" Content="Search" Height="28" Width="60" Click="btnSearch_Click"  />
+        </StackPanel>
+
+
         <DataGrid x:Name="dgUsers" Grid.Row="2" AutoGenerateColumns="False" IsReadOnly="True"  >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding UserId}" Width="35"/>
@@ -37,7 +44,7 @@
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
             <Button Name="btnAddUser" Content="Add User" Height="40" Width="100" Margin="5" Click="btnAddUser_Click" />
             <Button x:Name="btnDetail" Content="Detail" Height="40" Width="100" Margin="5" Click="btnDetail_Click"   />
-      
+            <Button x:Name="btnDelete" Content="Delete" Height="40" Width="100" Margin="5" Click="btnDelete_Click" ></Button>
         </StackPanel>
     </Grid>
 </Window>
