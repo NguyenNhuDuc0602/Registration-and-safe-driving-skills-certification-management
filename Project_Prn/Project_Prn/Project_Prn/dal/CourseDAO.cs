@@ -11,56 +11,60 @@ namespace Project_Prn.dal
     public class CourseDAO
     {
         private Prngroup4Context dbc;
-        public CourseDAO() { dbc = new Prngroup4Context(); }
-    
-    // 1. Lấy tất cả khóa học
-        public async Task<List<Course>> GetAllCourseAsync()
+
+        public CourseDAO()
         {
-            return await dbc.Courses
+            dbc = new Prngroup4Context();
+        }
+
+        // 1. Lấy tất cả khóa học
+        public List<Course> GetAllCourse()
+        {
+            return dbc.Courses
                 .Include(c => c.Teacher) // Eager load thông tin giảng viên
-                .ToListAsync();
+                .ToList();
         }
 
         // 2. Lấy khóa học theo ID
-        public async Task<Course?> GetByIdCourseAsync(int courseId)
+        public Course? GetByIdCourse(int courseId)
         {
-            return await dbc.Courses
-                .Include(c => c.Teacher) // Eager load thông tin giảng viên
-                .FirstOrDefaultAsync(c => c.CourseId == courseId);
+            return dbc.Courses
+                .Include(c => c.Teacher)
+                .FirstOrDefault(c => c.CourseId == courseId);
         }
 
         // 3. Thêm mới khóa học
-        public async Task AddCourseAsync(Course course)
+        public void AddCourse(Course course)
         {
             dbc.Courses.Add(course);
-            await dbc.SaveChangesAsync();
+            dbc.SaveChanges();
         }
 
         // 4. Cập nhật khóa học
-        public async Task UpdateCourseAsync(Course course)
+        public void UpdateCourse(Course course)
         {
             dbc.Courses.Update(course);
-            await dbc.SaveChangesAsync();
+            dbc.SaveChanges();
         }
 
         // 5. Xóa khóa học
-        public async Task DeleteCourseAsync(int courseId)
+        public void DeleteCourse(int courseId)
         {
-            var course = await dbc.Courses.FindAsync(courseId);
+            var course = dbc.Courses.Find(courseId);
             if (course != null)
             {
                 dbc.Courses.Remove(course);
-                await dbc.SaveChangesAsync();
+                dbc.SaveChanges();
             }
         }
 
-        // 6. Lấy khóa học theo giảng viên (TeacherId)
-        public async Task<List<Course>> GetByTeacherIdCourseAsync(int teacherId)
+        // 6. Lấy khóa học theo giảng viên
+        public List<Course> GetByTeacherIdCourse(int teacherId)
         {
-            return await dbc.Courses
+            return dbc.Courses
                 .Where(c => c.TeacherId == teacherId)
-                .Include(c => c.Teacher) // Eager load thông tin giảng viên
-                .ToListAsync();
+                .Include(c => c.Teacher)
+                .ToList();
         }
     }
 }

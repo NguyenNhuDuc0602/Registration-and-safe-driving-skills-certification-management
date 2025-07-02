@@ -1,0 +1,41 @@
+﻿<Window x:Class="Project_Prn.ResultWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Prn"
+        mc:Ignorable="d"
+        Title="ResultWindow" Height="450" Width="800">
+    <Grid>
+        <Border Background="#e0e0ff" Padding="10" CornerRadius="10" Margin="0,0,0,10">
+            <TextBlock
+               FontSize="28"
+               FontWeight="Bold"
+               Foreground="DarkBlue"
+               HorizontalAlignment="Center"
+               TextAlignment="Center"><Run Text="RESULT MANAGEMENT"/><LineBreak/><Run/></TextBlock>
+        </Border>
+        <Label Content="Exam :" HorizontalAlignment="Left" Margin="0,58,0,0" VerticalAlignment="Top" Width="80" RenderTransformOrigin="-0.198,2.659"/>
+        <ComboBox x:Name="cbxCourse" HorizontalAlignment="Left" Margin="66,63,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5">
+            <ComboBox.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.406"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ComboBox.RenderTransform>
+        </ComboBox>
+        <DataGrid x:Name="dgResult"  Margin="0,118,0,118" SelectionChanged="DataGrid_SelectionChanged" AutoGenerateColumns="False">
+            <DataGrid.Columns >
+                <DataGridTextColumn Header=" StudentName" Binding="{Binding User.FullName}" Width="*"/>
+                <DataGridTextColumn Header=" Score" Binding="{Binding Score}" Width="*" />
+                <DataGridCheckBoxColumn Header=" PassStatus" Binding="{Binding PassStatus}" Width="*" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="add result" Width="120" Margin="10,340,670,47" />
+        <Button Content="edit result" Width="120" Margin="225,340,455,47" />
+        <Button Content="delete result" Width="120" Margin="430,340,250,47" />
+        <Button Content="issue certificates" Width="120" Margin="655,340,25,47" />
+    </Grid>
+</Window>

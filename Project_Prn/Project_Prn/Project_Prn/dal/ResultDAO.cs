@@ -11,67 +11,71 @@ namespace Project_Prn.dal
     public class ResultDAO
     {
         private Prngroup4Context dbc;
-        public ResultDAO() { dbc = new Prngroup4Context(); }
-    
-     // 1. Lấy tất cả kết quả thi
-        public async Task<List<Result>> GetAllResultAsync()
+
+        public ResultDAO()
         {
-            return await dbc.Results
-                .Include(r => r.User)  // Eager load thông tin người dùng
-                .Include(r => r.Exam)  // Eager load thông tin kỳ thi
-                .ToListAsync();
+            dbc = new Prngroup4Context();
+        }
+
+        // 1. Lấy tất cả kết quả thi
+        public List<Result> GetAllResult()
+        {
+            return dbc.Results
+                .Include(r => r.User)
+                .Include(r => r.Exam)
+                .ToList();
         }
 
         // 2. Lấy kết quả thi theo ID
-        public async Task<Result?> GetByIdResultAsync(int resultId)
+        public Result? GetByIdResult(int resultId)
         {
-            return await dbc.Results
+            return dbc.Results
                 .Include(r => r.User)
                 .Include(r => r.Exam)
-                .FirstOrDefaultAsync(r => r.ResultId == resultId);
+                .FirstOrDefault(r => r.ResultId == resultId);
         }
 
-        // 3. Thêm mới kết quả thi
-        public async Task AddResultAsync(Result result)
+        // 3. Thêm kết quả thi
+        public void AddResult(Result result)
         {
             dbc.Results.Add(result);
-            await dbc.SaveChangesAsync();
+            dbc.SaveChanges();
         }
 
         // 4. Cập nhật kết quả thi
-        public async Task UpdateResultAsync(Result result)
+        public void UpdateResult(Result result)
         {
             dbc.Results.Update(result);
-            await dbc.SaveChangesAsync();
+            dbc.SaveChanges();
         }
 
         // 5. Xóa kết quả thi
-        public async Task DeleteResultAsync(int resultId)
+        public void DeleteResult(int resultId)
         {
-            var result = await dbc.Results.FindAsync(resultId);
+            var result = dbc.Results.Find(resultId);
             if (result != null)
             {
                 dbc.Results.Remove(result);
-                await dbc.SaveChangesAsync();
+                dbc.SaveChanges();
             }
         }
 
         // 6. Lấy kết quả thi theo ExamId
-        public async Task<List<Result>> GetByExamIdResultAsync(int examId)
+        public List<Result> GetByExamIdResult(int examId)
         {
-            return await dbc.Results
+            return dbc.Results
                 .Where(r => r.ExamId == examId)
-                .Include(r => r.User)  // Eager load thông tin người dùng
-                .ToListAsync();
+                .Include(r => r.User)
+                .ToList();
         }
 
         // 7. Lấy kết quả thi theo UserId
-        public async Task<List<Result>> GetByUserIdResultAsync(int userId)
+        public List<Result> GetByUserIdResult(int userId)
         {
-            return await dbc.Results
+            return dbc.Results
                 .Where(r => r.UserId == userId)
-                .Include(r => r.Exam)  // Eager load thông tin kỳ thi
-                .ToListAsync();
+                .Include(r => r.Exam)
+                .ToList();
         }
     }
 }

@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-F:\Registration-and-safe-driving-skills-certification-management\Project_Prn\Project_Prn\Project_Prn\obj\Debug\net8.0-windows\
+E:\PRN_Project211\Registration-and-safe-driving-skills-certification-management\Project_Prn\Project_Prn\Project_Prn\obj\Debug\net8.0-windows\
 Project_Prn
 none
 false
-TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-F:\Registration-and-safe-driving-skills-certification-management\Project_Prn\Project_Prn\Project_Prn\App.xaml
-4-117472340
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP
+E:\PRN_Project211\Registration-and-safe-driving-skills-certification-management\Project_Prn\Project_Prn\Project_Prn\App.xaml
+8-452878461
 
-22443620713
-244-844729219
-MainWindow.xaml;UserWindow\AddUser.xaml;UserWindow\UserDetail.xaml;UserWindow\UserManagement.xaml;
+26-1002974154
+2442113268015
+ExamWindow\AddExam.xaml;ExamWindow\ExamManager.xaml;MainWindow.xaml;ResultWindow.xaml;UserWindow\AddUser.xaml;UserWindow\editExam.xaml;UserWindow\UserDetail.xaml;UserWindow\UserManagement.xaml;
 
 False
 
