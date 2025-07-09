@@ -17,58 +17,24 @@ public partial class Prngroup4Context : DbContext
     {
     }
 
-    public virtual DbSet<Attendance> Attendances { get; set; }
-
     public virtual DbSet<Certificate> Certificates { get; set; }
-
     public virtual DbSet<Course> Courses { get; set; }
-
     public virtual DbSet<Exam> Exams { get; set; }
-
     public virtual DbSet<Registration> Registrations { get; set; }
-
     public virtual DbSet<Result> Results { get; set; }
-
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-
     {
         var builder = new ConfigurationBuilder();
         builder.SetBasePath(Directory.GetCurrentDirectory());
         builder.AddJsonFile("appsettings.json", true, true);
         var configuration = builder.Build();
         optionsBuilder.UseSqlServer(configuration.GetConnectionString("Default"));
-
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Attendance>(entity =>
-        {
-            entity.HasKey(e => e.AttendanceId).HasName("PK__Attendan__8B69263C6AB190A4");
-
-            entity.ToTable("Attendance");
-
-            entity.Property(e => e.AttendanceId).HasColumnName("AttendanceID");
-            entity.Property(e => e.CourseId).HasColumnName("CourseID");
-            entity.Property(e => e.Note).HasColumnType("text");
-            entity.Property(e => e.Status)
-                .HasMaxLength(20)
-                .IsUnicode(false);
-            entity.Property(e => e.UserId).HasColumnName("UserID");
-
-            entity.HasOne(d => d.Course).WithMany(p => p.Attendances)
-                .HasForeignKey(d => d.CourseId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Attendanc__Cours__619B8048");
-
-            entity.HasOne(d => d.User).WithMany(p => p.Attendances)
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Attendanc__UserI__628FA481");
-        });
-
         modelBuilder.Entity<Certificate>(entity =>
         {
             entity.HasKey(e => e.CertificateId).HasName("PK__Certific__BBF8A7E14EF7F6DF");
