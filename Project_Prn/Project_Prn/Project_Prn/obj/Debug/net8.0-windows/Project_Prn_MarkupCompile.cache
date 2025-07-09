@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
 E:\PRN_Project211\Registration-and-safe-driving-skills-certification-management\Project_Prn\Project_Prn\Project_Prn\App.xaml
-8-452878461
+11-3658663
 
-26-1002974154
+29410032684
 2442113268015
-ExamWindow\AddExam.xaml;ExamWindow\ExamManager.xaml;MainWindow.xaml;ResultWindow.xaml;UserWindow\AddUser.xaml;UserWindow\editExam.xaml;UserWindow\UserDetail.xaml;UserWindow\UserManagement.xaml;
+CourseWindow\CourseManagement.xaml;ExamWindow\AddExam.xaml;ExamWindow\ExamManager.xaml;MainWindow.xaml;ResultWindow\ResultPolice.xaml;ResultWindow\ResultTeacher.xaml;ResultWindow\StudentResult.xaml;UserWindow\AddUser.xaml;UserWindow\editExam.xaml;UserWindow\UserDetail.xaml;UserWindow\UserManagement.xaml;
 
 False
 

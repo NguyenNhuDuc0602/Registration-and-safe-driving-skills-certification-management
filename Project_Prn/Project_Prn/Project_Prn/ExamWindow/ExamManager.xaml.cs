@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Project_Prn.dal;
+using Project_Prn.Models;
 using Project_Prn.UserWindow;
 
 namespace Project_Prn.ExamWindow
@@ -49,6 +50,11 @@ namespace Project_Prn.ExamWindow
 
         private void dgExam_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            var selectedExam = dgExam.SelectedItem as Exam;
+            if (selectedExam != null)
+            {
+                examId = selectedExam.ExamId.ToString();
+            }
 
         }
         private void btnSearch_Click(object sender, RoutedEventArgs e)
@@ -73,9 +79,25 @@ namespace Project_Prn.ExamWindow
         private void edit_Click(object sender, RoutedEventArgs e)
         {
             editExam edit = new editExam(examId);
-            this.Close();
+            //this.Close();
             edit.ShowDialog();
             loadExam();
         }
+
+        private void btndelete_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn muốn xóa kỳ thi này không?", "Xác nhận xóa", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if (result == MessageBoxResult.Yes)
+            {
+                ExamDAO examDAO = new ExamDAO();
+                int id = int.Parse(examId); 
+                examDAO.DeleteExam(id);
+
+                MessageBox.Show("Xóa kỳ thi thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                loadExam();
+                //this.Close(); 
+            }
+        }
+
     }
 }

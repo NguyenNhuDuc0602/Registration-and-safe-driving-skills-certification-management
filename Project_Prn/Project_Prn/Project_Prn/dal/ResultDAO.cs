@@ -23,8 +23,10 @@ namespace Project_Prn.dal
             return dbc.Results
                 .Include(r => r.User)
                 .Include(r => r.Exam)
+                    .ThenInclude(e => e.Course)
                 .ToList();
         }
+
 
         // 2. Lấy kết quả thi theo ID
         public Result? GetByIdResult(int resultId)
@@ -70,12 +72,20 @@ namespace Project_Prn.dal
         }
 
         // 7. Lấy kết quả thi theo UserId
-        public List<Result> GetByUserIdResult(int userId)
+        public static List<Result> GetByUserIdResult(int userId)
         {
-            return dbc.Results
-                .Where(r => r.UserId == userId)
-                .Include(r => r.Exam)
-                .ToList();
+            using (var context = new Prngroup4Context())
+            {
+                return context.Results
+                    .Include(r => r.Exam)
+                        .ThenInclude(e => e.Course)
+                            .ThenInclude(c => c.Teacher)
+                    .Where(r => r.UserId == userId)
+                    .ToList();
+            }
         }
+        
+
+
     }
 }

@@ -29,7 +29,7 @@ namespace Project_Prn.UserWindow
 
             CourseDAO courseDAO = new CourseDAO();
             ExamDAO examDAO = new ExamDAO();
-            Exam exam = new Exam();
+            Exam exam = examDAO.GetByIdExam(Int32.Parse(this._ExamId));
             if (exam != null)
             {
                 this.cbxCourse.ItemsSource = courseDAO.GetAllCourse();//combobox
@@ -46,9 +46,10 @@ namespace Project_Prn.UserWindow
         {
             int CourseId = Int32.Parse(this.cbxCourse.SelectedValue.ToString());
             DateTime? selectedDate = dpdate.SelectedDate;
-            string room = txtClass.Text;
+            string room = this.txtClass.Text;
             Exam updateExam = new Exam()
             {
+                ExamId = Int32.Parse(this._ExamId),
                 CourseId = CourseId,
                 Date = DateOnly.FromDateTime( selectedDate.Value),
                 Room = room,
@@ -56,13 +57,16 @@ namespace Project_Prn.UserWindow
             };
             ExamDAO examDAO= new ExamDAO();
             examDAO.UpdateExam(updateExam);
+            this.DialogResult = true;//báo biết đã lưu hehe
             this.Close();
-
+            
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
+            this.DialogResult = false;
             this.Close();
+            
         }
     }
 }

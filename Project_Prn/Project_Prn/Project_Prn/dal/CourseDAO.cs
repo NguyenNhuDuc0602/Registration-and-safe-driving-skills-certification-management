@@ -11,11 +11,7 @@ namespace Project_Prn.dal
     public class CourseDAO
     {
         private Prngroup4Context dbc;
-
-        public CourseDAO()
-        {
-            dbc = new Prngroup4Context();
-        }
+        public CourseDAO() { dbc = new Prngroup4Context(); }
 
         // 1. Lấy tất cả khóa học
         public List<Course> GetAllCourse()
@@ -29,7 +25,7 @@ namespace Project_Prn.dal
         public Course? GetByIdCourse(int courseId)
         {
             return dbc.Courses
-                .Include(c => c.Teacher)
+                .Include(c => c.Teacher) // Eager load thông tin giảng viên
                 .FirstOrDefault(c => c.CourseId == courseId);
         }
 
@@ -58,13 +54,14 @@ namespace Project_Prn.dal
             }
         }
 
-        // 6. Lấy khóa học theo giảng viên
+        // 6. Lấy khóa học theo giảng viên (TeacherId)
         public List<Course> GetByTeacherIdCourse(int teacherId)
         {
             return dbc.Courses
                 .Where(c => c.TeacherId == teacherId)
-                .Include(c => c.Teacher)
+                .Include(c => c.Teacher) // Eager load thông tin giảng viên
                 .ToList();
         }
+
     }
 }
