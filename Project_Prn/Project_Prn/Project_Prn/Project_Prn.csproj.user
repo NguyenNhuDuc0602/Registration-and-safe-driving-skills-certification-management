@@ -2,6 +2,7 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+<<<<<<< HEAD
     <Compile Update="CertificateWindow\AddCertificate.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -9,6 +10,19 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="CertificateWindow\CertificateManagement.xaml.cs">
+=======
+    <Compile Update="CourseWindow\CourseManagement.xaml.cs">
+>>>>>>> 1aee48a4477379607c2632efdc1c4d41d78b0c06
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ExamWindow\AddExam.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+<<<<<<< HEAD
+    <Compile Update="ExamWindow\editExam.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ExamWindow\ExamManager.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="CourseWindow\AddCourse.xaml.cs">
@@ -26,6 +40,21 @@
     <Compile Update="RegistrationWindow\RegistrationManagement.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+=======
+    <Compile Update="ExamWindow\ExamManager.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+>>>>>>> 1aee48a4477379607c2632efdc1c4d41d78b0c06
+    <Compile Update="ResultWindow\ResultPolice.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ResultWindow\ResultTeacher.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ResultWindow\StudentResult.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+<<<<<<< HEAD
     <Compile Update="RoleWindow\AdminDashboard.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -38,7 +67,12 @@
     <Compile Update="RoleWindow\TrafficPoliceDashboard.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+=======
+>>>>>>> 1aee48a4477379607c2632efdc1c4d41d78b0c06
     <Compile Update="UserWindow\AddUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserWindow\editExam.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="UserWindow\UserDetail.xaml.cs">

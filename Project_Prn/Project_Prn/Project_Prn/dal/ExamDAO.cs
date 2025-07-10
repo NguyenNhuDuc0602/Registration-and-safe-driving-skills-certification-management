@@ -11,56 +11,59 @@ namespace Project_Prn.dal
     public class ExamDAO
     {
         private Prngroup4Context dbc;
-        public ExamDAO() { dbc = new Prngroup4Context(); }
-    
-     // 1. Lấy tất cả kỳ thi
-        public async Task<List<Exam>> GetAllExamAsync()
+        public ExamDAO()
         {
-            return await dbc.Exams
-                .Include(e => e.Course)  // Eager load thông tin khóa học
-                .ToListAsync();
+            dbc = new Prngroup4Context();
+        }
+
+        // 1. Lấy tất cả kỳ thi
+        public List<Exam> GetAllExam()
+        {
+            return dbc.Exams
+                .Include(e => e.Course)
+                .ToList();
         }
 
         // 2. Lấy kỳ thi theo ID
-        public async Task<Exam?> GetByIdExamAsync(int examId)
+        public Exam? GetByIdExam(int examId)
         {
-            return await dbc.Exams
-                .Include(e => e.Course)  // Eager load thông tin khóa học
-                .FirstOrDefaultAsync(e => e.ExamId == examId);
+            return dbc.Exams
+                .Include(e => e.Course)
+                .FirstOrDefault(e => e.ExamId == examId);
         }
 
         // 3. Thêm mới kỳ thi
-        public async Task AddExamAsync(Exam exam)
+        public void AddExam(Exam exam)
         {
             dbc.Exams.Add(exam);
-            await dbc.SaveChangesAsync();
+            dbc.SaveChanges();
         }
 
         // 4. Cập nhật kỳ thi
-        public async Task UpdateExamAsync(Exam exam)
+        public void UpdateExam(Exam exam)
         {
             dbc.Exams.Update(exam);
-            await dbc.SaveChangesAsync();
+            dbc.SaveChanges();
         }
 
         // 5. Xóa kỳ thi
-        public async Task DeleteExamAsync(int examId)
+        public void DeleteExam(int examId)
         {
-            var exam = await dbc.Exams.FindAsync(examId);
+            var exam = dbc.Exams.Find(examId);
             if (exam != null)
             {
                 dbc.Exams.Remove(exam);
-                await dbc.SaveChangesAsync();
+                dbc.SaveChanges();
             }
         }
 
         // 6. Lấy kỳ thi theo CourseId
-        public async Task<List<Exam>> GetByCourseIdExamAsync(int courseId)
+        public List<Exam> GetByCourseIdExam(int courseId)
         {
-            return await dbc.Exams
+            return dbc.Exams
                 .Where(e => e.CourseId == courseId)
-                .Include(e => e.Course)  // Eager load thông tin khóa học
-                .ToListAsync();
+                .Include(e => e.Course)
+                .ToList();
         }
     }
 }

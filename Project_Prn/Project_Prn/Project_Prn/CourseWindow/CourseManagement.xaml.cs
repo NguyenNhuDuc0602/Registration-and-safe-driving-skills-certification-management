@@ -1,8 +1,10 @@
+
 ﻿using Microsoft.IdentityModel.Tokens;
 using Project_Prn.dal;
+﻿using Project_Prn.dal;
 using Project_Prn.Models;
 using Project_Prn.UserWindow;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Project_Prn.dal;
 
 namespace Project_Prn.CourseWindow
 {
@@ -30,6 +33,7 @@ namespace Project_Prn.CourseWindow
         }
         public void LoadCourse()
         {
+
             CourseDAO courseDAO = new CourseDAO();
             var courses = courseDAO.GetAllCourse();
             this.dgCourses.ItemsSource = courses;
@@ -93,6 +97,15 @@ namespace Project_Prn.CourseWindow
             {
                 LoadCourse(); 
             }
+        }
+           CourseDAO courseDAO = new CourseDAO();
+              var courses = courseDAO.GetAllCourse();
+            this.dgCourses.ItemsSource = courses;
+        }
+=======
+            CourseDAO courseDAO = new CourseDAO();
+            var course = courseDAO.GetAllCourse();
+            this.dgCourses.ItemsSource = course;
         }
     }
 }
