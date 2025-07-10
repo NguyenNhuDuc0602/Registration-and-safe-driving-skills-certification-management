@@ -64,11 +64,14 @@ namespace Project_Prn.dal
         }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         public bool IsCourseExist(int courseId)
         {
             return dbc.Courses.Any(c => c.CourseId == courseId);
         }
 >>>>>>> origin/main
+=======
+>>>>>>> 1aee48a4477379607c2632efdc1c4d41d78b0c06
     }
 }

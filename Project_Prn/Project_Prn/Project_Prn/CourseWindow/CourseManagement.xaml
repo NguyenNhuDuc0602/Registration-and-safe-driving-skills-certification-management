@@ -17,11 +17,19 @@
 
         <Border Grid.Row="0" Background="#e0e0ff" Padding="10" CornerRadius="10" Margin="0,0,0,10">
             <TextBlock Text="COURSE MANAGEMENT"
+<<<<<<< HEAD
                     FontSize="28"
                     FontWeight="Bold"
                     Foreground="DarkBlue"
                     HorizontalAlignment="Center"
                     TextAlignment="Center"/>
+=======
+                 FontSize="28"
+                 FontWeight="Bold"
+                 Foreground="DarkBlue"
+                 HorizontalAlignment="Center"
+                 TextAlignment="Center"/>
+>>>>>>> 1aee48a4477379607c2632efdc1c4d41d78b0c06
         </Border>
 
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
