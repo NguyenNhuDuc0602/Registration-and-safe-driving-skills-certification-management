@@ -84,7 +84,7 @@ namespace Project_Prn.dal
                     .ToList();
             }
         }
-        
+
 
 
     }
