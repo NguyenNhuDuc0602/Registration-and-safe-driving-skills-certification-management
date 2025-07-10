@@ -29,6 +29,10 @@ namespace Project_Prn.UserWindow
             LoadRoles(); 
         }
 
+        public AddUser()
+        {
+        }
+
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             string fullName = this.txtFullName.Text;
