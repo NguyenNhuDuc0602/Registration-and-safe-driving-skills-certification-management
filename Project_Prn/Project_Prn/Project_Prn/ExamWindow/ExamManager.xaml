@@ -7,9 +7,7 @@
         mc:Ignorable="d"
         Title="ExamManager" Height="450" Width="800">
     <Grid>
-<<<<<<< HEAD
-        
-=======
+
         <Grid.RowDefinitions >
             <RowDefinition Height="80" />
             <RowDefinition Height="*" />
@@ -59,6 +57,6 @@
        Margin="10,5,10,0"/>
 
         </StackPanel>
->>>>>>> 1aee48a4477379607c2632efdc1c4d41d78b0c06
+
     </Grid>
 </Window>

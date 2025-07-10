@@ -6,10 +6,10 @@
         xmlns:local="clr-namespace:Project_Prn.ExamWindow"
         mc:Ignorable="d"
         Title="AddExam" Height="450" Width="800">
-<<<<<<< HEAD
+
     <Grid>
         
-=======
+
     <Grid Margin="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -31,6 +31,6 @@
             <Button Content="Lưu" Width="146" Margin="5" Click="BtnSave_Click" Height="37" RenderTransformOrigin="0.124,0.375"/>
             <Button Content="Hủy" Width="141" Margin="5" Click="BtnCancel_Click" Height="41"/>
         </StackPanel>
->>>>>>> 1aee48a4477379607c2632efdc1c4d41d78b0c06
+
     </Grid>
 </Window>
