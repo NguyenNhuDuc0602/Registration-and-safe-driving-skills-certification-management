@@ -11,55 +11,57 @@ namespace Project_Prn.dal
     public class CertificateDAO
     {
         private Prngroup4Context dbc;
-        public CertificateDAO() { dbc = new Prngroup4Context(); 
-    }
-    // 1. Lấy tất cả chứng chỉ
-        public async Task<List<Certificate>> GetAllCertificateAsync()
+        public CertificateDAO()
         {
-            return await dbc.Certificates
+            dbc = new Prngroup4Context();
+        }
+        // 1. Lấy tất cả chứng chỉ
+        public List<Certificate> GetAllCertificate()
+        {
+            return dbc.Certificates
                 .Include(c => c.User) // Eager load thông tin User
-                .ToListAsync();
+                .ToList();
         }
 
         // 2. Lấy chứng chỉ theo ID
-        public async Task<Certificate?> GetByIdCertificateAsync(int certificateId)
+        public Certificate? GetByIdCertificate(int certificateId)
         {
-            return await dbc.Certificates
+            return dbc.Certificates
                 .Include(c => c.User)
-                .FirstOrDefaultAsync(c => c.CertificateId == certificateId);
+                .FirstOrDefault(c => c.CertificateId == certificateId);
         }
 
         // 3. Thêm mới chứng chỉ
-        public async Task AddCertificateAsync(Certificate certificate)
+        public void AddCertificate(Certificate certificate)
         {
             dbc.Certificates.Add(certificate);
-            await dbc.SaveChangesAsync();
+            dbc.SaveChanges();
         }
 
         // 4. Cập nhật chứng chỉ
-        public async Task UpdateCertificateAsync(Certificate certificate)
+        public void UpdateCertificate(Certificate certificate)
         {
             dbc.Certificates.Update(certificate);
-            await dbc.SaveChangesAsync();
+            dbc.SaveChanges();
         }
 
         // 5. Xóa chứng chỉ
-        public async Task DeleteCertificateAsync(int certificateId)
+        public void DeleteCertificate(int certificateId)
         {
-            var certificate = await dbc.Certificates.FindAsync(certificateId);
+            var certificate = dbc.Certificates.Find(certificateId);
             if (certificate != null)
             {
                 dbc.Certificates.Remove(certificate);
-                await dbc.SaveChangesAsync();
+                dbc.SaveChanges();
             }
         }
 
         // 6. Lấy chứng chỉ theo UserId
-        public async Task<List<Certificate>> GetByUserIdCertificateAsync(int userId)
+        public List<Certificate> GetByUserIdCertificate(int userId)
         {
-            return await dbc.Certificates
+            return dbc.Certificates
                 .Where(c => c.UserId == userId)
-                .ToListAsync();
+                .ToList();
         }
     }
 }

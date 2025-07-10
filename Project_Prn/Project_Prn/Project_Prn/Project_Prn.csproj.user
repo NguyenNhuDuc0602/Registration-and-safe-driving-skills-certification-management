@@ -2,6 +2,24 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="CertificateWindow\AddCertificate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CertificateWindow\CertificateDetail.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CertificateWindow\CertificateManagement.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RegistrationWindow\AddRegistration.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RegistrationWindow\RegistrationDetail.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RegistrationWindow\RegistrationManagement.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="RoleWindow\AdminDashboard.xaml.cs">
       <SubType>Code</SubType>
     </Compile>

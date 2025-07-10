@@ -1,0 +1,52 @@
+﻿<Window x:Class="Project_Prn.CertificateWindow.CertificateManagement"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Prn.CertificateWindow"
+        mc:Ignorable="d"
+        Title="Certificate Management" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Tiêu đề -->
+        <Border Grid.Row="0" Background="#e0e0ff" Padding="10" CornerRadius="10" Margin="0,0,0,10">
+            <TextBlock Text="CERTIFICATE MANAGEMENT"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="DarkBlue"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"/>
+        </Border>
+
+        <!-- Thanh tìm kiếm -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+            <TextBlock Text="Search Certificate:" VerticalAlignment="Center" Margin="0,0,5,0"/>
+            <TextBox x:Name="txtSearch" Width="200" Height="28" Margin="0,0,10,0"/>
+            <Button x:Name="btnSearch" Content="Search" Height="28" Width="60" Click="btnSearch_Click"/>
+        </StackPanel>
+
+        <!-- Bảng dữ liệu -->
+        <DataGrid x:Name="dgCertificate" Grid.Row="2" AutoGenerateColumns="False" IsReadOnly="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="CerID" Binding="{Binding CertificateId}" Width="50"/>
+                <DataGridTextColumn Header="Full Name" Binding="{Binding User.FullName}" Width="*"/>
+                <DataGridTextColumn Header="Issued Date" Binding="{Binding IssuedDate}" Width="*"/>
+                <DataGridTextColumn Header="Expiration Date" Binding="{Binding ExpirationDate}" Width="*"/>
+                <DataGridTextColumn Header="Certificate Code" Binding="{Binding CertificateCode}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Nút chức năng -->
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
+            <Button Name="btnAddCertificate" Content="Add Certificate" Height="40" Width="100" Margin="5" Click="btnAddCertificate_Click"/>
+            <Button x:Name="btnDetail" Content="Detail" Height="40" Width="100" Margin="5" Click="btnDetail_Click"/>
+            <Button x:Name="btnDelete" Content="Delete" Height="40" Width="100" Margin="5" Click="btnDelete_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
