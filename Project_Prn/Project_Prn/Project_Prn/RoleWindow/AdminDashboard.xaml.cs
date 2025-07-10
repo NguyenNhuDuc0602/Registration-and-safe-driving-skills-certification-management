@@ -54,7 +54,10 @@ namespace Project_Prn.RoleWindow
                     break;
                 case "Registration":
                     Modal(new RegistrationWindow.RegistrationManagement());
-                    break;             
+                    break;
+                case "Exams":
+                    Modal(new ExamWindow.ExamManager());
+                    break;
                 case "Logout":
                     this.Close();
                     break;
