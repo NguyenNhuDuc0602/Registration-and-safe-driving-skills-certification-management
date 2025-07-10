@@ -79,6 +79,14 @@ namespace Project_Prn.dal
         {
             return dbc.Users.FirstOrDefault(u => u.Email == email && u.Password == password); 
         }
+<<<<<<< HEAD
        
+=======
+
+        public bool IsUserExist(int userId)
+        {
+            return dbc.Users.Any(u => u.UserId == userId);
+        }
+>>>>>>> origin/main
     }
 }

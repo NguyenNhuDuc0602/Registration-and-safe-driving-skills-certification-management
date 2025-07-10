@@ -63,5 +63,12 @@ namespace Project_Prn.dal
                 .ToList();
         }
 
+<<<<<<< HEAD
+=======
+        public bool IsCourseExist(int courseId)
+        {
+            return dbc.Courses.Any(c => c.CourseId == courseId);
+        }
+>>>>>>> origin/main
     }
 }

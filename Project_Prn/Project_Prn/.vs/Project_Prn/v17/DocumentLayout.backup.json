@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Learn\\FULearning-Summer25\\PRN212\\PRNGroup4\\Project_Prn\\Project_Prn\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|d:\\learn\\fulearning-summer25\\prn212\\prngroup4\\project_prn\\project_prn\\project_prn\\models\\prngroup4context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1106FFAD-175F-4FFC-B0E2-752C4F4C861B}|Project_Prn\\Project_Prn.csproj|solutionrelative:project_prn\\models\\prngroup4context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 220,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Prngroup4Context.cs",
+              "DocumentMoniker": "D:\\Learn\\FULearning-Summer25\\PRN212\\PRNGroup4\\Project_Prn\\Project_Prn\\Project_Prn\\Models\\Prngroup4Context.cs",
+              "RelativeDocumentMoniker": "Project_Prn\\Models\\Prngroup4Context.cs",
+              "ToolTip": "D:\\Learn\\FULearning-Summer25\\PRN212\\PRNGroup4\\Project_Prn\\Project_Prn\\Project_Prn\\Models\\Prngroup4Context.cs",
+              "RelativeToolTip": "Project_Prn\\Models\\Prngroup4Context.cs",
+              "ViewState": "AgIAAGIAAAAAAAAAAAAUwHYAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-09T06:08:27.524Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
