@@ -20,22 +20,22 @@
                 <!-- Navigation buttons -->
                 <Button Content="Quản lý học viên"
                         Tag="Students"
-                      
-                        Margin="8" Height="40" />
+                        Click="Button_Click"
+                        Margin="8" Height="40"/>
 
                 <Button Content="Quản lý khóa học"
                         Tag="Courses"
-                       
+                        Click="Button_Click"
                         Margin="8" Height="40" />
 
                 <Button Content="Quản lý thi"
                         Tag="Exams"
-                       
+                        Click="Button_Click"
                         Margin="8" Height="40" />
 
                 <Button Content="Đăng xuất"
                         Tag="Logout"
-                        
+                        Click="Button_Click"
                         Margin="8" Height="40" />
             </StackPanel>
         </Border>

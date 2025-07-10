@@ -1,3 +1,39 @@
+# ==== Visual Studio ====
 .vs/
+*.user
+*.suo
+*.vc.db
+*.vscode/
+
+# ==== Build ====
 bin/
 obj/
+*.dll
+*.exe
+
+# ==== Temporary ====
+*.log
+*.tmp
+*.cache
+*.bak
+
+# ==== Others ====
+*.dbmdl
+*.pdb
+*.ipch
+*.aps
+*.ncb
+*.opendb
+*.tlog
+*.lastcodeanalysissucceeded
+
+# ==== SQL Server project ====
+*.sqlproj.user
+
+# ==== Rider / ReSharper ====
+.idea/
+*.sln.iml
+
+# ==== NuGet Packages ====
+*.nupkg
+packages/
