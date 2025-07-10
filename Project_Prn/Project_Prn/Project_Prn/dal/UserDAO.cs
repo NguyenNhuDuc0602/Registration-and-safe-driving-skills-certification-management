@@ -51,7 +51,6 @@ namespace Project_Prn.dal
                 dbc.SaveChanges(); 
             }
         }
-
         // 6. Lấy người dùng theo vai trò (Role)
         public List<User> GetByRoleUser(string role)
         {
@@ -72,7 +71,6 @@ namespace Project_Prn.dal
                       .Where(u => u.FullName.ToLower().Contains(keyword))
                       .ToList();
         }
-
 
         // 9. Xác thực người dùng khi đăng nhập
         public User ValidateLogin(string email, string password)

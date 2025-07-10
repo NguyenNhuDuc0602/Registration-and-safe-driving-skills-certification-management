@@ -1,0 +1,56 @@
+﻿<Window x:Class="Project_Prn.CourseWindow.CourseDetail"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Prn.CourseWindow"
+        mc:Ignorable="d"
+        Title="CourseDetail" Height="450" Width="800">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Tiêu đề -->
+        <Border Grid.Row="0" Background="#e0e0ff" Padding="10" CornerRadius="10" Margin="0,0,0,20">
+            <TextBlock Text="COURSE DETAILS"
+                       FontSize="26"
+                       FontWeight="Bold"
+                       Foreground="DarkBlue"
+                       HorizontalAlignment="Center"/>
+        </Border>
+
+        <!-- Nội dung nhập -->
+        <StackPanel Grid.Row="1" Margin="100,0" VerticalAlignment="Top">
+            <StackPanel Margin="0,0,0,15">
+                <TextBlock Text="Course Name:" FontWeight="SemiBold"/>
+                <TextBox x:Name="txtCourseName" Height="30"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,15">
+                <TextBlock Text="Teacher:" FontWeight="SemiBold"/>
+                <ComboBox x:Name="cbTeacher" Height="30"
+                          DisplayMemberPath="FullName"
+                          SelectedValuePath="TeacherId"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,15">
+                <TextBlock Text="Start Date:" FontWeight="SemiBold"/>
+                <DatePicker x:Name="dpStartDate" Height="30"/>
+            </StackPanel>
+
+            <StackPanel Margin="0,0,0,0">
+                <TextBlock Text="End Date:" FontWeight="SemiBold"/>
+                <DatePicker x:Name="dpEndDate" Height="30"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Nút chức năng -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
+            <Button x:Name="btnUpdate" Content="Update" Width="100" Height="35" Margin="10" Click="btnUpdate_Click"/>
+            <Button x:Name="btnCancel" Content="Cancel" Width="100" Height="35" Margin="10" Click="btnCancel_Click"  />
+        </StackPanel>
+    </Grid>
+</Window>

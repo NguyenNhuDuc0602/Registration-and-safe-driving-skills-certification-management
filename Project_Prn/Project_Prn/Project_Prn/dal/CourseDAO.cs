@@ -20,13 +20,11 @@ namespace Project_Prn.dal
                 .Include(c => c.Teacher) // Eager load thông tin giảng viên
                 .ToList();
         }
-
-        // 2. Lấy khóa học theo ID
-        public Course? GetByIdCourse(int courseId)
+        public List<User> GetAllTeachers()
         {
-            return dbc.Courses
-                .Include(c => c.Teacher) // Eager load thông tin giảng viên
-                .FirstOrDefault(c => c.CourseId == courseId);
+            return dbc.Users
+                .Where(u => u.Role == "Teacher") 
+                .ToList();
         }
 
         // 3. Thêm mới khóa học
@@ -67,5 +65,14 @@ namespace Project_Prn.dal
         {
             return dbc.Courses.Any(c => c.CourseId == courseId);
         }
+        // serach 
+        public List<Course> GetCourseBylName(string name)
+        {
+            return dbc.Courses
+                      .Where(c => c.CourseName.ToLower().Contains(name.ToLower()))
+                      .Include(c => c.Teacher)
+                      .ToList();
+        }
+
     }
 }
