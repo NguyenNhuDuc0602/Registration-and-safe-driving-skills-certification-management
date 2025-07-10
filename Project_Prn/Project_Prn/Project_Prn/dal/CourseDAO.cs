@@ -62,10 +62,10 @@ namespace Project_Prn.dal
                 .Include(c => c.Teacher) // Eager load thông tin giảng viên
                 .ToList();
         }
+
         public bool IsCourseExist(int courseId)
         {
             return dbc.Courses.Any(c => c.CourseId == courseId);
         }
-
     }
 }

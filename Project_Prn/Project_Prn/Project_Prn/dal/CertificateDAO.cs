@@ -1,25 +1,33 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Project_Prn.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 namespace Project_Prn.dal
 {
     public class CertificateDAO
     {
         private Prngroup4Context dbc;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1aee48a4477379607c2632efdc1c4d41d78b0c06
         public CertificateDAO()
         {
             dbc = new Prngroup4Context();
         }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1aee48a4477379607c2632efdc1c4d41d78b0c06
         // 1. Lấy tất cả chứng chỉ
         public List<Certificate> GetAllCertificate()
         {
             return dbc.Certificates
+<<<<<<< HEAD
                 .Include(c => c.User) // Eager load thông tin User
+=======
+                .Include(c => c.User)
+>>>>>>> 1aee48a4477379607c2632efdc1c4d41d78b0c06
                 .ToList();
         }
 
@@ -63,5 +71,7 @@ namespace Project_Prn.dal
                 .Where(c => c.UserId == userId)
                 .ToList();
         }
+       
+
     }
 }
