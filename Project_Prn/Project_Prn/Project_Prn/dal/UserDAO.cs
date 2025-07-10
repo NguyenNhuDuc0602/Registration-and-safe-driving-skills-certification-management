@@ -51,7 +51,6 @@ namespace Project_Prn.dal
                 dbc.SaveChanges(); 
             }
         }
-
         // 6. Lấy người dùng theo vai trò (Role)
         public List<User> GetByRoleUser(string role)
         {
@@ -73,20 +72,14 @@ namespace Project_Prn.dal
                       .ToList();
         }
 
-
         // 9. Xác thực người dùng khi đăng nhập
         public User ValidateLogin(string email, string password)
         {
             return dbc.Users.FirstOrDefault(u => u.Email == email && u.Password == password); 
         }
-<<<<<<< HEAD
-       
-=======
-
         public bool IsUserExist(int userId)
         {
             return dbc.Users.Any(u => u.UserId == userId);
         }
->>>>>>> origin/main
     }
 }

@@ -64,3 +64,74 @@
 		</Compile>
 	</ItemGroup>
 </Project>
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="CertificateWindow\AddCertificate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CertificateWindow\CertificateDetail.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CertificateWindow\CertificateManagement.xaml.cs">
+    <Compile Update="CourseWindow\CourseManagement.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ExamWindow\AddExam.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ExamWindow\editExam.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ExamWindow\ExamManager.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CourseWindow\AddCourse.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CourseWindow\CourseDetail.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RegistrationWindow\AddRegistration.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RegistrationWindow\RegistrationDetail.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RegistrationWindow\RegistrationManagement.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ExamWindow\ExamManager.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ResultWindow\ResultPolice.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ResultWindow\ResultTeacher.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ResultWindow\StudentResult.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RoleWindow\AdminDashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RoleWindow\StudentDashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RoleWindow\TeacherDashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="RoleWindow\TrafficPoliceDashboard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserWindow\AddUser.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserWindow\editExam.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="UserWindow\UserDetail.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

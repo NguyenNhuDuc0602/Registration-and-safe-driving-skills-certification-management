@@ -1,17 +1,11 @@
 ﻿<Application x:Class="Project_Prn.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-<<<<<<< HEAD
              xmlns:local="clr-namespace:Project_Prn"
-<<<<<<< HEAD
-             StartupUri="CourseWindow/CourseManagement.xaml">
-=======
-             StartupUri="RegistrationWindow/RegistrationManagement.xaml">
->>>>>>> origin/main
-=======
              StartupUri="ResultWindow/ResultPolice.xaml">
->>>>>>> 1aee48a4477379607c2632efdc1c4d41d78b0c06
     <Application.Resources>
 
     </Application.Resources>
 </Application>
+
+    
