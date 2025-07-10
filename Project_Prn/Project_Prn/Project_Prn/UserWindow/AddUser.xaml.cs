@@ -85,7 +85,6 @@ namespace Project_Prn.UserWindow
                 string selectedRole = cmbRole.SelectedItem.ToString();
                 //MessageBox.Show("You selected Role: " + selectedRole);
             }
-
         }
     }
 }

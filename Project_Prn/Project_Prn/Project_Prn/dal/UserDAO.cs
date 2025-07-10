@@ -79,5 +79,6 @@ namespace Project_Prn.dal
         {
             return dbc.Users.FirstOrDefault(u => u.Email == email && u.Password == password); 
         }
+       
     }
 }

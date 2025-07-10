@@ -24,7 +24,26 @@ namespace Project_Prn.RoleWindow
         public TrafficPoliceDashboard(User user)
         {
             InitializeComponent();
-            currentUser = new User(); // Initialize with a default user or pass a user object
+            currentUser =  user; // Initialize with a default user or pass a user object
+            Window_Loaded(this, null); // Load data when the window is initialized
+            DataContext = currentUser; // Bind the current user to the DataContext for data binding
         }
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Prngroup4Context context = new Prngroup4Context();
+            // so ki thi  
+            PendingExamsText.Text = context.Exams
+                .Where(e => e.Course.TeacherId == currentUser.UserId)
+                .Select(r => r.ExamId)
+                .Distinct()
+                .Count().ToString();
+            // so chung chi cung cap
+            IssuedCertificatesText.Text = context.Certificates
+                .Where(c => c.UserId == currentUser.UserId)
+                .Count().ToString();
+
+     
+        }
+
     }
 }

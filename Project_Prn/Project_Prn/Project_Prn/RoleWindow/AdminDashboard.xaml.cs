@@ -45,7 +45,10 @@ namespace Project_Prn.RoleWindow
             {
                 case "Users":
                     Modal(new UserWindow.UserManagement());
-                    break;            
+                    break;
+                case "Courses":
+                    Modal(new CourseWindow.CourseManagement());
+                    break;
                 case "Logout":
                     this.Close();
                     break;
