@@ -49,6 +49,12 @@ namespace Project_Prn.RoleWindow
                 case "Courses":
                     Modal(new CourseWindow.CourseManagement());
                     break;
+                case "Certificates":
+                    Modal(new CertificateWindow.CertificateManagement());
+                    break;
+                case "Registration":
+                    Modal(new RegistrationWindow.RegistrationManagement());
+                    break;
                 case "Logout":
                     this.Close();
                     break;

@@ -21,8 +21,6 @@ public partial class User
 
     public string? Phone { get; set; }
 
-    public virtual ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
-
     public virtual ICollection<Certificate> Certificates { get; set; } = new List<Certificate>();
 
     public virtual ICollection<Course> Courses { get; set; } = new List<Course>();

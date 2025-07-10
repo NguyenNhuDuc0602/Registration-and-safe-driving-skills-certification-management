@@ -15,8 +15,6 @@ public partial class Course
 
     public DateOnly EndDate { get; set; }
 
-    public virtual ICollection<Attendance> Attendances { get; set; } = new List<Attendance>();
-
     public virtual ICollection<Exam> Exams { get; set; } = new List<Exam>();
 
     public virtual ICollection<Registration> Registrations { get; set; } = new List<Registration>();
