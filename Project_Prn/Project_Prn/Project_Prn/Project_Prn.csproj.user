@@ -11,6 +11,12 @@
     <Compile Update="CertificateWindow\CertificateManagement.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="CourseWindow\AddCourse.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CourseWindow\CourseDetail.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="RegistrationWindow\AddRegistration.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
