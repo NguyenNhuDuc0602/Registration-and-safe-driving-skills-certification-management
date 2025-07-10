@@ -22,6 +22,7 @@
                 <Button Content="Quản lý khóa học" Tag="Courses" Click="NavButton_Click" Margin="8" Height="40" />
                 <Button Content="Quản lý thi" Tag="Exams" Click="NavButton_Click" Margin="8" Height="40" />
                 <Button Content="Chứng chỉ" Tag="Certificates" Click="NavButton_Click" Margin="8" Height="40" />
+                <Button Content="Đăng ký" Tag="Registration" Click="NavButton_Click" Margin="8" Height="40" />
                 <Button Content="Đăng xuất" Tag="Logout" Click="NavButton_Click" Margin="8" Height="40" />
             </StackPanel>
         </Border>
