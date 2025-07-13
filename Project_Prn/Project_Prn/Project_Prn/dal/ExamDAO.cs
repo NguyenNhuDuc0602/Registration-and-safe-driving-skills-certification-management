@@ -65,5 +65,25 @@ namespace Project_Prn.dal
                 .Include(e => e.Course)
                 .ToList();
         }
+        // 7. Lấy các kỳ thi chưa được xác nhận
+        public List<Exam> GetUnconfirmedExams()
+        {
+            return dbc.Exams
+                .Include(e => e.Course)
+                .Where(e => e.IsConfirmed == false)
+                .ToList();
+        }
+
+        // 8. Xác nhận kỳ thi
+        public void ConfirmExam(int examId)
+        {
+            var exam = dbc.Exams.FirstOrDefault(e => e.ExamId == examId);
+            if (exam != null)
+            {
+                exam.IsConfirmed = true;
+                dbc.SaveChanges();
+            }
+        }
+
     }
 }
