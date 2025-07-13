@@ -62,6 +62,7 @@ namespace Project_Prn.dal
             return dbc.Registrations
                 .Where(r => r.UserId == userId)
                 .Include(r => r.Course)  // Eager load thông tin khóa học
+                .ThenInclude(c => c.Teacher)
                 .ToList();
         }
 
