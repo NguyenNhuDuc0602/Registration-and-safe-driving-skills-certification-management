@@ -60,6 +60,9 @@ namespace Project_Prn.RoleWindow
                 case "MonitorExams":
                     Modal(new ExamWindow.ConfirmExamWindow());
                     break;
+                case "AssignTeacher":
+                    Modal(new PoliceWindow.AssignTeacherWindow());
+                    break;
                 case "ManageCertificates":
                     Modal(new CertificateWindow.CertificateManagement());
                     break;
@@ -67,6 +70,8 @@ namespace Project_Prn.RoleWindow
                     Modal(new ResultWindow.ResultPolice());
                     break;
                 case "Logout":
+                    var loginWindow = new MainWindow();
+                    loginWindow.Show();
                     this.Close();
                     break;
                 default:

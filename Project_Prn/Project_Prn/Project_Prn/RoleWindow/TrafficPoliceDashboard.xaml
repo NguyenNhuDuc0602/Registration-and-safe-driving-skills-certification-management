@@ -18,18 +18,26 @@
                 <TextBlock Text="TRAFFIC POLICE" FontSize="20" FontWeight="Bold" Foreground="White" Margin="16,24,0,32"/>
 
                 <Button Content="Xác nhận &amp; giám sát thi"
-                        Tag="MonitorExams"
-                      
+                        Tag="MonitorExams"                     
                         Margin="8" Height="40" Click="Button_Click"/>
 
+                <Button Content="Phân công dạy học"
+                         Tag="AssignTeacher"
+                         Margin="8" Height="40"
+                         Click="Button_Click"/>
+
+                <Button Content="Phân công giám thị"
+                         Tag="AssignSupervisor"
+                         Margin="8" Height="40"
+                         Click="Button_Click"/>
+
+
                 <Button Content="Quản lý cấp chứng chỉ"
-                        Tag="ManageCertificates"
-                       
+                        Tag="ManageCertificates"                     
                         Margin="8" Height="40"  Click="Button_Click" />
 
                 <Button Content="kết quả và xác nhận chứng chỉ"
-                        Tag="Compliance"
-                     
+                        Tag="Compliance"                 
                         Margin="8" Height="40"  Click="Button_Click" />
 
                 <Button Content="Đăng xuất"
