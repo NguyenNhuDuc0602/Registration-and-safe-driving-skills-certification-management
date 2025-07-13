@@ -12,44 +12,58 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!-- Sidebar -->
         <Border Grid.Column="0" Background="#2c3e50">
-            <StackPanel>
-                <TextBlock Text="STUDENT" FontSize="26" FontWeight="Bold" Foreground="White" Margin="16,24,0,32"/>
+            <DockPanel LastChildFill="True">
+                <!-- Tiêu đề -->
+                <TextBlock Text="STUDENT"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   Margin="16,24,0,32"
+                   DockPanel.Dock="Top" />
 
-                <Button Content="Đăng ký khóa học / thi"
-                        Tag="Registration"
-                         Click="Button_Click"
-                        Margin="8" Height="40"  />
-             
-                <Button Content="Vào học"
-                        Tag="Learning"
-                        Click="Button_Click"
-                        Height="40"
-
-                        Margin="5"/>
-
-                <Button Content="Lịch thi"
-                        Tag="Exams"
-                        Click="Button_Click"
-                        Margin="8" Height="40" />
-
-                <Button Content="Tiến trình &amp; kết quả"
-                        Tag="Progress"
-                        Click="Button_Click"
-                        Margin="8" Height="40" />
-
-                <Button Content="Chứng chỉ"
-                        Tag="Certificates"
-                        Click="Button_Click"
-                        Margin="8" Height="40" />
-
+                <!-- Nút đăng xuất cố định dưới cùng -->
                 <Button Content="Đăng xuất"
-                        Tag="Logout"
-                         Click="Button_Click"
-                        Margin="8" Height="40" />
-            </StackPanel>
+                Tag="Logout"
+                Click="Button_Click"
+                Margin="8" Height="40"
+                DockPanel.Dock="Bottom" />
+
+                <!-- Các nút còn lại -->
+                <StackPanel>
+                    <Button Content="Thông tin cá nhân"
+                    Tag="Profile"
+                    Click="Button_Click"
+                    Margin="8" Height="40" />
+
+                    <Button Content="Đăng ký khóa học / thi"
+                    Tag="Registration"
+                    Click="Button_Click"
+                    Margin="8" Height="40" />
+
+                    <Button Content="Vào học"
+                    Tag="Learning"
+                    Click="Button_Click"
+                    Margin="8" Height="40" />
+
+                    <Button Content="Lịch thi"
+                    Tag="Exams"
+                    Click="Button_Click"
+                    Margin="8" Height="40" />
+
+                    <Button Content="Tiến trình &amp; kết quả"
+                    Tag="Progress"
+                    Click="Button_Click"
+                    Margin="8" Height="40" />
+
+                    <Button Content="Chứng chỉ"
+                    Tag="Certificates"
+                    Click="Button_Click"
+                    Margin="8" Height="40" />
+                </StackPanel>
+            </DockPanel>
         </Border>
+
 
         <!-- Main area with top bar + Home summary grid + frame -->
         <DockPanel Grid.Column="1" LastChildFill="True">

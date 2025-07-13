@@ -1,4 +1,6 @@
-﻿using Project_Prn.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Project_Prn.Models;
+using Project_Prn.StudentWindow;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,7 +14,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Microsoft.EntityFrameworkCore;
 
 
 namespace Project_Prn.RoleWindow
@@ -71,6 +72,17 @@ namespace Project_Prn.RoleWindow
             {
                 case "Registration":
                     Modal(new StudentWindow.CourseRegistrationWindow(currentUser));
+                    break;
+                case "Profile":
+                    var profileWindow = new StudentProfileWindow(currentUser);
+                    bool? result = profileWindow.ShowDialog();
+
+                    if (result == true)
+                    {
+                        // Cập nhật lại giao diện nếu người dùng thay đổi thông tin
+                        DataContext = null;
+                        DataContext = currentUser;
+                    }
                     break;
 
                 case "Progress":
