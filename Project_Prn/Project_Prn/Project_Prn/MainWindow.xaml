@@ -15,7 +15,7 @@
 
         <!-- Header -->
         <Border Grid.Row="0" Background="#4CAF50" Padding="10" CornerRadius="10" Margin="0,0,0,10">
-            <TextBlock Text="Login" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            <TextBlock Text="HOME" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         </Border>
 
         <!-- Login form -->
@@ -31,7 +31,7 @@
             <Button Name="btnLogin" Height="40" Content="Login" Background="#4CAF50" Foreground="White" BorderBrush="#4CAF50" BorderThickness="1" FontSize="16" HorizontalAlignment="Stretch" Margin="10" Click="btnLogin_Click" />
 
             <!-- Register Button -->
-            <Button Name="btnRegister" Height="40" Content="Register" Background="#FF9800" Foreground="White" BorderBrush="#FF9800" BorderThickness="1" FontSize="16" HorizontalAlignment="Stretch" Margin="10"/>
+            <Button Name="btnRegister" Height="40" Content="Register" Background="#FF9800" Foreground="White" BorderBrush="#FF9800" BorderThickness="1" FontSize="16" HorizontalAlignment="Stretch" Margin="10" Click="btnRegister_Click"/>
 
             <!-- Forgot Password Button -->
             <Button Name="btnForgotPassword" Height="30" Content="Forgot your password?" Background="Transparent" Foreground="Blue" BorderBrush="Transparent" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
