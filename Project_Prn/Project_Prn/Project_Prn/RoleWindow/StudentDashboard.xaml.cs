@@ -76,6 +76,12 @@ namespace Project_Prn.RoleWindow
                 case "Progress":
                     Modal(new StudentWindow.StudentResultWindow(currentUser));
                     break;
+                case "Exams":
+                    Modal(new StudentWindow.ExamViewWindow(currentUser));
+                    break;
+                case "Learning":
+                    Modal(new StudentWindow.CourseLearningWindow(currentUser));
+                    break;
 
                 case "Certificates":
                     Modal(new StudentWindow.CertificateViewWindow(currentUser));

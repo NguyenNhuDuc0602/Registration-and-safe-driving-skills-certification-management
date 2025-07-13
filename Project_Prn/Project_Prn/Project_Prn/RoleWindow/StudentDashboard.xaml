@@ -21,6 +21,18 @@
                         Tag="Registration"
                          Click="Button_Click"
                         Margin="8" Height="40"  />
+             
+                <Button Content="Vào học"
+                        Tag="Learning"
+                        Click="Button_Click"
+                        Height="40"
+
+                        Margin="5"/>
+
+                <Button Content="Lịch thi"
+                        Tag="Exams"
+                        Click="Button_Click"
+                        Margin="8" Height="40" />
 
                 <Button Content="Tiến trình &amp; kết quả"
                         Tag="Progress"
