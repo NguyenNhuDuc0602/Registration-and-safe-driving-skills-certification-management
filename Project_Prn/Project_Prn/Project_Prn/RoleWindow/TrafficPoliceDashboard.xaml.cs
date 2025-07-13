@@ -60,8 +60,12 @@ namespace Project_Prn.RoleWindow
                 case "MonitorExams":
                     Modal(new ExamWindow.ConfirmExamWindow());
                     break;
+
                 case "AssignTeacher":
                     Modal(new PoliceWindow.AssignTeacherWindow());
+                    break;
+                case "AssignSupervisor":
+                    Modal(new PoliceWindow.AssignSupervisorWindow());
                     break;
                 case "ManageCertificates":
                     Modal(new CertificateWindow.CertificateManagement());

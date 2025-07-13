@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Project_Prn.Models;
+﻿using Project_Prn.Models;
 
 public partial class Exam
 {
@@ -12,7 +9,12 @@ public partial class Exam
     public DateOnly Date { get; set; }
 
     public string Room { get; set; } = null!;
+
     public bool IsConfirmed { get; set; }
+
+    public int? SupervisorId { get; set; } // 👈 Thêm dòng này
+
+    public virtual User? Supervisor { get; set; } // 👈 Thêm dòng này
 
     public virtual Course Course { get; set; } = null!;
 

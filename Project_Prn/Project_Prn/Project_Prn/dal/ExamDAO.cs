@@ -84,6 +84,25 @@ namespace Project_Prn.dal
                 dbc.SaveChanges();
             }
         }
+        //Lấy danh sách kỳ thi chưa có giám thị
+        public List<Exam> GetExamsWithoutSupervisor()
+        {
+            return dbc.Exams
+                .Include(e => e.Course)
+                .Where(e => e.SupervisorId == null)
+                .ToList();
+        }
+        //Phân công giám thị cho kỳ thi
+        public void AssignSupervisor(int examId, int supervisorId)
+        {
+            var exam = dbc.Exams.FirstOrDefault(e => e.ExamId == examId);
+            if (exam != null)
+            {
+                exam.SupervisorId = supervisorId;
+                dbc.SaveChanges();
+            }
+        }
+
 
     }
 }
