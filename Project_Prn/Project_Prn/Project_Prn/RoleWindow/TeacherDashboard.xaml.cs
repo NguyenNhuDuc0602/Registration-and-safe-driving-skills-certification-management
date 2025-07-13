@@ -76,9 +76,9 @@ namespace Project_Prn.RoleWindow
                 .Where(c => c.TeacherId == currentUser.UserId)
                 .Count().ToString();
 
-            // so luong ki thi
+            // Số lượng kỳ thi mà giáo viên dạy hoặc làm giám thị
             ExamsCountText.Text = context.Exams
-                .Where(e => e.Course.TeacherId == currentUser.UserId)
+                .Where(e => e.Course.TeacherId == currentUser.UserId || e.SupervisorId == currentUser.UserId)
                 .Count().ToString();
 
         }
