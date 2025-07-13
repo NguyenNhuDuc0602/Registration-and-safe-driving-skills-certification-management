@@ -73,6 +73,28 @@ namespace Project_Prn.dal
                 .Include(r => r.User)  // Eager load thông tin người dùng
                 .ToList();
         }
+        public void UpdateRegistrationStatus(int regisId, string newStatus)
+        {
+            var reg = dbc.Registrations.FirstOrDefault(r => r.RegistrationId == regisId);
+            if (reg != null)
+            {
+                reg.Status = newStatus;
+                dbc.SaveChanges(); // Sử dụng cùng context
+            }
+        }
+
+        public void RejectRegistrationWithComment(int regisId, string comment)
+        {
+            var reg = dbc.Registrations.FirstOrDefault(r => r.RegistrationId == regisId);
+            if (reg != null)
+            {
+                reg.Status = "Rejected";
+                reg.Comments = comment;
+                dbc.SaveChanges(); // Sử dụng cùng context
+            }
+        }
+
+
 
     }
 }

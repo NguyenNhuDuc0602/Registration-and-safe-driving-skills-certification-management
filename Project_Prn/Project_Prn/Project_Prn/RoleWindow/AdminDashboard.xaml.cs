@@ -59,7 +59,9 @@ namespace Project_Prn.RoleWindow
                     Modal(new ExamWindow.ExamManager());
                     break;
                 case "Logout":
-                    this.Close();
+                    var loginWindow = new MainWindow();
+                    loginWindow.Show();      
+                    this.Close();           
                     break;
                 default:
                     MessageBox.Show("Chức năng chưa được triển khai.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
