@@ -40,9 +40,14 @@ namespace Project_Prn.RoleWindow
                                                 .Count().ToString();
 
             // so luong ki thi
-            UpcomingExamsText.Text = context.Exams
-                                           .Where(e => e.Course.TeacherId == currentUser.UserId)
-                                           .Count().ToString();
+            UpcomingExamsText.Text = context.Registrations
+             .Where(r => r.UserId == currentUser.UserId && r.Status == "Approved")
+             .Include(r => r.Course)
+             .ThenInclude(c => c.Exams)
+             .SelectMany(r => r.Course.Exams)
+             .Where(e => e.Date >= DateOnly.FromDateTime(DateTime.Today))
+             .Count()
+             .ToString();
 
             // chung chi dat duoc
             CertificateCountText.Text = context.Certificates
@@ -62,18 +67,30 @@ namespace Project_Prn.RoleWindow
                 child.ShowDialog();
                 Window_Loaded(this, null); // Reload data after closing the modal
             }
-            //switch (tag)
-            //{
-            //    case "Registration":
-            //        Modal(new UserWindow.UserManagement());
-            //        break;
-            //    case "Logout":
-            //        this.Close();
-            //        break;
-            //    default:
-            //        MessageBox.Show("Chức năng chưa được triển khai.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-            //        break;
-            //}
+            switch (tag)
+            {
+                case "Registration":
+                    Modal(new StudentWindow.CourseRegistrationWindow(currentUser));
+                    break;
+
+                case "Progress":
+                    Modal(new StudentWindow.StudentResultWindow(currentUser));
+                    break;
+
+                case "Certificates":
+                    Modal(new StudentWindow.CertificateViewWindow(currentUser));
+                    break;
+
+                case "Logout":
+                    var login = new MainWindow();
+                    login.Show();
+                    this.Close();
+                    break;
+
+                default:
+                    MessageBox.Show("Chức năng chưa được triển khai.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+            }
         }
     }
     

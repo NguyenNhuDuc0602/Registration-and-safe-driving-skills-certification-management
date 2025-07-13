@@ -1,0 +1,19 @@
+﻿<Window x:Class="Project_Prn.StudentWindow.CertificateViewWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Prn.StudentWindow"
+        mc:Ignorable="d"
+        Title="CertificateViewWindow" Height="450" Width="800">
+    <Grid Margin="10">
+        <TextBlock Text="Danh sách chứng chỉ đã cấp" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+        <DataGrid x:Name="certificateDataGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã chứng chỉ" Binding="{Binding CertificateCode}" Width="*"/>
+                <DataGridTextColumn Header="Ngày cấp" Binding="{Binding IssuedDate}" Width="*"/>
+                <DataGridTextColumn Header="Ngày hết hạn" Binding="{Binding ExpirationDate}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

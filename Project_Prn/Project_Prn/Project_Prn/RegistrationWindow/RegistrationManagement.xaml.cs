@@ -95,5 +95,45 @@ namespace Project_Prn.RegistrationWindow
                 dgRegistration.ItemsSource = null;
             }
         }
+        private void btnApprove_Click(object sender, RoutedEventArgs e)
+        {
+            var selected = dgRegistration.SelectedItem as Registration;
+            if (selected == null)
+            {
+                MessageBox.Show("Vui lòng chọn đơn đăng ký để duyệt!");
+                return;
+            }
+
+            RegistrationDAO dao = new RegistrationDAO();
+            dao.UpdateRegistrationStatus(selected.RegistrationId, "Approved");
+            LoadRegistration();
+
+            MessageBox.Show("Đơn đăng ký đã được duyệt!");
+        }
+
+        private void btnReject_Click(object sender, RoutedEventArgs e)
+        {
+            var selected = dgRegistration.SelectedItem as Registration;
+            if (selected == null)
+            {
+                MessageBox.Show("Vui lòng chọn đơn đăng ký để từ chối!");
+                return;
+            }
+
+            // Hiển thị hộp thoại để nhập lý do từ chối
+            string comment = Microsoft.VisualBasic.Interaction.InputBox(
+                "Vui lòng nhập lý do từ chối:", "Từ chối đơn đăng ký", "");
+
+            if (string.IsNullOrWhiteSpace(comment))
+            {
+                MessageBox.Show("Bạn cần nhập lý do từ chối!");
+                return;
+            }
+
+            RegistrationDAO dao = new RegistrationDAO();
+            dao.RejectRegistrationWithComment(selected.RegistrationId, comment);
+            LoadRegistration();
+            MessageBox.Show("Đơn đăng ký đã bị từ chối!");
+        }
     }
 }

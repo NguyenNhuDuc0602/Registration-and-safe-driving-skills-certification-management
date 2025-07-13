@@ -1,0 +1,31 @@
+﻿<Window x:Class="Project_Prn.StudentWindow.CourseRegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Prn.StudentWindow"
+        mc:Ignorable="d"
+        Title="CourseRegistrationWindow" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Danh sách khóa học khả dụng" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <DataGrid x:Name="courseDataGrid" Grid.Row="1" AutoGenerateColumns="False" 
+                  CanUserAddRows="False" SelectionMode="Single" Margin="0,0,0,10">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Tên khóa học" Binding="{Binding CourseName}" Width="*"/>
+                <DataGridTextColumn Header="Giáo viên" Binding="{Binding Teacher.FullName}" Width="*"/>
+                <DataGridTextColumn Header="Ngày bắt đầu" Binding="{Binding StartDate}" Width="*"/>
+                <DataGridTextColumn Header="Ngày kết thúc" Binding="{Binding EndDate}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <Button Content="Đăng ký khóa học" Grid.Row="2" Height="35" Width="160"
+                HorizontalAlignment="Right" Click="RegisterCourseButton_Click"/>
+    </Grid>
+</Window>
