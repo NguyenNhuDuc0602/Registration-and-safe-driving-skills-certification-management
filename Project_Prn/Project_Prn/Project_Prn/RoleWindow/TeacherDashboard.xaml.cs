@@ -52,6 +52,8 @@ namespace Project_Prn.RoleWindow
                     Modal(new ExamWindow.ExamManager());
                     break;
                 case "Logout":
+                    var loginWindow = new MainWindow();
+                    loginWindow.Show();
                     this.Close();
                     break;
                 default:
