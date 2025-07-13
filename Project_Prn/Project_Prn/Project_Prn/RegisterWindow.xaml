@@ -1,0 +1,50 @@
+﻿<Window x:Class="Project_Prn.RegisterWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Prn"
+        mc:Ignorable="d"
+        Title="RegisterWindow" Height="450" Width="800" ResizeMode="CanResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid Background="#f5f5f5">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <StackPanel Margin="30">
+                <!-- Tiêu đề -->
+                <TextBlock Text="Đăng ký tài khoản" FontSize="24" FontWeight="Bold" Margin="0,0,0,20" HorizontalAlignment="Center" Foreground="#333"/>
+
+                <!-- Họ tên -->
+                <TextBlock Text="Họ và tên" Margin="0,0,0,5"/>
+                <TextBox x:Name="txtName" Height="30" Margin="0,0,0,10"/>
+
+                <!-- Email -->
+                <TextBlock Text="Email" Margin="0,0,0,5"/>
+                <TextBox x:Name="txtEmail" Height="30" Margin="0,0,0,10"/>
+
+                <!-- Mật khẩu -->
+                <TextBlock Text="Mật khẩu" Margin="0,0,0,5"/>
+                <PasswordBox x:Name="txtPassword" Height="30" Margin="0,0,0,10"/>
+
+                <!-- Nhập lại mật khẩu -->
+                <TextBlock Text="Xác nhận mật khẩu" Margin="0,0,0,5"/>
+                <PasswordBox x:Name="txtConfirmPassword" Height="30" Margin="0,0,0,10"/>
+
+                <!-- Vai trò -->
+                <TextBlock Text="Vai trò" Margin="0,0,0,5"/>
+                <ComboBox x:Name="cbRole" Height="30" Margin="0,0,0,20">
+                    <ComboBoxItem Content="Student" IsSelected="True"/>
+                    <ComboBoxItem Content="Teacher"/>
+                    <ComboBoxItem Content="TrafficPolice"/>
+                </ComboBox>
+
+                <!-- Nút đăng ký -->
+                <Button Content="Đăng ký"
+                        Height="40"
+                        Background="#4CAF50"
+                        Foreground="White"
+                        FontSize="16"
+                        Click="Register_Click"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
