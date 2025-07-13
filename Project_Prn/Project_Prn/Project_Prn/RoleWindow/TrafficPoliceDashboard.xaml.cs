@@ -44,6 +44,37 @@ namespace Project_Prn.RoleWindow
 
      
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is not Button btn) return;
+            string tag = btn.Tag as string ?? string.Empty;
+            void Modal(Window child)
+            {
+                child.Owner = this;
+                child.ShowDialog();
+                Window_Loaded(this, null); // Reload data after closing the modal
+                DataContext = currentUser; // Rebind the current user to the DataContext for data binding
+            }
+            switch (tag)
+            {
+                case "MonitorExams":
+                    Modal(new ExamWindow.ConfirmExamWindow());
+                    break;
+                case "ManageCertificates":
+                    Modal(new CertificateWindow.CertificateManagement());
+                    break;
+                case "Compliance":
+                    Modal(new ResultWindow.ResultPolice());
+                    break;
+                case "Logout":
+                    this.Close();
+                    break;
+                default:
+                    MessageBox.Show("Chức năng chưa được triển khai.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+            }
+
+        }
 
     }
 }

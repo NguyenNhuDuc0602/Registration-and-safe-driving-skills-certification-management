@@ -20,22 +20,22 @@
                 <Button Content="Xác nhận &amp; giám sát thi"
                         Tag="MonitorExams"
                       
-                        Margin="8" Height="40"/>
+                        Margin="8" Height="40" Click="Button_Click"/>
 
                 <Button Content="Quản lý cấp chứng chỉ"
                         Tag="ManageCertificates"
                        
-                        Margin="8" Height="40" />
+                        Margin="8" Height="40"  Click="Button_Click" />
 
-                <Button Content="Pháp luật &amp; tuân thủ"
+                <Button Content="kết quả và xác nhận chứng chỉ"
                         Tag="Compliance"
                      
-                        Margin="8" Height="40" />
+                        Margin="8" Height="40"  Click="Button_Click" />
 
                 <Button Content="Đăng xuất"
                         Tag="Logout"
                     
-                        Margin="8" Height="40" />
+                        Margin="8" Height="40"  Click="Button_Click" />
             </StackPanel>
         </Border>
 
