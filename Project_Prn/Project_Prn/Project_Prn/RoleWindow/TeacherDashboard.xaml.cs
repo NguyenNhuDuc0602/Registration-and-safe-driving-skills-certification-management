@@ -29,7 +29,6 @@ namespace Project_Prn.RoleWindow
             DataContext = currentUser; // Bind the current user to the DataContext for data binding
         }
 
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if(sender is not Button btn) return;
@@ -41,6 +40,25 @@ namespace Project_Prn.RoleWindow
             Window_Loaded(this, null); // Reload data after closing the modal
                 DataContext = currentUser; // Rebind the current user to the DataContext for data binding
             }
+            switch (tag)
+            {
+                case "Students":
+                    Modal(new UserWindow.StudentManagement());
+                    break;
+                case "Courses":
+                    Modal(new CourseWindow.CourseManagement());
+                    break;
+                case "Exams":
+                    Modal(new ExamWindow.ExamManager());
+                    break;
+                case "Logout":
+                    this.Close();
+                    break;
+                default:
+                    MessageBox.Show("Chức năng chưa được triển khai.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    break;
+            }
+
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {

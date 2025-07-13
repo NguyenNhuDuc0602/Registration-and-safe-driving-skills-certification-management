@@ -23,7 +23,7 @@
                         Click="Button_Click"
                         Margin="8" Height="40"/>
 
-                <Button Content="Quản lý khóa học"
+                <Button  Content="Quản lý khóa học"
                         Tag="Courses"
                         Click="Button_Click"
                         Margin="8" Height="40" />

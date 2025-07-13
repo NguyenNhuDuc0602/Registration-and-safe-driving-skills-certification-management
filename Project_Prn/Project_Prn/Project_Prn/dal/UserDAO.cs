@@ -20,6 +20,10 @@ namespace Project_Prn.dal
         {
             return dbc.Users.ToList(); 
         }
+        public List<User> GetAllStudent()
+        {
+            return dbc.Users.Where(a => a.Role.Equals("Student")).ToList();
+        }
 
         // 2. Lấy người dùng theo ID
         public User GetByIdUser(int userId)
