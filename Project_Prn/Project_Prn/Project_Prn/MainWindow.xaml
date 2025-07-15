@@ -6,35 +6,54 @@
         xmlns:local="clr-namespace:Project_Prn"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+
     <Grid>
-        <!-- Define grid rows -->
+        <!-- Background image -->
+        <Grid.Background>
+            <ImageBrush ImageSource="Image/Background.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
+            <!-- dòng cho tiêu đề -->
             <RowDefinition Height="*"/>
+            <!-- dòng cho login -->
         </Grid.RowDefinitions>
 
-        <!-- Header -->
-        <Border Grid.Row="0" Background="#4CAF50" Padding="10" CornerRadius="10" Margin="0,0,0,10">
-            <TextBlock Text="HOME" FontSize="24" FontWeight="Bold" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <!-- New header text (không dùng border xanh) -->
+        <TextBlock Grid.Row="0"
+                   Text="REGISTRATION AND SAFE DRIVING SKILLS"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   Margin="0,10,0,10"
+                   Background="#66000000"
+                   Padding="10"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"/>
+
+        <!-- Login Form with border -->
+        <Border Grid.Row="1"
+                Background="#AAFFFFFF"
+                CornerRadius="10"
+                Padding="20"
+                Width="320"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                BorderBrush="Gray"
+                BorderThickness="1">
+
+            <StackPanel>
+                <TextBox Name="txtEmail" Height="40" Margin="10" Foreground="Gray" Padding="10"/>
+                <PasswordBox Name="txtPassword" Height="40" Margin="10" Padding="10"/>
+                <Button Name="btnLogin" Height="40" Content="Login" Background="#4CAF50" Foreground="White"
+                        BorderBrush="#4CAF50" BorderThickness="1" FontSize="16" Margin="10" Click="btnLogin_Click"/>
+                <Button Name="btnRegister" Height="40" Content="Register" Background="#FF9800" Foreground="White"
+                        BorderBrush="#FF9800" BorderThickness="1" FontSize="16" Margin="10" Click="btnRegister_Click"/>
+                <Button Name="btnForgotPassword" Height="30" Content="Forgot your password?" Background="Transparent"
+                        Foreground="Blue" BorderBrush="Transparent" FontSize="14" HorizontalAlignment="Center" Margin="10"/>
+            </StackPanel>
         </Border>
-
-        <!-- Login form -->
-        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10" Width="300" >
-            <!-- Username TextBox -->
-            <TextBox Name="txtEmail" Height="40" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Stretch" 
-                     Foreground="Gray" Padding="10" Focusable="True"/>
-
-            <!-- Password PasswordBox -->
-            <PasswordBox Name="txtPassword" Height="40" Margin="10" VerticalAlignment="Center" HorizontalAlignment="Stretch" Padding="10"/>
-
-            <!-- Login Button -->
-            <Button Name="btnLogin" Height="40" Content="Login" Background="#4CAF50" Foreground="White" BorderBrush="#4CAF50" BorderThickness="1" FontSize="16" HorizontalAlignment="Stretch" Margin="10" Click="btnLogin_Click" />
-
-            <!-- Register Button -->
-            <Button Name="btnRegister" Height="40" Content="Register" Background="#FF9800" Foreground="White" BorderBrush="#FF9800" BorderThickness="1" FontSize="16" HorizontalAlignment="Stretch" Margin="10" Click="btnRegister_Click"/>
-
-            <!-- Forgot Password Button -->
-            <Button Name="btnForgotPassword" Height="30" Content="Forgot your password?" Background="Transparent" Foreground="Blue" BorderBrush="Transparent" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10"/>
-        </StackPanel>
     </Grid>
 </Window>
