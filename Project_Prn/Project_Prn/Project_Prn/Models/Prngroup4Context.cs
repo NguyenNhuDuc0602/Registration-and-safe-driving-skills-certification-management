@@ -1,8 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using Microsoft.EntityFrameworkCore;
 
 namespace Project_Prn.Models;
 
@@ -17,34 +15,58 @@ public partial class Prngroup4Context : DbContext
     {
     }
 
+    public virtual DbSet<Attendance> Attendances { get; set; }
+
     public virtual DbSet<Certificate> Certificates { get; set; }
+
     public virtual DbSet<Course> Courses { get; set; }
+
     public virtual DbSet<Exam> Exams { get; set; }
+
+    public virtual DbSet<Notification> Notifications { get; set; }
+
     public virtual DbSet<Registration> Registrations { get; set; }
+
     public virtual DbSet<Result> Results { get; set; }
+
     public virtual DbSet<User> Users { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        var builder = new ConfigurationBuilder();
-        builder.SetBasePath(Directory.GetCurrentDirectory());
-        builder.AddJsonFile("appsettings.json", true, true);
-        var configuration = builder.Build();
-        optionsBuilder.UseSqlServer(configuration.GetConnectionString("Default"));
-    }
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Server=NGOCANH;uid=sa;password=123;database=PRNGroup4;Encrypt=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Attendance>(entity =>
+        {
+            entity.HasKey(e => e.AttendanceId).HasName("PK__Attendan__8B69263CE404E032");
+
+            entity.ToTable("Attendance");
+
+            entity.Property(e => e.AttendanceId).HasColumnName("AttendanceID");
+            entity.Property(e => e.CourseId).HasColumnName("CourseID");
+            entity.Property(e => e.Status).HasMaxLength(20);
+            entity.Property(e => e.UserId).HasColumnName("UserID");
+
+            entity.HasOne(d => d.Course).WithMany(p => p.Attendances)
+                .HasForeignKey(d => d.CourseId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Attendanc__Cours__619B8048");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Attendances)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Attendanc__UserI__628FA481");
+        });
+
         modelBuilder.Entity<Certificate>(entity =>
         {
-            entity.HasKey(e => e.CertificateId).HasName("PK__Certific__BBF8A7E14EF7F6DF");
+            entity.HasKey(e => e.CertificateId).HasName("PK__Certific__BBF8A7E1F6378889");
 
-            entity.HasIndex(e => e.CertificateCode, "UQ__Certific__9B8558309009C004").IsUnique();
+            entity.HasIndex(e => e.CertificateCode, "UQ__Certific__9B85583008B3B963").IsUnique();
 
             entity.Property(e => e.CertificateId).HasColumnName("CertificateID");
-            entity.Property(e => e.CertificateCode)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+            entity.Property(e => e.CertificateCode).HasMaxLength(50);
             entity.Property(e => e.UserId).HasColumnName("UserID");
 
             entity.HasOne(d => d.User).WithMany(p => p.Certificates)
@@ -55,12 +77,10 @@ public partial class Prngroup4Context : DbContext
 
         modelBuilder.Entity<Course>(entity =>
         {
-            entity.HasKey(e => e.CourseId).HasName("PK__Courses__C92D7187BB5E47C7");
+            entity.HasKey(e => e.CourseId).HasName("PK__Courses__C92D7187652C66CC");
 
             entity.Property(e => e.CourseId).HasColumnName("CourseID");
-            entity.Property(e => e.CourseName)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+            entity.Property(e => e.CourseName).HasMaxLength(100);
             entity.Property(e => e.TeacherId).HasColumnName("TeacherID");
 
             entity.HasOne(d => d.Teacher).WithMany(p => p.Courses)
@@ -71,30 +91,47 @@ public partial class Prngroup4Context : DbContext
 
         modelBuilder.Entity<Exam>(entity =>
         {
-            entity.HasKey(e => e.ExamId).HasName("PK__Exams__297521A70EA6F064");
+            entity.HasKey(e => e.ExamId).HasName("PK__Exams__297521A73AA79B0E");
 
             entity.Property(e => e.ExamId).HasColumnName("ExamID");
             entity.Property(e => e.CourseId).HasColumnName("CourseID");
-            entity.Property(e => e.Room)
-                .HasMaxLength(50)
-                .IsUnicode(false);
+            entity.Property(e => e.Room).HasMaxLength(50);
 
             entity.HasOne(d => d.Course).WithMany(p => p.Exams)
                 .HasForeignKey(d => d.CourseId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Exams__CourseID__5629CD9C");
+
+            entity.HasOne(d => d.Supervisor).WithMany(p => p.Exams)
+                .HasForeignKey(d => d.SupervisorId)
+                .HasConstraintName("FK_Exams_Supervisor");
+        });
+
+        modelBuilder.Entity<Notification>(entity =>
+        {
+            entity.HasKey(e => e.NotificationId).HasName("PK__Notifica__20CF2E1280EB172B");
+
+            entity.ToTable("Notification");
+
+            entity.HasOne(d => d.Registration).WithMany(p => p.Notifications)
+                .HasForeignKey(d => d.RegistrationId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Notificat__Regis__70DDC3D8");
+
+            entity.HasOne(d => d.User).WithMany(p => p.Notifications)
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Notificat__UserI__6FE99F9F");
         });
 
         modelBuilder.Entity<Registration>(entity =>
         {
-            entity.HasKey(e => e.RegistrationId).HasName("PK__Registra__6EF5883075B81F38");
+            entity.HasKey(e => e.RegistrationId).HasName("PK__Registra__6EF58830B7B5B6E3");
 
             entity.Property(e => e.RegistrationId).HasColumnName("RegistrationID");
-            entity.Property(e => e.Comments).HasColumnType("text");
             entity.Property(e => e.CourseId).HasColumnName("CourseID");
             entity.Property(e => e.Status)
                 .HasMaxLength(20)
-                .IsUnicode(false)
                 .HasDefaultValue("Pending");
             entity.Property(e => e.UserId).HasColumnName("UserID");
 
@@ -111,7 +148,7 @@ public partial class Prngroup4Context : DbContext
 
         modelBuilder.Entity<Result>(entity =>
         {
-            entity.HasKey(e => e.ResultId).HasName("PK__Results__9769022812F79E3E");
+            entity.HasKey(e => e.ResultId).HasName("PK__Results__976902285D16A886");
 
             entity.Property(e => e.ResultId).HasColumnName("ResultID");
             entity.Property(e => e.ExamId).HasColumnName("ExamID");
@@ -131,32 +168,18 @@ public partial class Prngroup4Context : DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
-            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC2CB1942A");
+            entity.HasKey(e => e.UserId).HasName("PK__Users__1788CCAC88D80524");
 
-            entity.HasIndex(e => e.Email, "UQ__Users__A9D10534E33BF2B3").IsUnique();
+            entity.HasIndex(e => e.Email, "UQ__Users__A9D10534E5392987").IsUnique();
 
             entity.Property(e => e.UserId).HasColumnName("UserID");
-            entity.Property(e => e.Class)
-                .HasMaxLength(50)
-                .IsUnicode(false);
-            entity.Property(e => e.Email)
-                .HasMaxLength(150)
-                .IsUnicode(false);
-            entity.Property(e => e.FullName)
-                .HasMaxLength(150)
-                .IsUnicode(false);
-            entity.Property(e => e.Password)
-                .HasMaxLength(255)
-                .IsUnicode(false);
-            entity.Property(e => e.Phone)
-                .HasMaxLength(15)
-                .IsUnicode(false);
-            entity.Property(e => e.Role)
-                .HasMaxLength(20)
-                .IsUnicode(false);
-            entity.Property(e => e.School)
-                .HasMaxLength(100)
-                .IsUnicode(false);
+            entity.Property(e => e.Class).HasMaxLength(50);
+            entity.Property(e => e.Email).HasMaxLength(150);
+            entity.Property(e => e.FullName).HasMaxLength(150);
+            entity.Property(e => e.Password).HasMaxLength(255);
+            entity.Property(e => e.Phone).HasMaxLength(15);
+            entity.Property(e => e.Role).HasMaxLength(20);
+            entity.Property(e => e.School).HasMaxLength(100);
         });
 
         OnModelCreatingPartial(modelBuilder);

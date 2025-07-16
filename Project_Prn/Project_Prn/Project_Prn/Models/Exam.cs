@@ -1,4 +1,7 @@
-﻿using Project_Prn.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace Project_Prn.Models;
 
 public partial class Exam
 {
@@ -12,11 +15,11 @@ public partial class Exam
 
     public bool IsConfirmed { get; set; }
 
-    public int? SupervisorId { get; set; } // 👈 Thêm dòng này
-
-    public virtual User? Supervisor { get; set; } // 👈 Thêm dòng này
+    public int? SupervisorId { get; set; }
 
     public virtual Course Course { get; set; } = null!;
 
     public virtual ICollection<Result> Results { get; set; } = new List<Result>();
+
+    public virtual User? Supervisor { get; set; }
 }
