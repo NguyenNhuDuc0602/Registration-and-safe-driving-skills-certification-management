@@ -37,7 +37,8 @@ namespace Project_Prn.RoleWindow
             Prngroup4Context context = new Prngroup4Context();
             // so luong khoa hoc
             RegisteredCoursesText.Text = context.Registrations
-                                                .Where(r => r.UserId == currentUser.UserId)
+                                                .Where(r => r.UserId == currentUser.UserId && r.Status == "Approved")
+                                                .Include(r => r.Course)
                                                 .Count().ToString();
 
             // so luong ki thi

@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
+using Project_Prn.dal;
 
 
 namespace Project_Prn.StudentWindow
@@ -34,19 +35,54 @@ namespace Project_Prn.StudentWindow
 
         private void LoadAvailableCourses()
         {
-            // Danh sách các khóa học mà học sinh chưa đăng ký
-            var registeredCourseIds = context.Registrations
-                .Where(r => r.UserId == currentUser.UserId)
+            try
+            {
+                var notificationDao = new NotificationDAO();
+
+                var rejected = context.Registrations
+                    .Include(r => r.Course)
+                    .Where(r => r.UserId == currentUser.UserId && r.Status == "Rejected")
+                    .ToList();
+
+                string message = "";
+                foreach (var reg in rejected)
+                {
+                    // Check null để tránh crash
+                    if (reg.Course != null && !notificationDao.IsNotified(currentUser.UserId, reg.RegistrationId))
+                    {
+                        var comment = string.IsNullOrEmpty(reg.Comments) ? "No reason provided" : reg.Comments;
+                        message += $"- {reg.Course.CourseName}: {comment}\n";
+
+                        // Ghi nhận đã thông báo
+                        notificationDao.MarkAsNotified(currentUser.UserId, reg.RegistrationId);
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(message))
+                {
+                    MessageBox.Show("Bạn đã bị từ chối các khóa học sau:\n\n" + message, "Thông báo từ chối", MessageBoxButton.OK, MessageBoxImage.Warning);
+                }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Đã xảy ra lỗi khi kiểm tra thông báo từ chối: " + ex.Message, "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+
+        // Phần còn lại: hiển thị danh sách khoá học có thể đăng ký
+        var registeredIds = context.Registrations
+                .Where(r => r.UserId == currentUser.UserId && r.Status != "Rejected")
                 .Select(r => r.CourseId)
                 .ToList();
 
             var availableCourses = context.Courses
                 .Include(c => c.Teacher)
-                .Where(c => !registeredCourseIds.Contains(c.CourseId))
+                .Where(c => !registeredIds.Contains(c.CourseId))
                 .ToList();
 
             courseDataGrid.ItemsSource = availableCourses;
         }
+
+
 
         private void RegisterCourseButton_Click(object sender, RoutedEventArgs e)
         {
