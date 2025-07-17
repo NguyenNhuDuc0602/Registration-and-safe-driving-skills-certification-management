@@ -9,23 +9,28 @@ namespace Project_Prn.UserWindow
 {
     public partial class StudentManagement : Window
     {
-        public StudentManagement()
+        private readonly User currentTeacher;
+
+        public StudentManagement(User teacher)
         {
             InitializeComponent();
+            currentTeacher = teacher;
             LoadUsers();
         }
 
         public void LoadUsers()
         {
             UserDAO userDAO = new UserDAO();
-            var users = userDAO.GetAllStudent();
+            var users = userDAO.GetAllStudentsByTeacher(currentTeacher.UserId);
             dgUsers.ItemsSource = users;
         }
 
         public void LoadUsersByFullName(string name)
         {
             UserDAO userDAO = new UserDAO();
-            var users = userDAO.GetByFullName(name);
+            var users = userDAO.GetByFullName(name)
+                        .Where(u => u.Registrations.Any(r => r.Course.TeacherId == currentTeacher.UserId))
+                        .ToList();
             dgUsers.ItemsSource = users;
         }
 

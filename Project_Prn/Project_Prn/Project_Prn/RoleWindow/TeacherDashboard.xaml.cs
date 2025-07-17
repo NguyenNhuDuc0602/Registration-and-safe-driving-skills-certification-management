@@ -31,19 +31,19 @@ namespace Project_Prn.RoleWindow
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(sender is not Button btn) return;
+            if (sender is not Button btn) return;
             string tag = btn.Tag as string ?? string.Empty;
             void Modal(Window child)
             {
                 child.Owner = this;
                 child.ShowDialog();
-            Window_Loaded(this, null); // Reload data after closing the modal
-                DataContext = currentUser; // Rebind the current user to the DataContext for data binding
+                Window_Loaded(this, null);
+                DataContext = currentUser;
             }
             switch (tag)
             {
                 case "Students":
-                    Modal(new UserWindow.StudentManagement());
+                    Modal(new UserWindow.StudentManagement(currentUser));
                     break;
                 case "Courses":
                     Modal(new CourseWindow.CourseManagement());
@@ -60,8 +60,8 @@ namespace Project_Prn.RoleWindow
                     MessageBox.Show("Chức năng chưa được triển khai.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                     break;
             }
-
         }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             Prngroup4Context context = new Prngroup4Context();
