@@ -44,13 +44,33 @@ namespace Project_Prn.dal
         // 5. Xóa khóa học
         public void DeleteCourse(int courseId)
         {
-            var course = dbc.Courses.Find(courseId);
+            var course = dbc.Courses
+                .Include(c => c.Registrations)
+                .Include(c => c.Exams)
+                    .ThenInclude(e => e.Results)
+                .FirstOrDefault(c => c.CourseId == courseId);
+
             if (course != null)
             {
+                // Xóa kết quả thi trước
+                foreach (var exam in course.Exams)
+                {
+                    dbc.Results.RemoveRange(exam.Results);
+                }
+
+                // Xóa kỳ thi
+                dbc.Exams.RemoveRange(course.Exams);
+
+                // Xóa đăng ký học
+                dbc.Registrations.RemoveRange(course.Registrations);
+
+                // Xóa khóa học
                 dbc.Courses.Remove(course);
+
                 dbc.SaveChanges();
             }
         }
+
 
         // 6. Lấy khóa học theo giảng viên (TeacherId)
         public List<Course> GetByTeacherIdCourse(int teacherId)
