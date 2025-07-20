@@ -1,0 +1,57 @@
+﻿<Window x:Class="Project_Prn.UserWindow.AddStudent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Prn"
+        mc:Ignorable="d"
+        Title="Add Student" Height="550" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Border Background="#e0e0ff" Padding="10" CornerRadius="10" Margin="0,0,0,10">
+            <TextBlock Text="ADD STUDENT"
+                       FontSize="28"
+                       FontWeight="Bold"
+                       Foreground="DarkBlue"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       TextAlignment="Center"/>
+        </Border>
+
+        <Grid Grid.Row="1" Margin="0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10">
+                <TextBlock Text="Full Name:" Margin="10"/>
+                <TextBox x:Name="txtFullName" Width="300" Margin="10"/>
+
+                <TextBlock Text="Email:" Margin="10"/>
+                <TextBox x:Name="txtEmail" Width="300" Margin="10"/>
+
+                <TextBlock Text="Password:" Margin="10"/>
+                <PasswordBox x:Name="txtPassword" Width="300" Margin="10"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10">
+                <TextBlock Text="Class:" Margin="10"/>
+                <TextBox x:Name="txtClass" Width="300" Margin="10"/>
+
+                <TextBlock Text="School:" Margin="10"/>
+                <TextBox x:Name="txtSchool" Width="300" Margin="10"/>
+
+                <TextBlock Text="Phone:" Margin="10"/>
+                <TextBox x:Name="txtPhone" Width="300" Margin="10"/>
+            </StackPanel>
+        </Grid>
+
+        <Button x:Name="btnAdd" Content="Save" Width="100" Height="40" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,20" Grid.Row="2" Click="btnAdd_Click" />
+    </Grid>
+</Window>

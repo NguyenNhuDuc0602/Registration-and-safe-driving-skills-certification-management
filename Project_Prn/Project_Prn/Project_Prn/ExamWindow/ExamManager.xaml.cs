@@ -37,6 +37,13 @@ namespace Project_Prn.ExamWindow
 
             CourseDAO courseDAO = new CourseDAO();
             var course = courseDAO.GetAllCourse();
+            course.Add(new Course()
+            {
+                CourseId = -1,
+                CourseName ="ALL"
+            });
+
+
             this.cbxCourse.ItemsSource = course;//combobox
             this.cbxCourse.DisplayMemberPath = "CourseName";
             this.cbxCourse.SelectedValuePath = "CourseId";

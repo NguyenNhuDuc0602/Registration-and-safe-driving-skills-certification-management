@@ -46,10 +46,10 @@ namespace Project_Prn.RoleWindow
                     Modal(new UserWindow.StudentManagement(currentUser));
                     break;
                 case "Courses":
-                    Modal(new CourseWindow.CourseManagement());
+                    Modal(new CourseWindow.CourseTeacher(currentUser));
                     break;
                 case "Exams":
-                    Modal(new ExamWindow.ExamManager());
+                    Modal(new ExamWindow.ExamTeacher(currentUser));
                     break;
                 case "Logout":
                     var loginWindow = new MainWindow();
