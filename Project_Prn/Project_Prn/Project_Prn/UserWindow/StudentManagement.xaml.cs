@@ -21,9 +21,11 @@ namespace Project_Prn.UserWindow
         public void LoadUsers()
         {
             UserDAO userDAO = new UserDAO();
-            var users = userDAO.GetAllStudentsByTeacher(currentTeacher.UserId);
+            var users = userDAO.GetByRoleUser("Student"); // Hiển thị tất cả học sinh
             dgUsers.ItemsSource = users;
         }
+
+
 
         public void LoadUsersByFullName(string name)
         {
@@ -36,7 +38,7 @@ namespace Project_Prn.UserWindow
 
         private void btnAddUser_Click(object sender, RoutedEventArgs e)
         {
-            AddUser addUserWindow = new AddUser(this);
+            AddStudent addUserWindow = new AddStudent(this);
             addUserWindow.ShowDialog();
         }
 
@@ -45,17 +47,24 @@ namespace Project_Prn.UserWindow
             var selectedUser = dgUsers.SelectedItem as User;
             if (selectedUser == null)
             {
-                MessageBox.Show("Vui lòng chọn một người dùng.");
+                MessageBox.Show("Vui lòng chọn một học sinh.");
                 return;
             }
 
-            var detailWindow = new UserDetail(selectedUser);
+                        if (selectedUser.Role != "Student")
+            {
+                MessageBox.Show("Chỉ có thể xem chi tiết của học sinh.");
+                return;
+            }
+
+            var detailWindow = new StudentDetail(selectedUser);
             bool? updated = detailWindow.ShowDialog();
             if (updated == true)
             {
-                LoadUsers();
+                LoadUsers(); 
             }
         }
+
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
