@@ -35,13 +35,7 @@ namespace Project_Prn.UserWindow
                         .ToList();
             dgUsers.ItemsSource = users;
         }
-
-        private void btnAddUser_Click(object sender, RoutedEventArgs e)
-        {
-            AddStudent addUserWindow = new AddStudent(this);
-            addUserWindow.ShowDialog();
-        }
-
+       
         private void btnDetail_Click(object sender, RoutedEventArgs e)
         {
             var selectedUser = dgUsers.SelectedItem as User;
