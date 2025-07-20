@@ -39,28 +39,50 @@ namespace Project_Prn.CourseWindow
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            // 1. Lấy dữ liệu từ form
-            string name = txtCourseName.Text;
-            int teacherId = (int)cbTeacher.SelectedValue;
-            string start = dpStartDate.Text;
-            string end = dpEndDate.Text;
-
-            // 2. Thêm vào DB
-            var dao = new CourseDAO();
-            var newCourse = new Course
+            try
             {
-                CourseName = name,
-                TeacherId = teacherId,
-                StartDate = DateOnly.FromDateTime(DateTime.Parse(start)),
-                EndDate = DateOnly.FromDateTime(DateTime.Parse(end))
-            };
-            dao.AddCourse(newCourse);
-            coursemanager.LoadCourse(); // Cập nhật danh sách khóa học trong CourseManagement
-            this.Close(); // Đóng cửa sổ AddCourse
+                string name = txtCourseName.Text.Trim();
+                int teacherId = (int)cbTeacher.SelectedValue;
 
+                var start = dpStartDate.SelectedDate;
+                var end = dpEndDate.SelectedDate;
 
+                if (start == null || end == null)
+                {
+                    MessageBox.Show("Please select valid Start Date and End Date!");
+                    return;
+                }
 
+                if (end < start)
+                {
+                    MessageBox.Show("End Date cannot be earlier than Start Date!");
+                    return;
+                }
+
+                var dao = new CourseDAO();
+                var newCourse = new Course
+                {
+                    CourseName = name,
+                    TeacherId = teacherId,
+                    StartDate = DateOnly.FromDateTime(start.Value),
+                    EndDate = DateOnly.FromDateTime(end.Value)
+                };
+
+                dao.AddCourse(newCourse);
+                MessageBox.Show("Course added successfully!");
+
+                // 🡒 Gọi reload lại danh sách Course trên CourseManagement
+                coursemanager.LoadCourse();
+
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
         }
+
+
         private void LoadTeachers()
         {
             var dao = new CourseDAO();

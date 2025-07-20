@@ -40,7 +40,6 @@
         </DataGrid>
 
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">
-            <Button Content="Add Registration" Height="40" Width="110" Margin="5" Click="btnAddRegistration_Click"/>
             <Button Content="Detail" Height="40" Width="90" Margin="5" Click="btnDetail_Click"/>
             <Button Content="Delete" Height="40" Width="90" Margin="5" Click="btnDelete_Click"/>
             <Button Content="Approve" Height="40" Width="90" Margin="5" Click="btnApprove_Click"/>

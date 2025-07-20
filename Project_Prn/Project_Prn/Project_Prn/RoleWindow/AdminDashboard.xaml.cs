@@ -57,6 +57,7 @@ namespace Project_Prn.RoleWindow
                     break;
                 case "Exams":
                     Modal(new ExamWindow.ExamManager());
+                    Window_Loaded(this, null);  // Đếm lại Exam sau khi quản lý
                     break;
                 case "Logout":
                     var loginWindow = new MainWindow();

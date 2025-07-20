@@ -52,12 +52,6 @@ namespace Project_Prn.RegistrationWindow
             }
         }
 
-        private void btnAddRegistration_Click(object sender, RoutedEventArgs e)
-        {
-            AddRegistration addRegisWindow = new AddRegistration(this);
-            addRegisWindow.ShowDialog();
-        }
-
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             var selectedRegis = this.dgRegistration.SelectedItem as Registration;
