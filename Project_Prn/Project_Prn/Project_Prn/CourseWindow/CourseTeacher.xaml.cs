@@ -41,5 +41,20 @@ namespace Project_Prn.CourseWindow
                 MessageBox.Show("Không tìm thấy khóa học nào phù hợp.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
+        private void btnViewStudentList_Click(object sender, RoutedEventArgs e)
+        {
+            // Lấy dòng được chọn trong DataGrid
+            var selectedCourse = dgMyCourses.SelectedItem as Course;
+            if (selectedCourse == null)
+            {
+                MessageBox.Show("Vui lòng chọn một khóa học.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Mở cửa sổ CourseStudentList và truyền CourseID
+            var studentListWindow = new CourseStudentList(selectedCourse.CourseId);
+            studentListWindow.ShowDialog();
+        }
+
     }
 }

@@ -7,6 +7,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Tiêu đề -->
@@ -34,5 +35,8 @@
                 <DataGridTextColumn Header="End Date" Binding="{Binding EndDate}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Grid.Row="3" x:Name="btnViewStudentList" Content="ViewListStudent" Width="130" Height="30"
+        Click="btnViewStudentList_Click" Margin="5"/>
+
     </Grid>
 </Window>
