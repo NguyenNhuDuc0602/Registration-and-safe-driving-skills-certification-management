@@ -21,9 +21,10 @@ namespace Project_Prn.UserWindow
         public void LoadUsers()
         {
             UserDAO userDAO = new UserDAO();
-            var users = userDAO.GetByRoleUser("Student"); // Hiển thị tất cả học sinh
+            var users = userDAO.GetAllStudentsByTeacher(currentTeacher.UserId); 
             dgUsers.ItemsSource = users;
         }
+
 
 
 
