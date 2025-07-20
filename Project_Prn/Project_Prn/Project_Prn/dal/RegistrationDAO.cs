@@ -95,7 +95,22 @@ namespace Project_Prn.dal
             }
         }
 
+        //Lấy danh sách student theo courseID
+        public List<StudentInCourse> GetStudentInCourses(int courseId)
+        {
+            var students = (from r in dbc.Registrations
+                            join u in dbc.Users on r.UserId equals u.UserId
+                            where r.CourseId == courseId && u.Role == "Student"
+                            select new StudentInCourse
+                            {
+                                UserID = u.UserId,
+                                FullName = u.FullName,
+                                Class = u.Class,
+                                School = u.School,
+                                Status = r.Status
+                            }).ToList();
 
-
+            return students;
+        }
     }
 }
