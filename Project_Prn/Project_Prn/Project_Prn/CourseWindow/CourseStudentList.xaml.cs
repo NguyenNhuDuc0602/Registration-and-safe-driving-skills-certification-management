@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Microsoft.EntityFrameworkCore;
+using Project_Prn.AttendanceWindow;
 using Project_Prn.dal;
 using Project_Prn.Models;
 
@@ -29,7 +30,8 @@ namespace Project_Prn.CourseWindow
         {
             InitializeComponent();
             _dbc = new Prngroup4Context();
-            _registrationDAO = new RegistrationDAO();
+            Prngroup4Context context = new Prngroup4Context();
+            _registrationDAO = new RegistrationDAO(context);
             this._courseId = courseId;
             LoadStudentList();
         }
@@ -39,5 +41,16 @@ namespace Project_Prn.CourseWindow
             var students = _registrationDAO.GetStudentInCourses(_courseId);
             studentDataGrid.ItemsSource = students;
         }
+
+        private void studentDataGrid_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (studentDataGrid.SelectedItem is StudentInCourse student)
+            {
+                var trackingWindow = new AttendanceTracking(_courseId, student.UserID);
+                trackingWindow.ShowDialog();
+            }
+        }
+
+
     }
 }

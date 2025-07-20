@@ -35,8 +35,11 @@
                 <DataGridTextColumn Header="End Date" Binding="{Binding EndDate}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Row="3" x:Name="btnViewStudentList" Content="ViewListStudent" Width="130" Height="30"
-        Click="btnViewStudentList_Click" Margin="5"/>
-
+        <StackPanel Grid.Row="3" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Button x:Name="btnViewStudentList" Content="View List Student" Width="130" Height="30"
+            Click="btnViewStudentList_Click" Margin="5"/>
+            <Button Content="Attendance" Width="130" Height="30"
+            Click="btnAttendance_Click" Margin="5"/>
+        </StackPanel>
     </Grid>
 </Window>

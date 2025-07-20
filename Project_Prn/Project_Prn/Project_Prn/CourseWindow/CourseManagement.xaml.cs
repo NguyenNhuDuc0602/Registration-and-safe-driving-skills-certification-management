@@ -94,6 +94,21 @@ namespace Project_Prn.CourseWindow
                 LoadCourse(); 
             }
         }
+
+        private void btnAttendance_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedCourse = dgCourses.SelectedItem as Course;
+            if (selectedCourse == null)
+            {
+                MessageBox.Show("Vui lòng chọn một khóa học để xem điểm danh.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Mở màn AttendanceViewWindow và truyền courseId
+            var win = new Project_Prn.Attendances.AttendanceViewWindow(selectedCourse.CourseId);
+            win.ShowDialog();
+        }
+
     }
 }
 

@@ -28,7 +28,8 @@ namespace Project_Prn.StudentWindow
 
         private void LoadCourses()
         {
-            RegistrationDAO dao = new RegistrationDAO();
+            Prngroup4Context context = new Prngroup4Context();
+            RegistrationDAO dao = new RegistrationDAO(context);
             var courses = dao.GetByUserIdRegistration(currentUser.UserId)
                              .Where(r => r.Status == "Approved")
                              .ToList();
