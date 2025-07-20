@@ -20,11 +20,29 @@
                    HorizontalAlignment="Center"
                    Margin="0,0,0,10"/>
 
-        <DataGrid x:Name="dgExams" Grid.Row="1" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="dgExams"
+                  Grid.Row="1"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  Margin="0,10">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Khóa học" Binding="{Binding Course.CourseName}" Width="2*"/>
-                <DataGridTextColumn Header="Ngày thi" Binding="{Binding Date}" Width="*"/>
+                <DataGridTextColumn Header="Ngày thi" Binding="{Binding ExamDate, StringFormat=\{0:dd/MM/yyyy\}}" Width="*"/>
                 <DataGridTextColumn Header="Phòng thi" Binding="{Binding Room}" Width="*"/>
+                <DataGridTemplateColumn Header="Thao tác" Width="*">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Content="Làm bài"
+                                    Click="TakeExam_Click"
+                                    Tag="{Binding ExamId}"
+                                    Background="#27ae60"
+                                    Foreground="White"
+                                    Padding="4,2"
+                                    Margin="4"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
 

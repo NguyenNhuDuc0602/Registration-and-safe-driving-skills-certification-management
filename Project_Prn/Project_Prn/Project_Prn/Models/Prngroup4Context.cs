@@ -32,6 +32,9 @@ public partial class Prngroup4Context : DbContext
     public virtual DbSet<Result> Results { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
+    public virtual DbSet<Question> Questions { get; set; }
+    public virtual DbSet<ExamResult> ExamResults { get; set; }
+
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -188,9 +191,53 @@ public partial class Prngroup4Context : DbContext
             entity.Property(e => e.Role).HasMaxLength(20);
             entity.Property(e => e.School).HasMaxLength(100);
         });
+        modelBuilder.Entity<Question>(entity =>
+        {
+            entity.HasKey(e => e.QuestionId).HasName("PK_Questions");
+
+            entity.Property(e => e.QuestionId).HasColumnName("QuestionId");
+            entity.Property(e => e.ExamId).HasColumnName("ExamId");
+            entity.Property(e => e.Content).HasMaxLength(1000);
+            entity.Property(e => e.OptionA).HasMaxLength(255);
+            entity.Property(e => e.OptionB).HasMaxLength(255);
+            entity.Property(e => e.OptionC).HasMaxLength(255);
+            entity.Property(e => e.OptionD).HasMaxLength(255);
+            entity.Property(e => e.CorrectAnswer).HasMaxLength(1).IsUnicode(false);
+
+            entity.HasOne(d => d.Exam)
+                .WithMany(p => p.Questions)
+                .HasForeignKey(d => d.ExamId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Questions_Exams");
+        });
+        modelBuilder.Entity<ExamResult>(entity =>
+        {
+            entity.ToTable("ExamResult");
+            entity.HasKey(e => e.ResultId).HasName("PK_ExamResults");
+
+            entity.Property(e => e.ResultId).HasColumnName("ResultId");
+            entity.Property(e => e.UserId).HasColumnName("UserId");
+            entity.Property(e => e.ExamId).HasColumnName("ExamId");
+            entity.Property(e => e.Score).HasColumnType("float");
+            entity.Property(e => e.SubmittedAt).HasColumnType("datetime");
+
+            entity.HasOne(d => d.User)
+                .WithMany()
+                .HasForeignKey(d => d.UserId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ExamResults_Users");
+
+            entity.HasOne(d => d.Exam)
+                .WithMany()
+                .HasForeignKey(d => d.ExamId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_ExamResults_Exams");
+        });
+
 
         OnModelCreatingPartial(modelBuilder);
     }
+
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

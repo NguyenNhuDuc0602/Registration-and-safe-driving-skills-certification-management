@@ -51,6 +51,9 @@ namespace Project_Prn.RoleWindow
                 case "Exams":
                     Modal(new ExamWindow.ExamTeacher(currentUser));
                     break;
+                case "QuestionBank":
+                    Modal(new QuestionWindow.QuestionBankWindow(currentUser));                 
+                    break;
                 case "Logout":
                     var loginWindow = new MainWindow();
                     loginWindow.Show();
