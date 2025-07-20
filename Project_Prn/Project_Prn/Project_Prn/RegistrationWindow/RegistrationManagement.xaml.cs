@@ -30,7 +30,8 @@ namespace Project_Prn.RegistrationWindow
         }
         public void LoadRegistration()
         {
-            RegistrationDAO dao = new RegistrationDAO();
+            Prngroup4Context context = new Prngroup4Context();
+            RegistrationDAO dao = new RegistrationDAO(context);
             var regis = dao.GetAllRegistration();
             this.dgRegistration.ItemsSource = regis;
         }
@@ -60,8 +61,8 @@ namespace Project_Prn.RegistrationWindow
                 MessageBox.Show("Please choose the Registration!!!");
                 return;
             }
-
-            RegistrationDAO registrationDAO = new RegistrationDAO();
+            Prngroup4Context context = new Prngroup4Context();
+            RegistrationDAO registrationDAO = new RegistrationDAO(context);
             registrationDAO.DeleteRegistration(selectedRegis.RegistrationId);
             LoadRegistration();
             MessageBox.Show("Completed!");
@@ -76,7 +77,8 @@ namespace Project_Prn.RegistrationWindow
                 return;
             }
 
-            RegistrationDAO regisDAO = new RegistrationDAO();
+            Prngroup4Context context = new Prngroup4Context();
+            RegistrationDAO regisDAO = new RegistrationDAO(context);
             var regis = regisDAO.GetByIdRegistration(regisID);
 
             if (regis !=null)
@@ -98,7 +100,8 @@ namespace Project_Prn.RegistrationWindow
                 return;
             }
 
-            RegistrationDAO dao = new RegistrationDAO();
+            Prngroup4Context context = new Prngroup4Context();
+            RegistrationDAO dao = new RegistrationDAO(context);
             dao.UpdateRegistrationStatus(selected.RegistrationId, "Approved");
             LoadRegistration();
 
@@ -124,7 +127,8 @@ namespace Project_Prn.RegistrationWindow
                 return;
             }
 
-            RegistrationDAO dao = new RegistrationDAO();
+            Prngroup4Context context = new Prngroup4Context();
+            RegistrationDAO dao = new RegistrationDAO(context);
             dao.RejectRegistrationWithComment(selected.RegistrationId, comment);
             LoadRegistration();
             MessageBox.Show("Đơn đăng ký đã bị từ chối!");

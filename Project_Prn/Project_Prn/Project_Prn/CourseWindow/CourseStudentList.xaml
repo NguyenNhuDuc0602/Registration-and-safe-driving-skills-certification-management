@@ -3,13 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="Danh sách học viên" Height="450" Width="800">
     <Grid Margin="10">
-        <DataGrid x:Name="studentDataGrid" AutoGenerateColumns="False" IsReadOnly="True">
+        <DataGrid x:Name="studentDataGrid" AutoGenerateColumns="False" IsReadOnly="True" MouseDoubleClick="studentDataGrid_MouseDoubleClick">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="User ID" Binding="{Binding UserID}" Width="80"/>
                 <DataGridTextColumn Header="Full Name" Binding="{Binding FullName}" Width="200"/>
                 <DataGridTextColumn Header="Class" Binding="{Binding Class}" Width="100"/>
                 <DataGridTextColumn Header="School" Binding="{Binding School}" Width="200"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100"/>
+                <DataGridTextColumn Header="Attendance %" Binding="{Binding AttendanceRate}" Width="120"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

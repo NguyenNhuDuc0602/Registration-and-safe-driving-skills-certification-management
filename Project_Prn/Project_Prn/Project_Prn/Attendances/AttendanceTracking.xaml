@@ -1,0 +1,23 @@
+﻿<Window x:Class="Project_Prn.AttendanceWindow.AttendanceTracking"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Project_Prn.AttendanceWindow"
+        mc:Ignorable="d"
+        Title="AttendanceTracking" Height="450" Width="800">
+    <Grid>
+        <Grid Margin="10">
+            <StackPanel Orientation="Vertical">
+                <TextBlock x:Name="txtHeader" FontSize="20" FontWeight="Bold" Margin="0 0 0 10"/>
+                <DataGrid x:Name="dgAttendance" AutoGenerateColumns="False" IsReadOnly="True" Height="300">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Date" Binding="{Binding SessionDate, StringFormat=MM/dd/yyyy}" Width="150"/>
+                        <DataGridTextColumn Header="Status" Binding="{Binding Status}" Width="100"/>
+                        <DataGridTextColumn Header="Note" Binding="{Binding Note}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

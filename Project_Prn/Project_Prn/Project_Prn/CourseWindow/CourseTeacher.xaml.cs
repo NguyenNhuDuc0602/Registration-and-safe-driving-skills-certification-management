@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using Project_Prn.Attendances;
+
 
 namespace Project_Prn.CourseWindow
 {
@@ -56,5 +58,17 @@ namespace Project_Prn.CourseWindow
             studentListWindow.ShowDialog();
         }
 
+        private void btnAttendance_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedCourse = dgMyCourses.SelectedItem as Course;
+            if (selectedCourse == null)
+            {
+                MessageBox.Show("Vui lòng chọn một khóa học để điểm danh.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            var win = new Project_Prn.Attendances.AttendanceWindow(selectedCourse.CourseId);
+            win.ShowDialog();
+        }
     }
 }

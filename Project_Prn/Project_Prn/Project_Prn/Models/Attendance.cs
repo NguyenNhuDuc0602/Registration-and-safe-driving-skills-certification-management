@@ -11,7 +11,7 @@ public partial class Attendance
 
     public int UserId { get; set; }
 
-    public DateOnly SessionDate { get; set; }
+    public DateTime SessionDate { get; set; }
 
     public string Status { get; set; } = null!;
 

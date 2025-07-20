@@ -13,5 +13,6 @@ namespace Project_Prn.Models
         public string Class { get; set; }
         public string School { get; set; }
         public string Status { get; set; } // Pending, Approved, Rejected
+        public double AttendanceRate { get; set; }
     }
 }

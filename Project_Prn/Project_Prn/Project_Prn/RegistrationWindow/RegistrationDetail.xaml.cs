@@ -55,7 +55,8 @@ namespace Project_Prn.RegistrationWindow
                 Comments = txtComment.Text.Trim()
             };
 
-            RegistrationDAO registrationsDAO = new RegistrationDAO();
+            Prngroup4Context context = new Prngroup4Context();
+            RegistrationDAO registrationsDAO = new RegistrationDAO(context);
             registrationsDAO.UpdateRegistration(updatedRegistration);
 
             MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);

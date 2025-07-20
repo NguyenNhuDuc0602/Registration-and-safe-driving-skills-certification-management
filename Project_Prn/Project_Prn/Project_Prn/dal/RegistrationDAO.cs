@@ -11,7 +11,11 @@ namespace Project_Prn.dal
     public class RegistrationDAO
     {
         private Prngroup4Context dbc;
-        public RegistrationDAO() { dbc = new Prngroup4Context(); }
+        public RegistrationDAO(Prngroup4Context dbc)
+        {
+            dbc = new Prngroup4Context();
+            this.dbc = dbc;
+        }
 
         // 1. Lấy tất cả đăng ký
         public List<Registration> GetAllRegistration()
@@ -101,16 +105,36 @@ namespace Project_Prn.dal
             var students = (from r in dbc.Registrations
                             join u in dbc.Users on r.UserId equals u.UserId
                             where r.CourseId == courseId && u.Role == "Student"
-                            select new StudentInCourse
+                            select new
                             {
-                                UserID = u.UserId,
-                                FullName = u.FullName,
-                                Class = u.Class,
-                                School = u.School,
-                                Status = r.Status
-                            }).ToList();
+                                u.UserId,
+                                u.FullName,
+                                u.Class,
+                                u.School,
+                                r.Status
+                            }).ToList(); // Lấy về bằng LINQ to Entities trước
 
-            return students;
+            // Sau đó xử lý AttendanceRate bằng LINQ to Objects
+            var result = students.Select(s => new StudentInCourse
+            {
+                UserID = s.UserId,
+                FullName = s.FullName,
+                Class = s.Class,
+                School = s.School,
+                Status = s.Status,
+                AttendanceRate = CalculateAttendanceRate(s.UserId, courseId)
+            }).ToList();
+
+            return result;
+        }
+
+        private double CalculateAttendanceRate(int userId, int courseId)
+        {
+            var all = dbc.Attendances.Count(a => a.UserId == userId && a.CourseId == courseId);
+            if (all == 0) return 0;
+
+            var present = dbc.Attendances.Count(a => a.UserId == userId && a.CourseId == courseId && a.Status == "Present");
+            return Math.Round((present * 100.0) / all, 1);
         }
     }
 }
