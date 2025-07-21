@@ -29,6 +29,7 @@ namespace Project_Prn.Attendances
             _attendanceDAO = new AttendanceDAO(_dbc);
             _registrationDAO = new RegistrationDAO(_dbc);
             LoadStudents();
+            SetDatePickerRange();
         }
 
         private void LoadStudents()
@@ -45,9 +46,41 @@ namespace Project_Prn.Attendances
             dgAttendance.ItemsSource = attendanceEntries;
         }
 
+        private void SetDatePickerRange()
+        {
+            var course = _dbc.Courses.FirstOrDefault(c => c.CourseId == _courseId);
+            if (course != null)
+            {
+                DateTime startDate = course.StartDate.ToDateTime(TimeOnly.MinValue);
+                DateTime endDate = course.EndDate.ToDateTime(TimeOnly.MinValue);
+                dpSessionDate.DisplayDateStart = startDate;
+                dpSessionDate.DisplayDateEnd = endDate;
+
+                DateTime today = DateTime.Today;
+                dpSessionDate.SelectedDate = (today >= startDate && today <= endDate) ? today : startDate;
+            }
+        }
+
         private void SaveAttendance_Click(object sender, RoutedEventArgs e)
         {
             DateTime sessionDate = dpSessionDate.SelectedDate?.Date ?? DateTime.Today;
+            var course = _dbc.Courses.FirstOrDefault(c => c.CourseId == _courseId);
+            if (course == null)
+            {
+                MessageBox.Show("Không tìm thấy thông tin khóa học.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            // Chuyển DateOnly sang DateTime để so sánh
+            DateTime startDate = course.StartDate.ToDateTime(TimeOnly.MinValue);
+            DateTime endDate = course.EndDate.ToDateTime(TimeOnly.MinValue);
+
+            if (sessionDate < startDate || sessionDate > endDate)
+            {
+                MessageBox.Show($"Chỉ được điểm danh từ {course.StartDate:dd/MM/yyyy} đến {course.EndDate:dd/MM/yyyy}.",
+                                "Ngày không hợp lệ", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             foreach (var entry in attendanceEntries)
             {
@@ -74,6 +107,8 @@ namespace Project_Prn.Attendances
             _attendanceDAO.AddBulkAttendance(attendances);
             MessageBox.Show("Điểm danh thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
             this.Close();
+
         }
     }
 }
+
