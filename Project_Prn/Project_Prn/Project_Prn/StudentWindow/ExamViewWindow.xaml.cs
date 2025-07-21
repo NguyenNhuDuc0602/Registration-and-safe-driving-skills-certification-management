@@ -21,7 +21,6 @@ namespace Project_Prn.StudentWindow
         private void LoadExams()
         {
             using var context = new Prngroup4Context();
-            var today = DateTime.Today;
 
             var exams = context.Registrations
                 .Where(r => r.UserId == currentUser.UserId && r.Status == "Approved")
@@ -29,13 +28,12 @@ namespace Project_Prn.StudentWindow
                     .ThenInclude(c => c.Exams)
                 .SelectMany(r => r.Course.Exams)
                 .Include(e => e.Course)
-                .Where(e =>
-                    e.ExamDate.Date == today &&
-                    !context.ExamResults.Any(er => er.UserId == currentUser.UserId && er.ExamId == e.ExamId))
+                .Where(e => !context.Results.Any(r => r.UserId == currentUser.UserId && r.ExamId == e.ExamId))
                 .ToList();
 
             dgExams.ItemsSource = exams;
         }
+
 
         private void TakeExam_Click(object sender, RoutedEventArgs e)
         {

@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
-using Project_Prn.dal;
 using Project_Prn.Models;
+using Project_Prn.dal;
 
 namespace Project_Prn.CertificateWindow
 {
-    /// <summary>
-    /// Interaction logic for CertificateManagement.xaml
-    /// </summary>
     public partial class CertificateManagement : Window
     {
         public CertificateManagement()
@@ -24,11 +22,7 @@ namespace Project_Prn.CertificateWindow
             this.dgCertificate.ItemsSource = cer;
         }
 
-        private void btnAddCertificate_Click(object sender, RoutedEventArgs e)
-        {
-            AddCertificate addCerWindow = new AddCertificate(this);
-            addCerWindow.ShowDialog();
-        }
+   
 
         private void btnDetail_Click(object sender, RoutedEventArgs e)
         {
@@ -85,5 +79,7 @@ namespace Project_Prn.CertificateWindow
                 dgCertificate.ItemsSource = null;
             }
         }
+
+       
     }
 }

@@ -5,16 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_Prn.StudentWindow"
         mc:Ignorable="d"
-        Title="StudentResultWindow" Height="450" Width="800">
-    <Grid Margin="10">
-        <TextBlock Text="Kết quả các kỳ thi đã tham gia" FontSize="18" FontWeight="Bold" Margin="0,0,0,10"/>
-        <DataGrid x:Name="resultDataGrid" AutoGenerateColumns="False" CanUserAddRows="False">
+        Title="Kết quả thi" Height="500" Width="800" ResizeMode="NoResize">
+    <DockPanel Margin="10">
+        <TextBlock Text="🎓 Kết quả các kỳ thi đã tham gia"
+                   FontSize="20" FontWeight="Bold"
+                   Margin="0 0 0 10" DockPanel.Dock="Top"/>
+        <DataGrid x:Name="resultDataGrid" 
+                  AutoGenerateColumns="False" 
+                  CanUserAddRows="False"
+                  HeadersVisibility="Column"
+                  IsReadOnly="True">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Khóa học" Binding="{Binding CourseName}" Width="*"/>
+                <DataGridTextColumn Header="Khóa học" Binding="{Binding CourseName}" Width="2*"/>
                 <DataGridTextColumn Header="Ngày thi" Binding="{Binding ExamDate}" Width="*"/>
                 <DataGridTextColumn Header="Điểm" Binding="{Binding Score}" Width="*"/>
-                <DataGridTextColumn Header="Đạt" Binding="{Binding PassStatus}" Width="*"/>
+                <DataGridTextColumn Header="Trạng thái" Binding="{Binding PassStatus}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
-    </Grid>
+    </DockPanel>
 </Window>

@@ -30,20 +30,21 @@ namespace Project_Prn.RoleWindow
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Prngroup4Context context = new Prngroup4Context();
-            // so ki thi  
-            PendingExamsText.Text = context.Exams
-                .Where(e => e.Course.TeacherId == currentUser.UserId)
-                .Select(r => r.ExamId)
-                .Distinct()
-                .Count().ToString();
-            // so chung chi cung cap
-            IssuedCertificatesText.Text = context.Certificates
-                .Where(c => c.UserId == currentUser.UserId)
-                .Count().ToString();
+            using var context = new Prngroup4Context();
 
-     
+            // Đếm số kỳ thi cần xác nhận
+            PendingExamsText.Text = context.Exams
+            .Where(e => !e.IsConfirmed)
+            .Count()
+            .ToString();
+
+
+            // Đếm tổng số chứng chỉ đã cấp
+            IssuedCertificatesText.Text = context.Certificates.Count().ToString();
         }
+
+
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (sender is not Button btn) return;
@@ -70,9 +71,7 @@ namespace Project_Prn.RoleWindow
                 case "ManageCertificates":
                     Modal(new CertificateWindow.CertificateManagement());
                     break;
-                case "Compliance":
-                    Modal(new ResultWindow.ResultPolice());
-                    break;
+               
                 case "Logout":
                     var loginWindow = new MainWindow();
                     loginWindow.Show();

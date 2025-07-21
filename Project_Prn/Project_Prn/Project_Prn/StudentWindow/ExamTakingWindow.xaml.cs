@@ -121,18 +121,39 @@ namespace Project_Prn.StudentWindow
             double score = (double)correct / _questions.Count * 10;
 
             using var context = new Prngroup4Context();
-            var result = new ExamResult
+            var result = new Result
             {
                 ExamId = _examId,
                 UserId = _userId,
-                Score = score,
-                SubmittedAt = DateTime.Now
+                Score = (decimal)score,
+                SubmittedAt = DateTime.Now,
+                PassStatus = score >= 5
             };
-            context.ExamResults.Add(result);
+            context.Results.Add(result);
+
+            // CẤP CHỨNG CHỈ NẾU ĐẬU
+            if (result.PassStatus)
+            {
+                bool alreadyHasCertificate = context.Certificates.Any(c => c.UserId == _userId);
+                if (!alreadyHasCertificate)
+                {
+                    var certificate = new Certificate
+                    {
+                        UserId = _userId,
+                        IssuedDate = DateOnly.FromDateTime(DateTime.Now),
+                        ExpirationDate = DateOnly.FromDateTime(DateTime.Now.AddYears(1)),
+                        CertificateCode = $"CERT-{_userId}-{DateTime.Now:yyyyMMddHHmmss}"
+                    };
+                    context.Certificates.Add(certificate);
+                }
+            }
+
             context.SaveChanges();
 
             MessageBox.Show($"Bạn đã nộp bài. Số điểm: {score:F2}", "Hoàn thành", MessageBoxButton.OK, MessageBoxImage.Information);
             Close();
         }
+
+
     }
 }
