@@ -35,9 +35,17 @@ namespace Project_Prn.dal
         // 3. Thêm mới kỳ thi
         public void AddExam(Exam exam)
         {
+            // Gán giá trị hợp lệ cho ExamDate nếu chưa có
+            if (exam.ExamDate == DateTime.MinValue)
+            {
+                // Nếu có Date kiểu DateOnly thì convert sang DateTime
+                exam.ExamDate = exam.Date.ToDateTime(TimeOnly.MinValue);
+            }
+
             dbc.Exams.Add(exam);
             dbc.SaveChanges();
         }
+
 
         // 4. Cập nhật kỳ thi
         public void UpdateExam(Exam exam)
