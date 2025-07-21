@@ -125,7 +125,7 @@ namespace Project_Prn.StudentWindow
             {
                 ExamId = _examId,
                 UserId = _userId,
-                Score = (decimal)score,
+                Score = (double?)(decimal)score,
                 SubmittedAt = DateTime.Now,
                 PassStatus = score >= 5
             };

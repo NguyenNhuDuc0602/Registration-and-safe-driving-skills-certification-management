@@ -51,8 +51,8 @@ namespace Project_Prn.Attendances
             var course = _dbc.Courses.FirstOrDefault(c => c.CourseId == _courseId);
             if (course != null)
             {
-                DateTime startDate = course.StartDate.ToDateTime(TimeOnly.MinValue);
-                DateTime endDate = course.EndDate.ToDateTime(TimeOnly.MinValue);
+                DateTime startDate = course.StartDate;  // Sử dụng trực tiếp DateTime
+                DateTime endDate = course.EndDate;      // Sử dụng trực tiếp DateTime
                 dpSessionDate.DisplayDateStart = startDate;
                 dpSessionDate.DisplayDateEnd = endDate;
 
@@ -72,8 +72,8 @@ namespace Project_Prn.Attendances
             }
 
             // Chuyển DateOnly sang DateTime để so sánh
-            DateTime startDate = course.StartDate.ToDateTime(TimeOnly.MinValue);
-            DateTime endDate = course.EndDate.ToDateTime(TimeOnly.MinValue);
+            DateTime startDate = course.StartDate;
+            DateTime endDate = course.EndDate;
 
             if (sessionDate < startDate || sessionDate > endDate)
             {

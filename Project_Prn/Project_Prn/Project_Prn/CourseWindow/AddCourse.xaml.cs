@@ -64,8 +64,8 @@ namespace Project_Prn.CourseWindow
                 {
                     CourseName = name,
                     TeacherId = teacherId,
-                    StartDate = DateOnly.FromDateTime(start.Value),
-                    EndDate = DateOnly.FromDateTime(end.Value)
+                    StartDate = start.Value,  // Trực tiếp gán giá trị DateTime
+                    EndDate = end.Value       // Trực tiếp gán giá trị DateTime
                 };
 
                 dao.AddCourse(newCourse);

@@ -62,8 +62,8 @@ namespace Project_Prn.StudentWindow
             if (course == null) return 0;
 
             // Chuyển DateOnly sang DateTime để tính số ngày
-            DateTime startDate = course.StartDate.ToDateTime(TimeOnly.MinValue);
-            DateTime endDate = course.EndDate.ToDateTime(TimeOnly.MinValue);
+            DateTime startDate = course.StartDate;
+            DateTime endDate = course.EndDate;
 
             // Đếm số buổi học đã điểm danh (Present) và số buổi vắng mặt (Absent)
             int presentCount = context.Attendances
@@ -84,7 +84,7 @@ namespace Project_Prn.StudentWindow
             }
 
             // Tính tỷ lệ vắng mặt (vắng mặt so với số buổi đã điểm danh)
-            double attendanceRate = (absentCount * 100.0) / totalSessions;
+            double attendanceRate = (presentCount * 100.0) / totalSessions;
 
             return Math.Round(attendanceRate, 2); // Trả về tỷ lệ vắng mặt
         }

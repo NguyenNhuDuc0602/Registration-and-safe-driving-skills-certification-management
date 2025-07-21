@@ -41,8 +41,9 @@ namespace Project_Prn.StudentWindow
             {
                 using var context = new Prngroup4Context();
                 var exam = context.Exams
-                .Include(e => e.Course)
-                .FirstOrDefault(e => e.ExamId == examId);
+                    .Include(e => e.Course)
+                    .FirstOrDefault(e => e.ExamId == examId);
+
                 if (exam == null)
                 {
                     MessageBox.Show("Không tìm thấy kỳ thi.");
@@ -59,11 +60,11 @@ namespace Project_Prn.StudentWindow
                 int presentCount = context.Attendances
                     .Count(a => a.CourseId == exam.CourseId && a.UserId == currentUser.UserId && a.Status == "Present");
 
-                // Tính số buổi học thực tế dựa trên số ngày từ StartDate đến EndDate
-                DateOnly start = exam.Course.StartDate;
-                DateOnly end = exam.Course.EndDate;
-                int totalSessions = (end.ToDateTime(TimeOnly.MinValue) - start.ToDateTime(TimeOnly.MinValue)).Days + 1;
+                // Tính tổng số buổi học đã được điểm danh (buổi học với trạng thái "Present" hoặc "Absent")
+                int totalSessions = context.Attendances
+                    .Count(a => a.CourseId == exam.CourseId && a.UserId == currentUser.UserId);
 
+                // Tính tỷ lệ điểm danh
                 double attendanceRate = totalSessions == 0 ? 0 : (presentCount * 100.0 / totalSessions);
 
                 if (attendanceRate < 80)
@@ -78,6 +79,7 @@ namespace Project_Prn.StudentWindow
                 LoadExams(); // Cập nhật lại sau khi làm xong
             }
         }
+
 
 
 

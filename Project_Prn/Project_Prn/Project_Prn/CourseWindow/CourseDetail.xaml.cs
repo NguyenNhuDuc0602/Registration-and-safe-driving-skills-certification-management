@@ -36,8 +36,8 @@ namespace Project_Prn.CourseWindow
         {
             txtCourseName.Text = course.CourseName;
              cbTeacher.SelectedValue = course.TeacherId; 
-            dpStartDate.SelectedDate = course.StartDate.ToDateTime(new TimeOnly(0, 0));
-            dpEndDate.SelectedDate = course.EndDate.ToDateTime(new TimeOnly(0, 0));
+            dpStartDate.SelectedDate = course.StartDate;
+            dpEndDate.SelectedDate = course.EndDate;
         }
         private void LoadTeachers()
         {
@@ -57,8 +57,8 @@ namespace Project_Prn.CourseWindow
         {
             course.CourseName = txtCourseName.Text;
             course.Teacher = (Models.User)cbTeacher.SelectedItem; // Lấy đối tượng User từ ComboBox
-            course.StartDate = DateOnly.FromDateTime(dpStartDate.SelectedDate.Value);
-            course.EndDate = DateOnly.FromDateTime(dpEndDate.SelectedDate.Value);
+            course.StartDate = dpStartDate.SelectedDate.Value;  // Trực tiếp gán giá trị DateTime
+            course.EndDate = dpEndDate.SelectedDate.Value;      // Trực tiếp gán giá trị DateTime
 
             var CourseDAO = new CourseDAO();
             CourseDAO.UpdateCourse(course); 
