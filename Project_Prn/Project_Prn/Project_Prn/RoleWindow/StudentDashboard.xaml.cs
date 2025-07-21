@@ -100,7 +100,9 @@ namespace Project_Prn.RoleWindow
                 case "Learning":
                     Modal(new StudentWindow.CourseLearningWindow(currentUser));
                     break;
-
+                case "Attendance":
+                    Modal(new StudentWindow.AttendanceStudentWindow(currentUser));
+                    break;
                 case "Certificates":
                     Modal(new StudentWindow.CertificateViewWindow(currentUser));
                     break;

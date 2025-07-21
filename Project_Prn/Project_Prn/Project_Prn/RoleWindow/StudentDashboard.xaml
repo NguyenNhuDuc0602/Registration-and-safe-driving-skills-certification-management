@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Project_Prn.RoleWindow"
         mc:Ignorable="d"
-        Title="StudentDashboard" Height="450" Width="800">
+        Title="StudentDashboard" Height="550" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="220" />
@@ -16,54 +16,51 @@
             <DockPanel LastChildFill="True">
                 <!-- Tiêu đề -->
                 <TextBlock Text="STUDENT"
-                   FontSize="26"
-                   FontWeight="Bold"
-                   Foreground="White"
-                   Margin="16,24,0,32"
-                   DockPanel.Dock="Top" />
-
-                <!-- Nút đăng xuất cố định dưới cùng -->
-                <Button Content="Đăng xuất"
-                Tag="Logout"
-                Click="Button_Click"
-                Margin="8" Height="40"
-                DockPanel.Dock="Bottom" />
+                          FontSize="26"
+                          FontWeight="Bold"
+                          Foreground="White"
+                          Margin="16,24,0,32"
+                          DockPanel.Dock="Top" />
 
                 <!-- Các nút còn lại -->
                 <StackPanel>
                     <Button Content="Thông tin cá nhân"
-                    Tag="Profile"
-                    Click="Button_Click"
-                    Margin="8" Height="40" />
-
+                            Tag="Profile"
+                            Click="Button_Click"
+                            Margin="8" Height="35" />
                     <Button Content="Đăng ký khóa học / thi"
-                    Tag="Registration"
-                    Click="Button_Click"
-                    Margin="8" Height="40" />
-
+                            Tag="Registration"
+                            Click="Button_Click"
+                            Margin="8" Height="35" />
                     <Button Content="Vào học"
-                    Tag="Learning"
-                    Click="Button_Click"
-                    Margin="8" Height="40" />
-
+                            Tag="Learning"
+                            Click="Button_Click"
+                            Margin="8" Height="35" />
+                    <Button Content="Xem điểm danh khóa học"
+                            Tag="Attendance" 
+                            Click="Button_Click"
+                            Margin="8" Height="35" />
                     <Button Content="Lịch thi"
-                    Tag="Exams"
-                    Click="Button_Click"
-                    Margin="8" Height="40" />
-
+                            Tag="Exams"
+                            Click="Button_Click"
+                            Margin="8" Height="35" />
                     <Button Content="Tiến trình &amp; kết quả"
-                    Tag="Progress"
-                    Click="Button_Click"
-                    Margin="8" Height="40" />
-
+                            Tag="Progress"
+                            Click="Button_Click"
+                            Margin="8" Height="35" />
                     <Button Content="Chứng chỉ"
-                    Tag="Certificates"
-                    Click="Button_Click"
-                    Margin="8" Height="40" />
+                            Tag="Certificates"
+                            Click="Button_Click"
+                            Margin="8" Height="35" />
+                    <!-- Nút đăng xuất cố định dưới cùng -->
+                    <Button Content="Đăng xuất"
+                        Tag="Logout"
+                        Click="Button_Click"
+                        Margin="8" Height="35"
+                        DockPanel.Dock="Bottom" />
                 </StackPanel>
             </DockPanel>
         </Border>
-
 
         <!-- Main area with top bar + Home summary grid + frame -->
         <DockPanel Grid.Column="1" LastChildFill="True">
