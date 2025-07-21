@@ -1,0 +1,16 @@
+﻿<Window x:Class="Project_Prn.StudentWindow.AttendanceStudentWindow" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" Title="Xem điểm danh của tôi" Height="400" Width="600">
+    <Grid Margin="10">
+        <StackPanel>
+            <TextBlock Text="Danh sách khóa học đã đăng ký" FontSize="16" FontWeight="Bold" Margin="0 0 0 10"/>
+            <DataGrid x:Name="dgCourses" AutoGenerateColumns="False" MouseDoubleClick="dgCourses_MouseDoubleClick">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Course ID" Binding="{Binding CourseId}" Width="100"/>
+                    <DataGridTextColumn Header="Course Name" Binding="{Binding CourseName}" Width="*"/>
+                    <DataGridTextColumn Header="Attendance (%)"
+                    Binding="{Binding AttendanceRate, StringFormat={}{0:F1} %}" />
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Content="Đóng" Width="80" HorizontalAlignment="Right" Margin="0 10 0 0" Click="btnClose_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

@@ -40,8 +40,9 @@ namespace Project_Prn.StudentWindow
             if (sender is Button btn && btn.Tag is int examId)
             {
                 using var context = new Prngroup4Context();
-                var exam = context.Exams.Find(examId);
-
+                var exam = context.Exams
+                .Include(e => e.Course)
+                .FirstOrDefault(e => e.ExamId == examId);
                 if (exam == null)
                 {
                     MessageBox.Show("Không tìm thấy kỳ thi.");
@@ -54,12 +55,31 @@ namespace Project_Prn.StudentWindow
                     return;
                 }
 
+                // Kiểm tra điều kiện điểm danh
+                int presentCount = context.Attendances
+                    .Count(a => a.CourseId == exam.CourseId && a.UserId == currentUser.UserId && a.Status == "Present");
+
+                // Tính số buổi học thực tế dựa trên số ngày từ StartDate đến EndDate
+                DateOnly start = exam.Course.StartDate;
+                DateOnly end = exam.Course.EndDate;
+                int totalSessions = (end.ToDateTime(TimeOnly.MinValue) - start.ToDateTime(TimeOnly.MinValue)).Days + 1;
+
+                double attendanceRate = totalSessions == 0 ? 0 : (presentCount * 100.0 / totalSessions);
+
+                if (attendanceRate < 80)
+                {
+                    MessageBox.Show("Bạn không đủ điều kiện dự thi vì điểm danh dưới 80%.", "Không đủ điều kiện", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
+
                 var examWindow = new ExamTakingWindow(examId, currentUser.UserId);
                 examWindow.ShowDialog();
 
                 LoadExams(); // Cập nhật lại sau khi làm xong
             }
         }
+
+
 
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
