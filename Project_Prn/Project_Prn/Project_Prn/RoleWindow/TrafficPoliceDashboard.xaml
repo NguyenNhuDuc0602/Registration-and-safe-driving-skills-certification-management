@@ -36,10 +36,6 @@
                         Tag="ManageCertificates"                     
                         Margin="8" Height="40"  Click="Button_Click" />
 
-                <Button Content="kết quả và xác nhận chứng chỉ"
-                        Tag="Compliance"                 
-                        Margin="8" Height="40"  Click="Button_Click" />
-
                 
                 <Button Content="Đăng xuất"
                         Tag="Logout"

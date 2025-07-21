@@ -41,15 +41,20 @@ namespace Project_Prn.RoleWindow
                                                 .Include(r => r.Course)
                                                 .Count().ToString();
 
-            // so luong ki thi
+            // Mới: Chỉ tính các kỳ thi chưa làm và chưa quá hạn
             UpcomingExamsText.Text = context.Registrations
-             .Where(r => r.UserId == currentUser.UserId && r.Status == "Approved")
-             .Include(r => r.Course)
-             .ThenInclude(c => c.Exams)
-             .SelectMany(r => r.Course.Exams)
-             .Where(e => e.Date >= DateOnly.FromDateTime(DateTime.Today))
-             .Count()
-             .ToString();
+                .Where(r => r.UserId == currentUser.UserId && r.Status == "Approved")
+                .Include(r => r.Course)
+                    .ThenInclude(c => c.Exams)
+                .SelectMany(r => r.Course.Exams)
+                .Where(e =>
+                    e.Date >= DateOnly.FromDateTime(DateTime.Today) &&
+                    !context.Results.Any(res => res.UserId == currentUser.UserId && res.ExamId == e.ExamId)
+                )
+                .Count()
+                .ToString();
+
+
 
             // chung chi dat duoc
             CertificateCountText.Text = context.Certificates

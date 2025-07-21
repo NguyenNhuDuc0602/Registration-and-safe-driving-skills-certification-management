@@ -33,7 +33,7 @@ public partial class Prngroup4Context : DbContext
 
     public virtual DbSet<User> Users { get; set; }
     public virtual DbSet<Question> Questions { get; set; }
-    public virtual DbSet<ExamResult> ExamResults { get; set; }
+   
 
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -162,19 +162,24 @@ public partial class Prngroup4Context : DbContext
 
             entity.Property(e => e.ResultId).HasColumnName("ResultID");
             entity.Property(e => e.ExamId).HasColumnName("ExamID");
-            entity.Property(e => e.Score).HasColumnType("decimal(5, 2)");
             entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.Score).HasColumnType("decimal(5, 2)");
+            entity.Property(e => e.SubmittedAt).HasColumnType("datetime").HasColumnName("SubmittedAt"); 
+            entity.Property(e => e.PassStatus).HasColumnName("PassStatus"); 
 
-            entity.HasOne(d => d.Exam).WithMany(p => p.Results)
+            entity.HasOne(d => d.Exam)
+                .WithMany(p => p.Results)
                 .HasForeignKey(d => d.ExamId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Results__ExamID__59063A47");
 
-            entity.HasOne(d => d.User).WithMany(p => p.Results)
+            entity.HasOne(d => d.User)
+                .WithMany(p => p.Results)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Results__UserID__59FA5E80");
         });
+
 
         modelBuilder.Entity<User>(entity =>
         {
@@ -210,29 +215,7 @@ public partial class Prngroup4Context : DbContext
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_Questions_Exams");
         });
-        modelBuilder.Entity<ExamResult>(entity =>
-        {
-            entity.ToTable("ExamResult");
-            entity.HasKey(e => e.ResultId).HasName("PK_ExamResults");
 
-            entity.Property(e => e.ResultId).HasColumnName("ResultId");
-            entity.Property(e => e.UserId).HasColumnName("UserId");
-            entity.Property(e => e.ExamId).HasColumnName("ExamId");
-            entity.Property(e => e.Score).HasColumnType("float");
-            entity.Property(e => e.SubmittedAt).HasColumnType("datetime");
-
-            entity.HasOne(d => d.User)
-                .WithMany()
-                .HasForeignKey(d => d.UserId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_ExamResults_Users");
-
-            entity.HasOne(d => d.Exam)
-                .WithMany()
-                .HasForeignKey(d => d.ExamId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_ExamResults_Exams");
-        });
 
 
         OnModelCreatingPartial(modelBuilder);
