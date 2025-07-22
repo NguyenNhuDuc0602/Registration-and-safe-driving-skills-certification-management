@@ -76,8 +76,13 @@ namespace Project_Prn.StudentWindow
 
             var availableCourses = context.Courses
                 .Include(c => c.Teacher)
-                .Where(c => !registeredIds.Contains(c.CourseId))
+                .Where(c => !registeredIds.Contains(c.CourseId) && c.EndDate >= DateTime.Now) // Lọc khóa học chưa hết hạn
                 .ToList();
+
+            if(!availableCourses.Any())
+            {
+                MessageBox.Show("Hiện tại không có khóa học khả dụng để đăng ký.", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
 
             courseDataGrid.ItemsSource = availableCourses;
         }
