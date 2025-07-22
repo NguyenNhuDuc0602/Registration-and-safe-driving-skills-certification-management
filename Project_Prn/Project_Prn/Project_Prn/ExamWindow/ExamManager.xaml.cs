@@ -85,11 +85,21 @@ namespace Project_Prn.ExamWindow
 
         private void edit_Click(object sender, RoutedEventArgs e)
         {
-            editExam edit = new editExam(examId);
-            //this.Close();
-            edit.ShowDialog();
-            loadExam();
+            if (dgExam.SelectedItem is Exam selectedExam)
+            {
+                editExam edit = new editExam(selectedExam.ExamId.ToString());
+                bool? result = edit.ShowDialog();
+                if (result == true)
+                {
+                    loadExam(); // Chỉ load lại khi sửa thành công
+                }
+            }
+            else
+            {
+                MessageBox.Show("Vui lòng chọn một kỳ thi để sửa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
         }
+
 
         private void btndelete_Click(object sender, RoutedEventArgs e)
         {
