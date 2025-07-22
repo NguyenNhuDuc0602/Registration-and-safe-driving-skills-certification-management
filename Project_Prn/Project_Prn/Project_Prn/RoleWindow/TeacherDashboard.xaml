@@ -33,6 +33,11 @@
                         Click="Button_Click"
                         Margin="8" Height="40" />
 
+                <Button Content="Xem điểm học sinh"
+                        Tag="Scores"
+                        Click="Button_Click"
+                        Margin="8" Height="40"/>
+
                 <Button Content="Ngân hàng câu hỏi"
                         Tag="QuestionBank"
                         Click="Button_Click"
