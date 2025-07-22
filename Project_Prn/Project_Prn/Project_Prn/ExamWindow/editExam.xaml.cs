@@ -46,21 +46,31 @@ namespace Project_Prn.ExamWindow
         {
             int CourseId = Int32.Parse(this.cbxCourse.SelectedValue.ToString());
             DateTime? selectedDate = dpdate.SelectedDate;
+
+            if (selectedDate == null)
+            {
+                MessageBox.Show("Vui lòng chọn ngày thi.", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             string room = this.txtClass.Text;
+
             Exam updateExam = new Exam()
             {
                 ExamId = Int32.Parse(this._ExamId),
                 CourseId = CourseId,
                 Date = DateOnly.FromDateTime(selectedDate.Value),
+                ExamDate = selectedDate.Value, // ✅ FIX: Gán ExamDate hợp lệ để tránh lỗi SQL
                 Room = room,
-
             };
+
             ExamDAO examDAO = new ExamDAO();
             examDAO.UpdateExam(updateExam);
-            this.DialogResult = true;//báo biết đã lưu hehe
-            this.Close();
 
+            this.DialogResult = true; // báo hiệu thành công
+            this.Close();
         }
+
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
