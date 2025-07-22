@@ -1,4 +1,7 @@
-﻿using Project_Prn.Models;
+﻿using System;
+using System.Collections.Generic;
+
+namespace Project_Prn.Models;
 
 public partial class Result
 {
@@ -8,11 +11,11 @@ public partial class Result
 
     public int UserId { get; set; }
 
-    public decimal Score { get; set; }
+    public double? Score { get; set; }
 
-    public bool PassStatus { get; set; }          
+    public bool PassStatus { get; set; }
 
-    public DateTime SubmittedAt { get; set; }    
+    public DateTime? SubmittedAt { get; set; }
 
     public virtual Exam Exam { get; set; } = null!;
 
