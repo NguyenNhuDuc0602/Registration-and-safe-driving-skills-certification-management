@@ -48,9 +48,9 @@ namespace Project_Prn.RoleWindow
                     .ThenInclude(c => c.Exams)
                 .SelectMany(r => r.Course.Exams)
                 .Where(e =>
-                    e.Date >= DateOnly.FromDateTime(DateTime.Today) &&
+                    e.ExamDate.Date >= DateTime.Today && // ✅ Dùng ExamDate thay vì Date
                     !context.Results.Any(res => res.UserId == currentUser.UserId && res.ExamId == e.ExamId)
-                )
+                      )
                 .Count()
                 .ToString();
 

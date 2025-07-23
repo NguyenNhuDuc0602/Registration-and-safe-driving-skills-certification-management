@@ -91,7 +91,11 @@ namespace Project_Prn.ExamWindow
                 bool? result = edit.ShowDialog();
                 if (result == true)
                 {
-                    loadExam(); // Chỉ load lại khi sửa thành công
+                    //  Đặt về ALL trước
+                    cbxCourse.SelectedValue = -1;
+
+                    //  Sau đó mới load tất cả exam
+                    loadExam();
                 }
             }
             else
@@ -99,6 +103,9 @@ namespace Project_Prn.ExamWindow
                 MessageBox.Show("Vui lòng chọn một kỳ thi để sửa!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
+
+
+
 
 
         private void btndelete_Click(object sender, RoutedEventArgs e)

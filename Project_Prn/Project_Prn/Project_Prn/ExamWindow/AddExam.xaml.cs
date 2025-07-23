@@ -49,9 +49,10 @@ namespace Project_Prn.ExamWindow
             var newExam = new Exam
             {
                 CourseId = (int)cbCourse.SelectedValue,
-                Date = DateOnly.FromDateTime(dpDate.SelectedDate.Value),//ép kiểu dateonly
+                ExamDate = dpDate.SelectedDate.Value, 
                 Room = txtRoom.Text.Trim()
             };
+
 
             examDAO.AddExam(newExam);
 
