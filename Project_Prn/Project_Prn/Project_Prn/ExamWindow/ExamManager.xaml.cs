@@ -91,12 +91,10 @@ namespace Project_Prn.ExamWindow
                 bool? result = edit.ShowDialog();
                 if (result == true)
                 {
-                    //  Đặt về ALL trước
-                    cbxCourse.SelectedValue = -1;
-
-                    //  Sau đó mới load tất cả exam
+                   
                     loadExam();
                 }
+
             }
             else
             {

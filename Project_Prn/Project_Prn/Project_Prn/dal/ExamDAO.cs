@@ -19,10 +19,14 @@ namespace Project_Prn.dal
         // 1. Lấy tất cả kỳ thi
         public List<Exam> GetAllExam()
         {
-            return dbc.Exams
-                .Include(e => e.Course)
-                .ToList();
+            using (var db = new Prngroup4Context())
+            {
+                return db.Exams
+                    .Include(e => e.Course)
+                    .ToList();
+            }
         }
+
 
         // 2. Lấy kỳ thi theo ID
         public Exam? GetByIdExam(int examId)
@@ -50,9 +54,19 @@ namespace Project_Prn.dal
         // 4. Cập nhật kỳ thi
         public void UpdateExam(Exam exam)
         {
-            dbc.Exams.Update(exam);
-            dbc.SaveChanges();
+            using (var db = new Prngroup4Context())
+            {
+                var existingExam = db.Exams.Find(exam.ExamId);
+                if (existingExam != null)
+                {
+                    existingExam.CourseId = exam.CourseId;
+                    existingExam.ExamDate = exam.ExamDate;
+                    existingExam.Room = exam.Room;
+                    db.SaveChanges();
+                }
+            }
         }
+
 
         // 5. Xóa kỳ thi
         public void DeleteExam(int examId)
