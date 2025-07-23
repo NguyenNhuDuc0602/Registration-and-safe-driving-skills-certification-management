@@ -29,7 +29,7 @@ namespace Project_Prn.PoliceWindow
             var exams = rawExams.Select(e => new
             {
                 e.ExamId,
-                Display = $"{e.Course.CourseName} - {e.Room} - {e.Date:dd/MM/yyyy}"
+                Display = $"{e.Course.CourseName} - {e.Room} - {e.ExamDate:dd/MM/yyyy}" 
             }).ToList();
 
             cbExam.ItemsSource = exams;

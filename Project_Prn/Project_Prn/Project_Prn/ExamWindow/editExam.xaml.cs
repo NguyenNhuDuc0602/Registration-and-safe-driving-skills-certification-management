@@ -32,15 +32,16 @@ namespace Project_Prn.ExamWindow
             Exam exam = examDAO.GetByIdExam(Int32.Parse(this._ExamId));
             if (exam != null)
             {
-                this.cbxCourse.ItemsSource = courseDAO.GetAllCourse();//combobox
+                this.cbxCourse.ItemsSource = courseDAO.GetAllCourse(); // combobox
                 this.cbxCourse.DisplayMemberPath = "CourseName";
                 this.cbxCourse.SelectedValuePath = "CourseId";
-                this.cbxCourse.SelectedValue = exam.CourseId;
-                this.dpdate.SelectedDate = exam.Date.ToDateTime(TimeOnly.MinValue);
-                this.txtClass.Text = exam.Room;
+                this.cbxCourse.SelectedValue = exam.CourseId;             
+                this.dpdate.SelectedDate = exam.ExamDate;
 
+                this.txtClass.Text = exam.Room;
             }
         }
+
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
@@ -55,19 +56,23 @@ namespace Project_Prn.ExamWindow
 
             string room = this.txtClass.Text;
 
-            Exam updateExam = new Exam()
-            {
-                ExamId = Int32.Parse(this._ExamId),
-                CourseId = CourseId,
-                Date = DateOnly.FromDateTime(selectedDate.Value),
-                ExamDate = selectedDate.Value, // ✅ FIX: Gán ExamDate hợp lệ để tránh lỗi SQL
-                Room = room,
-            };
-
             ExamDAO examDAO = new ExamDAO();
-            examDAO.UpdateExam(updateExam);
+            var oldExam = examDAO.GetByIdExam(Int32.Parse(this._ExamId));
 
-            this.DialogResult = true; // báo hiệu thành công
+            if (oldExam == null)
+            {
+                MessageBox.Show("Không tìm thấy kỳ thi để cập nhật!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            //  Gán lại thông tin
+            oldExam.CourseId = CourseId;
+            oldExam.ExamDate = selectedDate.Value;
+            oldExam.Room = room;
+
+            examDAO.UpdateExam(oldExam);
+
+            this.DialogResult = true;
             this.Close();
         }
 

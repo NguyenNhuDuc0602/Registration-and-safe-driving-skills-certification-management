@@ -24,13 +24,13 @@ namespace Project_Prn.StudentWindow
                .Where(r => r.UserId == currentUser.UserId)
                .Include(r => r.Exam)
                .ThenInclude(e => e.Course)
-               .Select(r => new
-               {
-                   CourseName = r.Exam.Course.CourseName,
-                   ExamDate = r.Exam.Date.ToString("dd/MM/yyyy"),
-                   Score = (double)r.Score, 
-                   PassStatus = r.PassStatus ? "✔️" : "❌"
-               })
+            .Select(r => new
+            {
+                CourseName = r.Exam.Course.CourseName,
+                ExamDate = r.Exam.ExamDate.ToString("dd/MM/yyyy"), 
+                Score = (double)r.Score,
+                PassStatus = r.PassStatus ? "✔️" : "❌"
+            })
                .ToList();
 
             resultDataGrid.ItemsSource = results;

@@ -18,7 +18,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ExamID" Binding="{Binding ExamId}" Width="80"/>
                 <DataGridTextColumn Header="CourseName" Binding="{Binding Course.CourseName}" Width="*"/>
-                <DataGridTextColumn Header="Date" Binding="{Binding Date}" Width="*"/>
+                <DataGridTextColumn Header="Date" Binding="{Binding ExamDate, StringFormat=\{0:dd/MM/yyyy\}}" Width="*"/>
                 <DataGridTextColumn Header="Room" Binding="{Binding Room}" Width="*"/>
                 <DataGridTemplateColumn Header="edit" Width="60">
                     <DataGridTemplateColumn.CellTemplate>
