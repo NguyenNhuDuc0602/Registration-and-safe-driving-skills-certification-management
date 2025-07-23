@@ -32,11 +32,20 @@ namespace Project_Prn.CertificateWindow
 
         private void LoadCertificateDetail()
         {
+            // Load all courses
+            using var context = new Prngroup4Context();
+            var courses = context.Courses.ToList();
+            cbxCourse.ItemsSource = courses;
+
+            // Load data from certificate
             txtUserID.Text = certificate.UserId.ToString();
             dpIssuedDate.SelectedDate = certificate.IssuedDate.ToDateTime(TimeOnly.MinValue);
             dpExpirationDate.SelectedDate = certificate.ExpirationDate.ToDateTime(TimeOnly.MinValue);
             txtCerCode.Text = certificate.CertificateCode;
+
+            cbxCourse.SelectedValue = certificate.CourseId;
         }
+
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
@@ -46,10 +55,17 @@ namespace Project_Prn.CertificateWindow
 
         private void btnUpdate_Click(object sender, RoutedEventArgs e)
         {
+            if (cbxCourse.SelectedValue == null)
+            {
+                MessageBox.Show("Vui lòng chọn môn học!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
             Certificate updatedCertificate = new Certificate
             {
                 CertificateId = certificate.CertificateId,
                 UserId = int.Parse(txtUserID.Text),
+                CourseId = (int)cbxCourse.SelectedValue,
                 IssuedDate = DateOnly.FromDateTime(dpIssuedDate.SelectedDate.Value),
                 ExpirationDate = DateOnly.FromDateTime(dpExpirationDate.SelectedDate.Value),
                 CertificateCode = txtCerCode.Text.Trim()
@@ -62,5 +78,6 @@ namespace Project_Prn.CertificateWindow
             this.DialogResult = true;
             this.Close();
         }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using Project_Prn.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Project_Prn.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,9 +32,11 @@ namespace Project_Prn.StudentWindow
         {
             var certs = context.Certificates
                 .Where(c => c.UserId == currentUser.UserId)
+                .Include(c => c.Course)
                 .Select(c => new
                 {
                     c.CertificateCode,
+                    CourseName = c.Course.CourseName,
                     IssuedDate = c.IssuedDate.ToString("dd/MM/yyyy"),
                     ExpirationDate = c.ExpirationDate.ToString("dd/MM/yyyy")
                 })
@@ -41,5 +44,6 @@ namespace Project_Prn.StudentWindow
 
             certificateDataGrid.ItemsSource = certs;
         }
+
     }
 }
