@@ -53,13 +53,15 @@ namespace Project_Prn.dal
         // 5. Xóa người dùng
         public void DeleteUser(int userId)
         {
-            var user = dbc.Users.Find(userId); 
+            var user = dbc.Users.Find(userId);
             if (user != null)
             {
                 dbc.Users.Remove(user);
-                dbc.SaveChanges(); 
+                dbc.SaveChanges();
             }
         }
+
+
         // 6. Lấy người dùng theo vai trò (Role)
         public List<User> GetByRoleUser(string role)
         {

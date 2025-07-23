@@ -75,7 +75,7 @@ namespace Project_Prn.RoleWindow
             StudentsCountText.Text = context.Registrations
                 .Where(r => r.Course.TeacherId == currentUser.UserId)
                 .Select(r => r.UserId)
-                .Distinct() 
+                .Distinct()
                 .Count().ToString();
             // so luong khoa hoc ma giang vien day
             CoursesCountText.Text = context.Courses
@@ -84,7 +84,7 @@ namespace Project_Prn.RoleWindow
 
             // Số lượng kỳ thi mà giáo viên dạy hoặc làm giám thị
             ExamsCountText.Text = context.Exams
-                .Where(e => e.Course.TeacherId == currentUser.UserId || e.SupervisorId == currentUser.UserId)
+                .Where(e => e.SupervisorId == currentUser.UserId)
                 .Count().ToString();
 
         }

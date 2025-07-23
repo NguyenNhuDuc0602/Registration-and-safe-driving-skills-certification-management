@@ -15,7 +15,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Exam ID" Binding="{Binding ExamId}" Width="80"/>
                 <DataGridTextColumn Header="Khóa học" Binding="{Binding Course.CourseName}" Width="*"/>
-                <DataGridTextColumn Header="Ngày thi" Binding="{Binding Date}" Width="*"/>
+                <DataGridTextColumn Header="Ngày thi"
+                    Binding="{Binding ExamDate, StringFormat={}{0:dd/MM/yyyy}}" />
                 <DataGridTextColumn Header="Phòng thi" Binding="{Binding Room}" Width="*"/>
                 <DataGridTemplateColumn Header="Xác nhận" Width="100">
                     <DataGridTemplateColumn.CellTemplate>
