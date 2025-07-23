@@ -28,7 +28,7 @@
                         Click="Button_Click"
                         Margin="8" Height="40" />
 
-                <Button Content="Quản lý thi"
+                <Button Content="Xem Lịch coi thi"
                         Tag="Exams"
                         Click="Button_Click"
                         Margin="8" Height="40" />
