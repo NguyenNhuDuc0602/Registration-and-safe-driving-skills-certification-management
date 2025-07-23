@@ -31,11 +31,14 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="CerID" Binding="{Binding CertificateId}" Width="50"/>
                 <DataGridTextColumn Header="Full Name" Binding="{Binding User.FullName}" Width="*"/>
+                <DataGridTextColumn Header="Course" Binding="{Binding Course.CourseName}" Width="*"/>
+                <!-- ✅ mới thêm -->
                 <DataGridTextColumn Header="Issued Date" Binding="{Binding IssuedDate}" Width="*"/>
                 <DataGridTextColumn Header="Expiration Date" Binding="{Binding ExpirationDate}" Width="*"/>
                 <DataGridTextColumn Header="Certificate Code" Binding="{Binding CertificateCode}" Width="*"/>
             </DataGrid.Columns>
         </DataGrid>
+
 
         <!-- Nút chức năng -->
         <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20">

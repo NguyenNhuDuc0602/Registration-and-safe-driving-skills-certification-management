@@ -36,7 +36,12 @@
 
                     <TextBlock Text="Issued Date:" Margin="10"/>
                     <DatePicker x:Name="dpIssuedDate" Height="25" Width="296" IsEnabled="False"/>
+
+                    <!-- ✅ Mới thêm: chọn môn học -->
+                    <TextBlock Text="Course:" Margin="10"/>
+                    <ComboBox x:Name="cbxCourse" Width="300" Margin="10" DisplayMemberPath="CourseName" SelectedValuePath="CourseId"/>
                 </StackPanel>
+
 
                 <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10">
                     <TextBlock Text="Expiration Date:" Margin="10"/>

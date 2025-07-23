@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.EntityFrameworkCore;
+using Project_Prn.Models;
 using System.Linq;
 using System.Windows;
-using Project_Prn.Models;
-using Project_Prn.dal;
 
 namespace Project_Prn.CertificateWindow
 {
@@ -12,74 +10,66 @@ namespace Project_Prn.CertificateWindow
         public CertificateManagement()
         {
             InitializeComponent();
-            LoadCertificate();
+            LoadCertificates();
         }
 
-        public void LoadCertificate()
+        private void LoadCertificates()
         {
-            CertificateDAO dao = new CertificateDAO();
-            var cer = dao.GetAllCertificate();
-            this.dgCertificate.ItemsSource = cer;
+            using var context = new Prngroup4Context();
+            var certs = context.Certificates
+                .Include(c => c.User)
+                .Include(c => c.Course)
+                .ToList();
+
+            dgCertificate.ItemsSource = certs;
         }
 
-   
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            string keyword = txtSearch.Text.ToLower();
+            using var context = new Prngroup4Context();
+            var certs = context.Certificates
+                .Include(c => c.User)
+                .Include(c => c.Course)
+                .Where(c => c.User.FullName.ToLower().Contains(keyword)
+                         || c.CertificateCode.ToLower().Contains(keyword)
+                         || c.Course.CourseName.ToLower().Contains(keyword))
+                .ToList();
+
+            dgCertificate.ItemsSource = certs;
+        }
 
         private void btnDetail_Click(object sender, RoutedEventArgs e)
         {
-            var selectCer = this.dgCertificate.SelectedItem as Certificate;
-            if (selectCer == null)
+            if (dgCertificate.SelectedItem is Certificate selected)
             {
-                MessageBox.Show("Vui lòng chọn 1 chứng chỉ!");
-                return;
-            }
-
-            var detailWindow = new CertificateDetail(selectCer);
-            bool? updated = detailWindow.ShowDialog();
-            if (updated == true)
-            {
-                LoadCertificate();
+                MessageBox.Show($"Certificate Details:\n\n" +
+                    $"Name: {selected.User.FullName}\n" +
+                    $"Course: {selected.Course.CourseName}\n" +
+                    $"Issued: {selected.IssuedDate}\n" +
+                    $"Expires: {selected.ExpirationDate}\n" +
+                    $"Code: {selected.CertificateCode}", "Detail");
             }
         }
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            var selectedCer = this.dgCertificate.SelectedItem as Certificate;
-            if (selectedCer == null)
+            if (dgCertificate.SelectedItem is Certificate selected)
             {
-                MessageBox.Show("Vui lòng chọn một chứng chỉ để xóa.");
-                return;
-            }
-
-            CertificateDAO certificateDAO = new CertificateDAO();
-            certificateDAO.DeleteCertificate(selectedCer.CertificateId);
-            LoadCertificate();
-            MessageBox.Show("Xóa chứng chỉ thành công!");
-        }
-
-        private void btnSearch_Click(object sender, RoutedEventArgs e)
-        {
-            string input = txtSearch.Text.Trim();
-
-            if (string.IsNullOrWhiteSpace(input) || !int.TryParse(input, out int cerId))
-            {
-                MessageBox.Show("Vui lòng nhập CerID hợp lệ!!", "Lỗi", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
-
-            CertificateDAO certDAO = new CertificateDAO();
-            var cer = certDAO.GetByIdCertificate(cerId);
-
-            if (cer != null)
-            {
-                dgCertificate.ItemsSource = new List<Certificate> { cer };
-            }
-            else
-            {
-                MessageBox.Show($"Không tìm thấy chứng chỉ nào có CerID là {cerId}!!", "Thông Báo!", MessageBoxButton.OK, MessageBoxImage.Information);
-                dgCertificate.ItemsSource = null;
+                var confirm = MessageBox.Show("Are you sure to delete this certificate?", "Confirm", MessageBoxButton.YesNo);
+                if (confirm == MessageBoxResult.Yes)
+                {
+                    using var context = new Prngroup4Context();
+                    var cert = context.Certificates.FirstOrDefault(c => c.CertificateId == selected.CertificateId);
+                    if (cert != null)
+                    {
+                        context.Certificates.Remove(cert);
+                        context.SaveChanges();
+                        MessageBox.Show("Deleted successfully!");
+                        LoadCertificates();
+                    }
+                }
             }
         }
-
-       
     }
 }

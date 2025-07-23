@@ -82,12 +82,20 @@ public partial class Prngroup4Context : DbContext
             entity.Property(e => e.CertificateId).HasColumnName("CertificateID");
             entity.Property(e => e.CertificateCode).HasMaxLength(50);
             entity.Property(e => e.UserId).HasColumnName("UserID");
+            entity.Property(e => e.CourseId).HasColumnName("CourseID");
 
             entity.HasOne(d => d.User).WithMany(p => p.Certificates)
                 .HasForeignKey(d => d.UserId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Certifica__UserI__5DCAEF64");
+
+            entity.HasOne(d => d.Course).WithMany(p => p.Certificates) 
+                .HasForeignKey(d => d.CourseId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Certifica__Cours__CUSTOM");
         });
+
+
 
         modelBuilder.Entity<Course>(entity =>
         {

@@ -134,18 +134,30 @@ namespace Project_Prn.StudentWindow
             // CẤP CHỨNG CHỈ NẾU ĐẬU
             if (result.PassStatus)
             {
-                bool alreadyHasCertificate = context.Certificates.Any(c => c.UserId == _userId);
-                if (!alreadyHasCertificate)
+                // Lấy Exam để biết CourseId
+                var exam = context.Exams.FirstOrDefault(e => e.ExamId == _examId);
+                if (exam != null)
                 {
-                    var certificate = new Certificate
+                    int courseId = exam.CourseId;
+
+                    // Kiểm tra nếu chưa có chứng chỉ cho user + course này
+                    bool alreadyHasCertificate = context.Certificates
+                        .Any(c => c.UserId == _userId && c.CourseId == courseId);
+
+                    if (!alreadyHasCertificate)
                     {
-                        UserId = _userId,
-                        IssuedDate = DateOnly.FromDateTime(DateTime.Now),
-                        ExpirationDate = DateOnly.FromDateTime(DateTime.Now.AddYears(1)),
-                        CertificateCode = $"CERT-{_userId}-{DateTime.Now:yyyyMMddHHmmss}"
-                    };
-                    context.Certificates.Add(certificate);
+                        var certificate = new Certificate
+                        {
+                            UserId = _userId,
+                            CourseId = courseId,
+                            IssuedDate = DateOnly.FromDateTime(DateTime.Now),
+                            ExpirationDate = DateOnly.FromDateTime(DateTime.Now.AddYears(1)),
+                            CertificateCode = $"CERT-{_userId}-{DateTime.Now:yyyyMMddHHmmss}"
+                        };
+                        context.Certificates.Add(certificate);
+                    }
                 }
+
             }
 
             context.SaveChanges();

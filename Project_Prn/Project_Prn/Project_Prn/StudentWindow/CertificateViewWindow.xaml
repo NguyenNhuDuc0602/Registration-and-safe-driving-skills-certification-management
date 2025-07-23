@@ -11,9 +11,11 @@
         <DataGrid x:Name="certificateDataGrid" AutoGenerateColumns="False" CanUserAddRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Mã chứng chỉ" Binding="{Binding CertificateCode}" Width="*"/>
+                <DataGridTextColumn Header="Môn học" Binding="{Binding CourseName}" Width="*"/>
                 <DataGridTextColumn Header="Ngày cấp" Binding="{Binding IssuedDate}" Width="*"/>
                 <DataGridTextColumn Header="Ngày hết hạn" Binding="{Binding ExpirationDate}" Width="*"/>
             </DataGrid.Columns>
+
         </DataGrid>
     </Grid>
 </Window>
