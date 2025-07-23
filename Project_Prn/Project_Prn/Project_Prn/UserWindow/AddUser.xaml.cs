@@ -82,9 +82,6 @@ namespace Project_Prn.UserWindow
             this.Close();
         }
 
-        private void cmbRole_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            // Optional feedback when role is changed
-        }
+      
     }
 }

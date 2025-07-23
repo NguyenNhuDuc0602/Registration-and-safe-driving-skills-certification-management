@@ -16,7 +16,7 @@ namespace Project_Prn.PoliceWindow
 
         private void LoadData()
         {
-            // Lấy tất cả khóa học (không cần lọc unassigned)
+            // Lấy tất cả khóa học 
             var allCourses = context.Courses.ToList();
             cbClass.ItemsSource = allCourses;
             cbClass.DisplayMemberPath = "CourseName";

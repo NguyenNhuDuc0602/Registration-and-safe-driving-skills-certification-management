@@ -45,7 +45,7 @@
 
             <StackPanel Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10">
                 <TextBlock Text="Role:" Margin="10"/>
-                <ComboBox x:Name="cmbRole" Width="300" Margin="10" SelectionChanged="cmbRole_SelectionChanged"  >
+                <ComboBox x:Name="cmbRole" Width="300" Margin="10"   >
                    
                 </ComboBox>
 
