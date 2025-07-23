@@ -84,7 +84,7 @@ namespace Project_Prn.dal
             if (reg != null)
             {
                 reg.Status = newStatus;
-                dbc.SaveChanges(); // Sử dụng cùng context
+                dbc.SaveChanges(); 
             }
         }
 
@@ -95,7 +95,7 @@ namespace Project_Prn.dal
             {
                 reg.Status = "Rejected";
                 reg.Comments = comment;
-                dbc.SaveChanges(); // Sử dụng cùng context
+                dbc.SaveChanges(); 
             }
         }
 

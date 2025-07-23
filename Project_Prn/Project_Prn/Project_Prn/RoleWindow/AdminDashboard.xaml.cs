@@ -27,7 +27,7 @@ namespace Project_Prn.RoleWindow
             InitializeComponent();
             currentUser = user;
               DataContext = currentUser; // Bind the current user to the DataContext for data binding
-            Window_Loaded(this, null); // Load data when the window is initialized
+            Window_Loaded(this, null); 
         }
 
         private void NavButton_Click(object sender, RoutedEventArgs e)

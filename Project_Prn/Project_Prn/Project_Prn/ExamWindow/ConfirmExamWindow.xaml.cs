@@ -11,7 +11,7 @@ namespace Project_Prn.ExamWindow
     public partial class ConfirmExamWindow : Window
     {
         private ExamDAO examDAO = new ExamDAO();
-        private CourseDAO courseDAO = new CourseDAO(); // Giả sử bạn có CourseDAO để lấy danh sách Course
+        private CourseDAO courseDAO = new CourseDAO(); 
 
         public ConfirmExamWindow()
         {
@@ -23,7 +23,7 @@ namespace Project_Prn.ExamWindow
         // Load danh sách khóa học vào ComboBox
         private void LoadCourses()
         {
-            var courses = courseDAO.GetAllCourse(); // cần viết DAO nếu chưa có
+            var courses = courseDAO.GetAllCourse(); 
             cbxCourse.ItemsSource = courses;
             cbxCourse.DisplayMemberPath = "CourseName";
             cbxCourse.SelectedValuePath = "CourseId";

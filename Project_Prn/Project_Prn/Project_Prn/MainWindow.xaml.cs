@@ -58,7 +58,7 @@ namespace Project_Prn
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             RegisterWindow registerWindow = new RegisterWindow();
-            registerWindow.ShowDialog(); // Hiển thị dưới dạng modal, đợi đóng rồi mới quay lại
+            registerWindow.ShowDialog(); 
         }
     }
 }

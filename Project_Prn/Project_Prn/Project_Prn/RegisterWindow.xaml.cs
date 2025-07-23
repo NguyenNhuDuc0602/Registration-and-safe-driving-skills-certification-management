@@ -11,7 +11,7 @@ namespace Project_Prn
 
         public RegisterWindow()
         {
-            InitializeComponent(); // BẮT BUỘC phải có để load XAML
+            InitializeComponent();
             userDAO = new UserDAO();
         }
 

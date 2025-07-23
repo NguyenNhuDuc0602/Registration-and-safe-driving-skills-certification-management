@@ -19,13 +19,13 @@ namespace Project_Prn.PoliceWindow
 
         private void LoadData()
         {
-            // B1: Lấy danh sách kỳ thi chưa có giám thị (đã include Course)
+            //  Lấy danh sách kỳ thi chưa có giám thị 
             var rawExams = context.Exams
                 .Where(e => e.SupervisorId == null)
                 .Include(e => e.Course)
                 .ToList(); // <-- Include xong mới gọi Select
 
-            // B2: Tạo danh sách hiển thị
+            //  Tạo danh sách hiển thị
             var exams = rawExams.Select(e => new
             {
                 e.ExamId,
